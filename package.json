@@ -11,5 +11,9 @@
     "url": "git+https://github.com/PuneetGopinath/memory-garden.git"
   },
   "license": "MIT",
-  "author": "PuneetGopinath"
+  "author": "PuneetGopinath",
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-router": "^7.15.1"
+  }
 }
