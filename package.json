@@ -1,0 +1,15 @@
+{
+  "name": "memory-garden",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/PuneetGopinath/memory-garden#readme",
+  "bugs": {
+    "url": "https://github.com/PuneetGopinath/memory-garden/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PuneetGopinath/memory-garden.git"
+  },
+  "license": "MIT",
+  "author": "PuneetGopinath"
+}
