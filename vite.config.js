@@ -1,20 +1,22 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
-import dotenv from "dotenv";
-dotenv.config();
+export default defineConfig(({ mode }) => {
+    const env = loadEnv(mode, process.cwd(), "");
 
-const PORT = process.env.PORT || 3000;
-
-export default defineConfig({
-    root: "./src",
-    plugins: [
-        react(),
-        tailwindcss()
-    ],
-    build: {
-        outDir: "./client-dist",
-        emptyOutDir: true,
-    }
+    return {
+        root: "./src",
+        plugins: [
+            react(),
+            tailwindcss()
+        ],
+        server: {
+            port: Number(env.PORT) || 3000
+        },
+        build: {
+            outDir: "./client-dist",
+            emptyOutDir: true,
+        }
+    };
 });
