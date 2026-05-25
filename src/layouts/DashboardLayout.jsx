@@ -6,12 +6,16 @@
 
 import { Outlet } from "react-router";
 
+import Footer from "../components/Footer";
+
 export default function DashboardLayout() {
     return (
         <>
             <main>
                 <Outlet />
             </main>
+
+            <Footer />
         </>
     );
 };
