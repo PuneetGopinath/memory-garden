@@ -11,12 +11,14 @@ import AuthLayout from "./layouts/AuthLayout";
 
 import ProtectedRoute from "./layouts/ProtectedRoute";
 
+import Landing from "./pages/Landing";
+
 export default function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/">
-                    <Route index element={<div>Landing Page</div>} />
+                    <Route index element={<Landing />} />
 
                     <Route path="auth" element={<AuthLayout />}>
                         <Route index element={<div>Auth Home</div>} />
