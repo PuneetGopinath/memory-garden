@@ -6,8 +6,9 @@
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-800 text-white text-center py-4">
-            <p>&copy; 2026 Puneet Gopinath. All rights reserved.</p>
+        <footer className="flex flex-col items-center bg-gray-800 text-white text-center py-4">
+            <span className="text-md font-medium text-zinc-100 mb-2">&copy; 2026 Puneet Gopinath. All rights reserved.</span>
+            <span className="text-sm text-zinc-400">Free during beta • Built for meaningful memories</span>
         </footer>
     );
 };
