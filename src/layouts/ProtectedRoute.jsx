@@ -15,7 +15,7 @@ export default function ProtectedRoute() {
 
     useEffect(() => {
         if (state === "unauthenticated") {
-            navigate("/auth/signin");
+            navigate("/auth/signin", { replace: true });
         }
     }, [state]);
     return (
