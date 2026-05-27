@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 
 import DashboardLayout from "./layouts/DashboardLayout";
 import AuthLayout from "./layouts/AuthLayout";
@@ -21,7 +21,7 @@ export default function App() {
                     <Route index element={<Landing />} />
 
                     <Route path="auth" element={<AuthLayout />}>
-                        <Route index element={<div>Auth Home</div>} />
+                        <Route index element={<Navigate to="/auth/signin" replace />} />
                         <Route path="signin" element={<div>Sign In</div>} />
                         <Route path="signup" element={<div>Sign Up</div>} />
                     </Route>
