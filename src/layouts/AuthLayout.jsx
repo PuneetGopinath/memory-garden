@@ -17,7 +17,9 @@ export default function AuthLayout() {
                 </div>
             </main>
 
-            <Footer />
+            <footer className="flex flex-col items-center text-center py-4">
+                <span className="text-sm text-zinc-500">&copy; 2026 Puneet Gopinath. All rights reserved.</span>
+            </footer>
         </div>
     );
 };
