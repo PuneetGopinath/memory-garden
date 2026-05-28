@@ -19,6 +19,25 @@ export default function SignIn() {
             </div>
 
             <form className="flex flex-col gap-4 py-4" onSubmit={handleSubmit}>
+                <label className="flex flex-col gap-1">
+                    <span className="text-sm text-zinc-400">Email/Username</span>
+                    <input
+                        type="text"
+                        className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
+                        required
+                    />
+                </label>
+
+                <label className="flex flex-col gap-1">
+                    <span className="text-sm text-zinc-400">Password</span>
+                    <input
+                        type="password"
+                        className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
+                        required
+                    />
+                </label>
+
+                <button type="submit" className="mt-4 rounded-lg bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-4 py-2 text-white font-medium">Sign In</button>
             </form>
 
             <span className="text-sm text-zinc-400">
