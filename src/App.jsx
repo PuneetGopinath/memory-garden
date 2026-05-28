@@ -12,6 +12,7 @@ import AuthLayout from "./layouts/AuthLayout";
 import ProtectedRoute from "./layouts/ProtectedRoute";
 
 import Landing from "./pages/Landing";
+import SignIn from "./pages/auth/SignIn";
 
 export default function App() {
     return (
@@ -22,7 +23,7 @@ export default function App() {
 
                     <Route path="auth" element={<AuthLayout />}>
                         <Route index element={<Navigate to="/auth/signin" replace />} />
-                        <Route path="signin" element={<div>Sign In</div>} />
+                        <Route path="signin" element={<SignIn />} />
                         <Route path="signup" element={<div>Sign Up</div>} />
                     </Route>
                     
