@@ -13,6 +13,7 @@ import ProtectedRoute from "./layouts/ProtectedRoute";
 
 import Landing from "./pages/Landing";
 import SignIn from "./pages/auth/SignIn";
+import SignUp from "./pages/auth/SignUp";
 
 export default function App() {
     return (
@@ -24,7 +25,7 @@ export default function App() {
                     <Route path="auth" element={<AuthLayout />}>
                         <Route index element={<Navigate to="/auth/signin" replace />} />
                         <Route path="signin" element={<SignIn />} />
-                        <Route path="signup" element={<div>Sign Up</div>} />
+                        <Route path="signup" element={<SignUp />} />
                     </Route>
                     
                     <Route element={<ProtectedRoute />}>
@@ -34,6 +35,8 @@ export default function App() {
                             <Route path="profile" element={<div>Profile Page</div>} />
                         </Route>
                     </Route>
+
+                    <Route path="*" element={<span className="text-white text-center bg-red-500/20">Error 404: Page Not Found</span>} />
                 </Route>
             </Routes>
         </BrowserRouter>
