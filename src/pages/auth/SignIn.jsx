@@ -20,9 +20,9 @@ export default function SignIn() {
 
             <form className="flex flex-col gap-4 py-4" onSubmit={handleSubmit}>
                 <label className="flex flex-col gap-1">
-                    <span className="text-sm text-zinc-400">Email/Username <span className="text-red-500">*</span></span>
+                    <span className="text-sm text-zinc-400">Email <span className="text-red-500">*</span></span>
                     <input
-                        type="text"
+                        type="email"
                         className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
                         placeholder="xyz@abc.com"
                         required
