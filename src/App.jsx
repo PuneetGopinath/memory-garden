@@ -10,6 +10,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import AuthLayout from "./layouts/AuthLayout";
 
 import ProtectedRoute from "./layouts/ProtectedRoute";
+import PublicOnlyRoute from "./layouts/PublicOnlyRoute";
 
 import Landing from "./pages/Landing";
 import SignIn from "./pages/auth/SignIn";
@@ -22,10 +23,12 @@ export default function App() {
                 <Route path="/">
                     <Route index element={<Landing />} />
 
-                    <Route path="auth" element={<AuthLayout />}>
-                        <Route index element={<Navigate to="/auth/signin" replace />} />
-                        <Route path="signin" element={<SignIn />} />
-                        <Route path="signup" element={<SignUp />} />
+                    <Route element={<PublicOnlyRoute />}>
+                        <Route path="auth" element={<AuthLayout />}>
+                            <Route index element={<Navigate to="/auth/signin" replace />} />
+                            <Route path="signin" element={<SignIn />} />
+                            <Route path="signup" element={<SignUp />} />
+                        </Route>
                     </Route>
                     
                     <Route element={<ProtectedRoute />}>
