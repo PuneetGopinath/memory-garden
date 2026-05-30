@@ -5,18 +5,17 @@
  */
 
 import { useContext } from "react";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, Navigate } from "react-router";
 
 import AuthContext from "../context/AuthContext";
 
 export default function ProtectedRoute() {
-    const navigate = useNavigate();
     const { state } = useContext(AuthContext);
 
     if (state === "loading") return null;
 
     if (state === "unauthenticated")
-        navigate("/auth/signin", { replace: true });
+        return <Navigate to="/auth/signin" replace />;
 
     return (
         <>
