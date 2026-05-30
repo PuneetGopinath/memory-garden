@@ -5,7 +5,7 @@
  */
 
 import { useContext } from "react";
-import { Outlet } from "react-router";
+import { Outlet, Navigate } from "react-router";
 
 import { AuthContext } from "../context/AuthContext";
 
