@@ -6,7 +6,9 @@
 
 import { createContext } from "react";
 
-export const AuthContext = createContext({
+const AuthContext = createContext({
     state: "unauthenticated", // "loading" | "authenticated" | "unauthenticated"
     user: null
 });
+
+export default AuthContext;
