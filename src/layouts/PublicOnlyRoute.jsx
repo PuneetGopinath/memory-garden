@@ -15,7 +15,7 @@ export default function PublicOnlyRoute() {
     if (state === "loading") return null;
 
     if (state === "authenticated")
-        return <Navigate to="/dashboard" replace />;
+        return <Navigate to="/dashboard?loggedin=already" replace />;
 
     return <Outlet />;
 };

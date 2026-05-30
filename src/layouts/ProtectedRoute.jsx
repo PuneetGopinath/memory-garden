@@ -15,7 +15,7 @@ export default function ProtectedRoute() {
     if (state === "loading") return null;
 
     if (state === "unauthenticated")
-        return <Navigate to="/auth/signin" replace />;
+        return <Navigate to="/auth/signin?protected=true" replace />;
 
     return <Outlet />;
 };
