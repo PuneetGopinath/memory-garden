@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Outlet, useNavigate } from "react-router";
 
 import AuthContext from "../context/AuthContext";
@@ -13,11 +13,11 @@ export default function ProtectedRoute() {
     const navigate = useNavigate();
     const { state } = useContext(AuthContext);
 
-    useEffect(() => {
-        if (state === "unauthenticated") {
-            navigate("/auth/signin", { replace: true });
-        }
-    }, [state]);
+    if (state === "loading") return null;
+
+    if (state === "unauthenticated")
+        navigate("/auth/signin", { replace: true });
+
     return (
         <>
             <Outlet />
