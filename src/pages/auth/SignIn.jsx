@@ -4,11 +4,44 @@
  * License: MIT (see LICENSE)
  */
 
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router";
+
+import supabase from "../../utils/supabase";
+import i18n from "../../utils/i18n";
+import sanitize from "../../utils/sanitize";
 
 export default function SignIn() {
-    const handleSubmit = (e) => {
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        const fd = new FormData(e.target);
+        const password = fd.get("password");
+        const email = sanitize(fd.get("email"), "email");
+        
+        let error;
+        const msg = "An error has occurred while signing in. Please try again later or contact support.";
+
+        try {
+            ({ error } = await supabase.auth.signInWithPassword({ email, password }));
+        } catch (err) {
+            console.error("[SIGN IN] Error signing in:", err);
+            return alert(msg);
+        } finally {
+            setLoading(false);
+        }
+
+        if (error) {
+            console.error("[SIGN IN] Sign in error:", error);
+            return alert(error?.status && error?.code
+                ? `${error?.status}: ${i18n(error?.code)}` 
+                : msg);
+        }
+
+        navigate("/dashboard");
     };
 
     return (
@@ -23,6 +56,7 @@ export default function SignIn() {
                     <span className="text-sm text-zinc-400">Email <span className="text-red-500">*</span></span>
                     <input
                         type="email"
+                        name="email"
                         className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
                         placeholder="xyz@abc.com"
                         required
@@ -33,13 +67,20 @@ export default function SignIn() {
                     <span className="text-sm text-zinc-400">Password <span className="text-red-500">*</span></span>
                     <input
                         type="password"
+                        name="password"
                         className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
-                        placeholder="MySecretPassword"
+                        placeholder="Enter your password"
                         required
                     />
                 </label>
 
-                <button type="submit" className="mt-4 rounded-lg bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-4 py-2 text-white font-medium">Sign In</button>
+                <button
+                    type="submit"
+                    className="mt-4 rounded-lg bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-4 py-2 text-white font-medium disabled:bg-purple-500/50 disabled:cursor-not-allowed"
+                    disabled={loading}
+                >
+                    {loading ? "Signing In..." : "Sign In"}
+                </button>
             </form>
 
             <span className="text-sm text-zinc-400">
