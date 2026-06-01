@@ -4,10 +4,23 @@
  * License: MIT (see LICENSE)
  */
 
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router";
+
+import PasswordValidation from "../../components/auth/PasswordValidation";
+
+import supabase from "../../utils/supabase";
+import i18n from "../../utils/i18n";
+import sanitize from "../../utils/sanitize";
 
 export default function SignUp() {
-    const handleSubmit = (e) => {
+    const [loading, setLoading] = useState(false);
+    const [pwd, setPwd] = useState("");
+    const [touched, setTouched] = useState(false);
+    const [pwdValid, setPwdValid] = useState(false);
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
     };
 
@@ -23,8 +36,10 @@ export default function SignUp() {
                     <span className="text-sm text-zinc-400">Username <span className="text-red-500">*</span></span>
                     <input
                         type="text"
+                        name="username"
                         className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
                         placeholder="alexwalker"
+                        disabled={loading}
                         required
                     />
                 </label>
@@ -33,8 +48,10 @@ export default function SignUp() {
                     <span className="text-sm text-zinc-400">Email <span className="text-red-500">*</span></span>
                     <input
                         type="email"
+                        name="email"
                         className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
                         placeholder="xyz@abc.com"
+                        disabled={loading}
                         required
                     />
                 </label>
@@ -43,13 +60,26 @@ export default function SignUp() {
                     <span className="text-sm text-zinc-400">Password <span className="text-red-500">*</span></span>
                     <input
                         type="password"
+                        name="password"
                         className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
-                        placeholder="MySecretPassword"
+                        placeholder="Enter your password"
+                        value={pwd}
+                        disabled={loading}
+                        onChange={(e) => setPwd(e.target.value)}
+                        onFocus={() => setTouched(true)}
                         required
                     />
                 </label>
 
-                <button type="submit" className="mt-4 rounded-lg bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-4 py-2 text-white font-medium">Sign Up</button>
+                {touched && <PasswordValidation pwd={pwd} onValidityChange={setPwdValid} />}
+
+                <button
+                    type="submit"
+                    className="mt-4 rounded-lg bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-4 py-2 text-white font-medium disabled:bg-purple-500/50 disabled:cursor-not-allowed"
+                    disabled={loading || !pwdValid}
+                >
+                    {loading ? "Signing Up..." : "Sign Up"}
+                </button>
             </form>
 
             <span className="text-sm text-zinc-400">
