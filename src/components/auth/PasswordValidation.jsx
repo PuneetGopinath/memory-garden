@@ -28,8 +28,9 @@ export default function PasswordValidation({ pwd, onValidityChange }) {
     }, [valid, onValidityChange]);
 
     return (
-        <div className="text-xs p-2 rounded bg-zinc-800/50 border border-white/10" aria-live="polite">
+        <div className="text-xs p-2 rounded bg-zinc-800/50 border border-white/10 hover:border-purple-500/50" aria-live="polite">
             <ul className="flex flex-col gap-1">
+                <span className="text-sm font-semibold mb-1">Password must contain:</span>
                 <li className={`${eight ? colors.right : colors.wrong}`}>
                     {eight ? right : wrong} At least 8 characters
                 </li>
