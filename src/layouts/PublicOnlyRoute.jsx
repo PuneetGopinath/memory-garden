@@ -12,10 +12,11 @@ import { AuthContext } from "../context/AuthContext";
 export default function PublicOnlyRoute() {
     const { state } = useContext(AuthContext);
 
-    if (state === "loading") return null;
+    if (state === "loading")
+        return <div className="text-center">Loading...</div>;
 
     if (state === "authenticated")
-        return <Navigate to="/dashboard?loggedin=already" replace />;
+        return <Navigate to="/dashboard?notify=signedin" replace />;
 
     return <Outlet />;
 };

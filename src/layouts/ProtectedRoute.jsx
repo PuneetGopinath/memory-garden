@@ -12,10 +12,11 @@ import { AuthContext } from "../context/AuthContext";
 export default function ProtectedRoute() {
     const { state } = useContext(AuthContext);
 
-    if (state === "loading") return null;
+    if (state === "loading")
+        return <div className="text-center">Loading...</div>;
 
     if (state === "unauthenticated")
-        return <Navigate to="/auth/signin?protected=true" replace />;
+        return <Navigate to="/auth/signin?notify=protected" replace />;
 
     return <Outlet />;
 };
