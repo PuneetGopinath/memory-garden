@@ -63,6 +63,7 @@ export default function SignIn() {
                         name="email"
                         className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
                         placeholder="xyz@abc.com"
+                        disabled={loading}
                         required
                         autoComplete="email"
                     />
@@ -75,6 +76,7 @@ export default function SignIn() {
                         name="password"
                         className={`rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40${!pwdValid ? " focus:border-red-500/50" : ""}`}
                         placeholder="Enter your password"
+                        disabled={loading}
                         value={pwd}
                         onChange={(e) => setPwd(e.target.value)}
                         onFocus={() => setTouched(true)}
