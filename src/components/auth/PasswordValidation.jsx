@@ -14,6 +14,14 @@ const colors = {
 const right = "✓";
 const wrong = "✗";
 
+function Rule({ valid, children }) {
+    return (
+        <li className={`${valid ? colors.right : colors.wrong}`}>
+            {valid ? right : wrong} {children}
+        </li>
+    );
+}
+
 export default function PasswordValidation({ pwd, onValidityChange }) {
     const eight = pwd.length >= 8;
     const hasUpper = /[A-Z]/.test(pwd);
@@ -31,21 +39,11 @@ export default function PasswordValidation({ pwd, onValidityChange }) {
         <div className="text-xs p-2 rounded bg-zinc-800/50 border border-white/10 hover:border-purple-500/50" aria-live="polite">
             <ul className="flex flex-col gap-1">
                 <span className="text-sm font-semibold mb-1">Password must contain:</span>
-                <li className={`${eight ? colors.right : colors.wrong}`}>
-                    {eight ? right : wrong} At least 8 characters
-                </li>
-                <li className={`${hasUpper ? colors.right : colors.wrong}`}>
-                    {hasUpper ? right : wrong} Uppercase letter
-                </li>
-                <li className={`${hasLower ? colors.right : colors.wrong}`}>
-                    {hasLower ? right : wrong} Lowercase letter
-                </li>
-                <li className={`${hasNumber ? colors.right : colors.wrong}`}>
-                    {hasNumber ? right : wrong} Number
-                </li>
-                <li className={`${hasSpecial ? colors.right : colors.wrong}`}>
-                    {hasSpecial ? right : wrong} Special character
-                </li>
+                <Rule valid={eight}>At least 8 characters</Rule>
+                <Rule valid={hasUpper}>Uppercase letter</Rule>
+                <Rule valid={hasLower}>Lowercase letter</Rule>
+                <Rule valid={hasNumber}>Number</Rule>
+                <Rule valid={hasSpecial}>Special character</Rule>
             </ul>
         </div>
     );
