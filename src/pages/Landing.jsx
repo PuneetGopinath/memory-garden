@@ -115,6 +115,22 @@ export default function Landing() {
                         </div>
                     </div>
                 </section>
+
+                <section className="cta flex flex-col relative overflow-hidden items-center text-center bg-zinc-950 py-24 px-8" id="cta">
+                    <div className="absolute -top-12 left-1/4 h-72 w-72 animate-pulse rounded-full bg-purple-500/20 opacity-30 blur-3xl"></div>
+                    <div className="absolute -bottom-12 right-1/4 h-80 w-80 rounded-full bg-cyan-500/30 opacity-30 blur-3xl"></div>
+                    <div className="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-zinc-900/70 backdrop-blur shadow-2xl p-10 lg:p-16">
+                        <div className="space-y-4">
+                            <span className="text-purple-400 uppercase tracking-widest text-sm font-medium">START YOUR GARDEN</span>
+                            <h3 className="text-4xl font-bold max-w-2xl mx-auto tracking-tight">Your story deserves to be remembered.</h3>
+                            <h5 className="text-zinc-400 max-w-2xl mx-auto">Build a living timeline of your favorite moments and preserve them beautifully with Memory Garden.</h5>
+                        </div>
+                        <div className="flex items-center justify-center gap-6 mt-10">
+                            <Link to="/auth/signup" className="font-medium bg-white text-black px-6 py-3 rounded-xl hover:scale-105 transition-all">Create Your Garden</Link>
+                            <a href="#timeline" className="font-medium border border-zinc-700 px-6 py-3 rounded-xl hover:bg-white/5 transition-all duration-300">View Demo Timeline</a>
+                        </div>
+                    </div>
+                </section>
             </main>
 
             <Footer />
