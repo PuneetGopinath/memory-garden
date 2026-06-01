@@ -5,7 +5,9 @@
  */
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
+
+import PasswordValidation from "../../components/auth/PasswordValidation";
 
 import supabase from "../../utils/supabase";
 import i18n from "../../utils/i18n";
@@ -13,7 +15,9 @@ import sanitize from "../../utils/sanitize";
 
 export default function SignIn() {
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
+    const [pwd, setPwd] = useState("");
+    const [touched, setTouched] = useState(false);
+    const [pwdValid, setPwdValid] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,7 +45,7 @@ export default function SignIn() {
                 : msg);
         }
 
-        navigate("/dashboard");
+        // Redirect handled by auth state listener in PublicOnlyRoute
     };
 
     return (
@@ -68,16 +72,21 @@ export default function SignIn() {
                     <input
                         type="password"
                         name="password"
-                        className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
+                        className={`rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40${!pwdValid ? " focus:border-red-500/50" : ""}`}
                         placeholder="Enter your password"
+                        value={pwd}
+                        onChange={(e) => setPwd(e.target.value)}
+                        onFocus={() => setTouched(true)}
                         required
                     />
                 </label>
 
+                {touched && <PasswordValidation pwd={pwd} onValidityChange={setPwdValid} />}
+
                 <button
                     type="submit"
                     className="mt-4 rounded-lg bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-4 py-2 text-white font-medium disabled:bg-purple-500/50 disabled:cursor-not-allowed"
-                    disabled={loading}
+                    disabled={loading || !pwdValid}
                 >
                     {loading ? "Signing In..." : "Sign In"}
                 </button>
