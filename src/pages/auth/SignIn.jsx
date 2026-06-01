@@ -64,6 +64,7 @@ export default function SignIn() {
                         className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
                         placeholder="xyz@abc.com"
                         required
+                        autoComplete="email"
                     />
                 </label>
 
@@ -78,6 +79,7 @@ export default function SignIn() {
                         onChange={(e) => setPwd(e.target.value)}
                         onFocus={() => setTouched(true)}
                         required
+                        autoComplete="current-password"
                     />
                 </label>
 
