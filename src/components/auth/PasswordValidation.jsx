@@ -28,23 +28,23 @@ export default function PasswordValidation({ pwd, onValidityChange }) {
     }, [valid, onValidityChange]);
 
     return (
-        <div className="text-xs p-2 rounded bg-zinc-800/50 border border-white/10">
+        <div className="text-xs p-2 rounded bg-zinc-800/50 border border-white/10" aria-live="polite">
             <ul className="flex flex-col gap-1">
                 <li className={`${eight ? colors.right : colors.wrong}`}>
                     {eight ? right : wrong} At least 8 characters
                 </li>
                 <li className={`${hasUpper ? colors.right : colors.wrong}`}>
                     {hasUpper ? right : wrong} Uppercase letter
-                    </li>
+                </li>
                 <li className={`${hasLower ? colors.right : colors.wrong}`}>
                     {hasLower ? right : wrong} Lowercase letter
-                    </li>
+                </li>
                 <li className={`${hasNumber ? colors.right : colors.wrong}`}>
                     {hasNumber ? right : wrong} Number
-                    </li>
+                </li>
                 <li className={`${hasSpecial ? colors.right : colors.wrong}`}>
                     {hasSpecial ? right : wrong} Special character
-                    </li>
+                </li>
             </ul>
         </div>
     );
