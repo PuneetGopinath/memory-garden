@@ -18,8 +18,7 @@ function TimelineEvent({ date, title, description, img, clockwise, mood }) {
     );
 }
 
-export default function MemoryCard({ column, dot, ...props }) {
-    if (!dot) dot = "purple";
+export default function MemoryCard({ column, dot = "purple", ...props }) {
     if ([1, 2].indexOf(column) === -1)
         throw new Error("Invalid column number for MemoryCard. Must be 1 or 2.");
 
