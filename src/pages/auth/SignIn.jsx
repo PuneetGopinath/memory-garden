@@ -25,6 +25,12 @@ export default function SignIn() {
         const fd = new FormData(e.target);
         const password = fd.get("password");
         const email = sanitize(fd.get("email"), "email");
+
+        if (!email)
+            return alert("Please enter a valid email.");
+
+        if (!password)
+            return alert("Please enter the password.");
         
         let error;
         const msg = "An error has occurred while signing in. Please try again later or contact support.";
