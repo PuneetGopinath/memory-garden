@@ -5,6 +5,8 @@
  */
 
 export default function sanitize(input, type) {
+    if (typeof input !== "string") return input;
+    
     switch (type) {
         case "email":
             return input.trim().toLowerCase();
