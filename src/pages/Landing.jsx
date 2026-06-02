@@ -9,6 +9,8 @@ import { Link } from "react-router";
 import Hero from "../components/landing/Hero";
 import Footer from "../components/Footer";
 
+import MemoryCard from "../components/MemoryCard";
+
 function FeatureCard({ title, description, metadata }) {
     return (
         <div className="p-6 h-full rounded-2xl bg-zinc-900/50 border border-white/10 backdrop-blur shadow-lg hover:border-purple-500/20 transition-all duration-300">
@@ -17,20 +19,6 @@ function FeatureCard({ title, description, metadata }) {
                 {metadata && <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide bg-purple-500/10 border border-purple-500/20 text-purple-300 animate-pulse">{metadata}</span>}
             </div>
             <p className="text-zinc-400">{description}</p>
-        </div>
-    );
-}
-
-function TimelineEvent({ date, title, description, img, clockwise, mood }) {
-    return (
-        <div className={`relative overflow-hidden ${clockwise ? "rotate-1" : "-rotate-1"} hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 min-h-[24rem] w-full max-w-sm p-6 rounded-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl`}>
-            <img src={img} alt={title} className="hover:scale-103 transition-transform duration-300 h-44 w-full bg-gradient-to-br from-purple-500 to-cyan-500 object-cover rounded-2xl" />
-            <div className="space-y-3 mt-4">
-                <p className="text-sm text-zinc-400">{date}</p>
-                <h5 className="text-xl font-semibold">{title}</h5>
-                <p className="text-zinc-400 leading-relaxed">{description}</p>
-                {mood && <span className="inline-flex hover:translate-y-[-2px] transition-transform duration-300 items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide bg-purple-500/10 border border-purple-500/20 text-purple-300">{mood}</span>}
-            </div>
         </div>
     );
 }
@@ -65,53 +53,45 @@ export default function Landing() {
                         <div className="relative space-y-32">
                             <div className="absolute pointer-events-none z-0 left-1/2 -translate-x-1/2 top-0 h-full w-px bg-gradient-to-b from-purple-500/40 via-white/10 to-cyan-500/40"></div>
 
-                            <div className="relative z-10 flex items-start justify-between">
-                                <div className="w-5/12"></div>
+                            <MemoryCard
+                                date="November 3, 2024"
+                                img="../assets/hackathon.png"
+                                title="First Hackathon"
+                                description="Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months."
+                                mood="⚡ Excited"
+                                dot="purple"
+                                column={2}
+                            />
 
-                                <div className="relative flex justify-center w-2/12 pt-32">
-                                    <div className="h-5 w-5 rounded-full bg-purple-400 shadow-lg shadow-purple-500/50 z-10"></div>
-                                </div>
+                            <MemoryCard
+                                date="January 13, 2025"
+                                img="../assets/temple.png"
+                                title="Temple Festival Night"
+                                description="The streets glowed with lamps, music echoed through the air, and the entire evening felt timeless."
+                                mood="🪔 Spiritual"
+                                dot="amber"
+                                column={1}
+                            />
 
-                                <div className="w-5/12 flex justify-start">
-                                    <TimelineEvent date="November 3, 2024" img="../assets/hackathon.png" title="First Hackathon" description="Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months." clockwise={true} mood="⚡ Excited" />
-                                </div>
-                            </div>
+                            <MemoryCard
+                                date="March 28, 2025"
+                                img="../assets/drive.png"
+                                title="Rainy Evening Drive"
+                                description="Driving through empty roads while rain tapped softly against the windows felt strangely peaceful."
+                                mood="🌧 Reflective"
+                                dot="blue"
+                                column={2}
+                            />
 
-                            <div className="relative z-10 flex items-start justify-between">
-                                <div className="w-5/12 flex justify-end">
-                                    <TimelineEvent date="January 13, 2025" img="../assets/temple.png" title="Temple Festival Night" description="The streets glowed with lamps, music echoed through the air, and the entire evening felt timeless." clockwise={false} mood="🪔 Spiritual" />
-                                </div>
-
-                                <div className="relative flex justify-center w-2/12 pt-32">
-                                    <div className="h-5 w-5 rounded-full bg-amber-400 shadow-lg shadow-amber-500/50 z-10"></div>
-                                </div>
-
-                                <div className="w-5/12"></div>
-                            </div>
-
-                            <div className="relative z-10 flex items-start justify-between">
-                                <div className="w-5/12"></div>
-
-                                <div className="relative flex justify-center w-2/12 pt-32">
-                                    <div className="h-5 w-5 rounded-full bg-blue-400 shadow-lg shadow-blue-500/50 z-10"></div>
-                                </div>
-
-                                <div className="w-5/12 flex justify-start">
-                                    <TimelineEvent date="March 28, 2025" img="../assets/drive.png" title="Rainy Evening Drive" description="Driving through empty roads while rain tapped softly against the windows felt strangely peaceful." clockwise={true} mood="🌧 Reflective" />
-                                </div>
-                            </div>
-
-                            <div className="relative z-10 flex items-start justify-between">
-                                <div className="w-5/12 flex justify-end">
-                                    <TimelineEvent date="July 18, 2025" img="../assets/kerala.png" title="Trip to Kerala" description="A peaceful evening beside the backwaters with family and friends." clockwise={false} mood="🌊 Peaceful" />
-                                </div>
-
-                                <div className="relative flex justify-center w-2/12 pt-32">
-                                    <div className="h-5 w-5 rounded-full bg-cyan-400 shadow-lg shadow-cyan-500/50 z-10"></div>
-                                </div>
-
-                                <div className="w-5/12"></div>
-                            </div>
+                            <MemoryCard
+                                date="July 18, 2025"
+                                img="../assets/kerala.png"
+                                title="Trip to Kerala"
+                                description="A peaceful evening beside the backwaters with family and friends."
+                                mood="🌊 Peaceful"
+                                dot="cyan"
+                                column={1}
+                            />
                         </div>
                     </div>
                 </section>
