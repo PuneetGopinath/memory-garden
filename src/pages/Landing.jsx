@@ -9,7 +9,7 @@ import { Link } from "react-router";
 import Hero from "../components/landing/Hero";
 import Footer from "../components/Footer";
 
-import MemoryCard from "../components/MemoryCard";
+import Timeline from "../components/Timeline";
 
 function FeatureCard({ title, description, metadata }) {
     return (
@@ -22,6 +22,45 @@ function FeatureCard({ title, description, metadata }) {
         </div>
     );
 }
+
+const memories = [
+    {
+        date: "November 3, 2024",
+        img: "../assets/hackathon.png",
+        title: "First Hackathon",
+        description: "Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months.",
+        mood: "⚡ Excited",
+        dot: "purple",
+        column: 2
+    },
+    {
+        date: "January 13, 2025",
+        img: "../assets/temple.png",
+        title: "Temple Festival Night",
+        description: "The streets glowed with lamps, music echoed through the air, and the entire evening felt timeless.",
+        mood: "🪔 Spiritual",
+        dot: "amber",
+        column: 1
+    },
+    {
+        date: "March 28, 2025",
+        img: "../assets/drive.png",
+        title: "Rainy Evening Drive",
+        description: "Driving through empty roads while rain tapped softly against the windows felt strangely peaceful.",
+        mood: "🌧 Reflective",
+        dot: "blue",
+        column: 2
+    },
+    {
+        date: "July 18, 2025",
+        img: "../assets/kerala.png",
+        title: "Trip to Kerala",
+        description: "A peaceful evening beside the backwaters with family and friends.",
+        mood: "🌊 Peaceful",
+        dot: "cyan",
+        column: 1
+    }
+];
 
 export default function Landing() {
     return (
@@ -50,49 +89,8 @@ export default function Landing() {
                             <h3 className="text-4xl lg:text-5xl font-bold tracking-tight">Your journey, beautifully organized.</h3>
                             <h5 className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">See your life unfold through a visually stunning timeline that connects your most cherished moments.</h5>
                         </div>
-                        <div className="relative space-y-32">
-                            <div className="absolute pointer-events-none z-0 left-1/2 -translate-x-1/2 top-0 h-full w-px bg-gradient-to-b from-purple-500/40 via-white/10 to-cyan-500/40"></div>
 
-                            <MemoryCard
-                                date="November 3, 2024"
-                                img="../assets/hackathon.png"
-                                title="First Hackathon"
-                                description="Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months."
-                                mood="⚡ Excited"
-                                dot="purple"
-                                column={2}
-                            />
-
-                            <MemoryCard
-                                date="January 13, 2025"
-                                img="../assets/temple.png"
-                                title="Temple Festival Night"
-                                description="The streets glowed with lamps, music echoed through the air, and the entire evening felt timeless."
-                                mood="🪔 Spiritual"
-                                dot="amber"
-                                column={1}
-                            />
-
-                            <MemoryCard
-                                date="March 28, 2025"
-                                img="../assets/drive.png"
-                                title="Rainy Evening Drive"
-                                description="Driving through empty roads while rain tapped softly against the windows felt strangely peaceful."
-                                mood="🌧 Reflective"
-                                dot="blue"
-                                column={2}
-                            />
-
-                            <MemoryCard
-                                date="July 18, 2025"
-                                img="../assets/kerala.png"
-                                title="Trip to Kerala"
-                                description="A peaceful evening beside the backwaters with family and friends."
-                                mood="🌊 Peaceful"
-                                dot="cyan"
-                                column={1}
-                            />
-                        </div>
+                        <Timeline memories={memories} />
                     </div>
                 </section>
 
