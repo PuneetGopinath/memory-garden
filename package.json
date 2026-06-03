@@ -17,9 +17,9 @@
     "dev": "vite"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.106.2",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "@supabase/supabase-js": "^2.107.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-router": "^7.16.0"
   },
   "devDependencies": {
