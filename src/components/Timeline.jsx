@@ -8,7 +8,7 @@ import MemoryCard from "./MemoryCard";
 
 export default function Timeline({ memories }) {
     const cards = memories.map((m, i) => (
-        <MemoryCard key={i} {...m} />
+        <MemoryCard key={m?.id ?? i} {...m} />
     ));
 
     return (
