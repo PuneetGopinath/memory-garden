@@ -83,6 +83,7 @@ export default function SignUp() {
                         placeholder="alexwalker"
                         disabled={loading}
                         required
+                        autoComplete="username"
                     />
                 </label>
                 
@@ -95,6 +96,7 @@ export default function SignUp() {
                         placeholder="xyz@abc.com"
                         disabled={loading}
                         required
+                        autoComplete="email"
                     />
                 </label>
 
@@ -110,6 +112,7 @@ export default function SignUp() {
                         onChange={(e) => setPwd(e.target.value)}
                         onFocus={() => setTouched(true)}
                         required
+                        autoComplete="new-password"
                     />
                 </label>
 
