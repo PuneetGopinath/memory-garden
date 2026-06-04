@@ -22,6 +22,48 @@ export default function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        setLoading(true);
+        const fd = new FormData(e.target);
+        const password = fd.get("password");
+        const username = sanitize(fd.get("username"), "username");
+        const email = sanitize(fd.get("email"), "email");
+
+        if (!username)
+            return alert("Please enter a valid username.");
+        if (username.length < 3 || username.length > 32)
+            return alert("Username should be between 3 and 32 characters.");
+
+        if (!email)
+            return alert("Please enter a valid email.");
+
+        if (!password)
+            return alert("Please enter a valid password.");
+
+        let error;
+        const msg = "An error has occurred while signing up. Please try again later or contact support.";
+
+        try {
+            ({ error } = await supabase.auth.signUp({
+                email,
+                password,
+                options: { data: { username }}
+            }));
+        } catch (err) {
+            console.error("[SIGN UP] Error signing up:", err);
+            return alert(msg);
+        } finally {
+            setLoading(false);
+        }
+
+        if (error) {
+            console.error("[SIGN UP] Sign up error:", error);
+            return alert(error?.status && error?.code 
+                ? `${error?.status}: ${i18n(error?.code)}`
+                : msg);
+        }
+
+        navigate("/auth/signin?notify=verify-email");
     };
 
     return (
