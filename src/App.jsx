@@ -17,6 +17,7 @@ import PublicOnlyRoute from "./layouts/PublicOnlyRoute";
 import Landing from "./pages/Landing";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
+import Home from "./pages/dashboard/Home";
 
 export default function App() {
     return (
@@ -36,7 +37,7 @@ export default function App() {
                         
                         <Route element={<ProtectedRoute />}>
                             <Route path="dashboard" element={<DashboardLayout />}>
-                                <Route index element={<div>Dashboard Home</div>} />
+                                <Route index element={<Home />} />
                                 <Route path="upload" element={<div>Upload Page</div>} />
                                 <Route path="profile" element={<div>Profile Page</div>} />
                             </Route>
