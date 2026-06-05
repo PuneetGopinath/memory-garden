@@ -68,9 +68,9 @@ export default function SignUp() {
 
     return (
         <div className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">
-            <div className="space-y-2">
-                <h3 className="text-2xl font-semibold text-center">Make your memory garden</h3>
-                <p className="text-zinc-400 text-center">Start to preserve your memories for the future</p>
+            <div className="space-y-2 text-center">
+                <h3 className="text-2xl font-semibold">Make your memory garden</h3>
+                <p className="text-zinc-400">Start to preserve your memories for the future</p>
             </div>
 
             <form className="flex flex-col gap-4 py-4" onSubmit={handleSubmit}>

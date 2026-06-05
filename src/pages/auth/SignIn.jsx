@@ -56,9 +56,9 @@ export default function SignIn() {
 
     return (
         <div className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">
-            <div className="space-y-2">
-                <h3 className="text-2xl font-semibold text-center">Welcome Back</h3>
-                <p className="text-zinc-400 text-center">Continue preserving your memories</p>
+            <div className="space-y-2 text-center">
+                <h3 className="text-2xl font-semibold">Welcome Back</h3>
+                <p className="text-zinc-400">Continue preserving your memories</p>
             </div>
 
             <form className="flex flex-col gap-4 py-4" onSubmit={handleSubmit}>
