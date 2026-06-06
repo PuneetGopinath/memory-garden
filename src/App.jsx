@@ -18,6 +18,7 @@ import Landing from "./pages/Landing";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import Home from "./pages/dashboard/Home";
+import Upload from "./pages/dashboard/Upload";
 
 export default function App() {
     return (
@@ -38,7 +39,7 @@ export default function App() {
                         <Route element={<ProtectedRoute />}>
                             <Route path="dashboard" element={<DashboardLayout />}>
                                 <Route index element={<Home />} />
-                                <Route path="upload" element={<div>Upload Page</div>} />
+                                <Route path="upload" element={<Upload />} />
                                 <Route path="profile" element={<div>Profile Page</div>} />
                             </Route>
                         </Route>
