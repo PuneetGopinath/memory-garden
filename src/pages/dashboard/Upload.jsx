@@ -4,11 +4,68 @@
  * License: MIT (see LICENSE)
  */
 
+import { useState, useContext } from "react";
+
+import { AuthContext } from "../../context/AuthContext";
+
 import supabase from "../../utils/supabase";
 
 export default function Upload() {
+    const [loading, setLoading] = useState(false);
+    const { user } = useContext(AuthContext);
+
     const handleUpload = async (e) => {
         e.preventDefault();
+        setLoading(true);
+
+        const fd = new FormData(e.target);
+
+        const title = fd.get("title");
+        const description = fd.get("description");
+        const memory_date = fd.get("memory_date");
+        const imageFile = fd.get("image");
+        let image;
+
+        if (imageFile && imageFile.size > 0 && imageFile.type.startsWith("image/")) {
+            const ext = imageFile.name.split(".").pop().toLowerCase();
+            if (imageFile.size > 10 * 1024 * 1024)
+                return alert("Image size exceeds 10MB limit. Please choose a smaller image.");
+
+            image = await supabase.storage.from("memory_images").upload(`${user.id}/${Date.now()}.${ext}`, imageFile);
+
+            if (image.error) {
+                console.error("[UPLOAD] Error uploading image to bucket:", image.error.toJSON())
+                return alert("Failed to upload image. Please try again.");
+            }
+        }
+
+        let error;
+
+        try {
+            ({ error } = await supabase.from("memories").insert({
+                user_id: user.id,
+                title,
+                description,
+                memory_date,
+                image_path: image?.data?.path ?? null
+            }));
+        
+            if (error)
+                throw error;
+        } catch (err) {
+            if (image?.data) {
+                const { error: delErr } = await supabase.storage.from("memory_images").remove([image.data.path]);
+                if (delErr)
+                    console.error("[UPLOAD] Error trying to delete image from bucket after failed memory insert:", delErr.toJSON());
+            }
+
+            console.error("[UPLOAD] Error inserting memory into memories table:", err?.toJSON?.() ?? err);
+            return alert("Failed to save memory. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+
+        alert("Memory planted successfully!");
     };
 
     return (
@@ -49,20 +106,21 @@ export default function Upload() {
                 </label>
 
                 <label className="block">
-                    <span className="text-sm font-medium">Image</span>
+                    <span className="text-sm font-medium">Image <span className="text-xs text-zinc-500 font-normal">(MAX 10MB)</span></span>
                     <input
                         type="file"
                         name="image"
-                        className="mt-1 w-full text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/70 file:text-white hover:file:bg-cyan-500/80 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:ring-offset-2"
+                        className="mt-1 w-full rounded-lg bg-zinc-800/50 border border-white/10 text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/70 file:text-white hover:file:bg-cyan-500/80 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:ring-offset-2 p-2"
                         accept="image/*"
                     />
                 </label>
 
                 <button
                     type="submit"
-                    className="mt-4 w-full rounded-lg bg-cyan-500 hover:bg-cyan-600 transition-colors duration-300 px-4 py-2 text-white font-medium"
+                    className="mt-4 w-full rounded-lg bg-cyan-500 hover:bg-cyan-600 transition-colors duration-300 px-4 py-2 text-white font-medium disabled:cursor-not-allowed disabled:bg-cyan-500/50 disabled:hover:bg-cyan-500/50"
+                    disabled={loading}
                 >
-                    Plant Memory
+                    {loading ? "Uploading..." : "Plant Memory"}
                 </button>
             </form>
         </div>
