@@ -99,7 +99,12 @@ export default function Memory() {
                     
                     
                     <div className="flex gap-4 mt-6">
-                        <Link className="rounded-3xl p-4 bg-yellow-500 hover:bg-yellow-400 transition-colors duration-200">Edit Memory</Link>
+                        <Link
+                            to={`/dashboard/edit/${id}`}
+                            className="rounded-3xl p-4 bg-yellow-500 hover:bg-yellow-400 transition-colors duration-200"
+                        >
+                            Edit Memory
+                        </Link>
                         <button
                             className="rounded-3xl p-4 bg-red-500 hover:bg-red-400 transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-red-300 disabled:hover:bg-red-300"
                             onClick={deleteMemory}
