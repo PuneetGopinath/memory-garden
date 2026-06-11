@@ -19,6 +19,7 @@ import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import Home from "./pages/dashboard/Home";
 import Upload from "./pages/dashboard/Upload";
+import Memory from "./pages/dashboard/Memory";
 
 export default function App() {
     return (
@@ -41,6 +42,7 @@ export default function App() {
                                 <Route index element={<Home />} />
                                 <Route path="upload" element={<Upload />} />
                                 <Route path="profile" element={<div>Profile Page</div>} />
+                                <Route path="memory/:id" element={<Memory />} />
                             </Route>
                         </Route>
 
