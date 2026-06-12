@@ -34,8 +34,8 @@ export default function DashboardLayout() {
                 </nav>
             </header>
 
-            <div className="min-h-screen">
-                <main className="bg-zinc-950 text-white pt-20 pb-4">
+            <div className="min-h-screen bg-zinc-950 text-white">
+                <main className="pt-20 pb-4">
                     <Outlet />
                 </main>
 
