@@ -101,6 +101,7 @@ export default function Edit() {
                             className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
+                            required
                         />
                     </label>
 
@@ -122,6 +123,7 @@ export default function Edit() {
                             className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
+                            required
                         />
                     </label>
 
