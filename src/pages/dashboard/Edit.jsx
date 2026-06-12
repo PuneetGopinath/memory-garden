@@ -54,14 +54,21 @@ export default function Edit() {
 
         let data, error;
 
+        const newValues = {
+            title,
+            description: desc,
+            memory_date: date
+        };
+
         try {
-            ({ data, error } = await supabase.from("memories").update({
-                title,
-                description: desc,
-                memory_date: date
-            }).eq("id", memory.id));
+            ({ data, error } = await supabase.from("memories").update(newValues).eq("id", memory.id));
 
             if (error) throw error;
+
+            setMemory(prev => ({
+                ...prev,
+                ...newValues
+            }));
         } catch (err) {
             console.error("[EDIT] Unexpected error during editing memory: ", err);
             return alert("An unexpected error occurred, please try later.");
