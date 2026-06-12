@@ -76,41 +76,41 @@ export default function Upload() {
             </div>
 
             <form onSubmit={handleUpload} className="space-y-4">
-                <label className="block">
+                <label className="flex flex-col gap-1">
                     <span className="text-sm font-medium">Title <span className="text-red-500">*</span></span>
                     <input
                         type="text"
                         name="title"
-                        className="mt-1 w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
+                        className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
                         required
                     />
                 </label>
 
-                <label className="block">
+                <label className="flex flex-col gap-1">
                     <span className="text-sm font-medium">Description</span>
                     <textarea
                         name="description"
-                        className="mt-1 w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
+                        className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
                         rows="6"
                     />
                 </label>
 
-                <label className="block">
+                <label className="flex flex-col gap-1">
                     <span className="text-sm font-medium">Date <span className="text-red-500">*</span></span>
                     <input
                         type="date"
                         name="memory_date"
-                        className="mt-1 w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
+                        className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
                         required
                     />
                 </label>
 
-                <label className="block">
+                <label className="flex flex-col gap-1">
                     <span className="text-sm font-medium">Image <span className="text-xs text-zinc-500 font-normal">(MAX 10MB)</span></span>
                     <input
                         type="file"
                         name="image"
-                        className="mt-1 w-full rounded-lg bg-zinc-800/50 border border-white/10 text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/70 file:text-white hover:file:bg-cyan-500/80 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:ring-offset-2 p-2"
+                        className="w-full rounded-lg bg-zinc-800/50 border border-white/10 text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/70 file:text-white hover:file:bg-cyan-500/80 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:ring-offset-2 p-2"
                         accept="image/*"
                     />
                 </label>
