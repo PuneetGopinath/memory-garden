@@ -52,7 +52,7 @@ export default function Edit() {
         e.preventDefault();
         setSaving(true);
 
-        let data, error;
+        let error;
 
         const newValues = {
             title,
@@ -61,7 +61,7 @@ export default function Edit() {
         };
 
         try {
-            ({ data, error } = await supabase.from("memories").update(newValues).eq("id", memory.id));
+            ({ error } = await supabase.from("memories").update(newValues).eq("id", memory.id));
 
             if (error) throw error;
 
