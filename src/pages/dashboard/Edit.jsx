@@ -18,10 +18,9 @@ export default function Edit() {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
-    const setD = (d) => setDate(new Date(d).toISOString().split("T")[0]);
 
     const noChange = memory?.title === title
-        && memory?.description === desc
+        && (memory?.description ?? "") === desc
         && memory?.memory_date === date;
 
     useEffect(() => {
@@ -36,8 +35,8 @@ export default function Edit() {
 
                 setMemory(data);
                 setTitle(data.title);
-                setDesc(data.description);
-                setD(data.memory_date);
+                setDesc(data.description ?? "");
+                setDate(data.memory_date);
             } catch (err) {
                 console.error("[EDIT] Unexpected error while fetching memory", err);
                 return alert("An unexpected error has occurred. Please try later.");
