@@ -32,17 +32,17 @@ export default function Edit() {
                 ({ data, error } = await supabase.from("memories").select("*").eq("id", id).single());
 
                 if (error) throw error;
+
+                setMemory(data);
+                setTitle(data.title);
+                setDesc(data.description);
+                setDate(data.memory_date);
             } catch (err) {
                 console.error("[EDIT] Unexpected error while fetching memory", err);
                 return alert("An unexpected error has occurred. Please try later.");
             } finally {
                 setLoading(false);
             }
-
-            setMemory(data);
-            setTitle(data.title);
-            setDesc(data.description);
-            setDate(data.memory_date);
         }
 
         loadMemory();
