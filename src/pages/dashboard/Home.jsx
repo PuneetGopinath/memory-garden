@@ -68,7 +68,7 @@ export default function Home() {
         loading
             ? <span className="text-zinc-400">Loading...</span>
             : (
-                <div className="text-white text-center">
+                <div className="text-white text-center min-h-screen">
                     <div className="max-w-2xl mx-auto">
                         <h1 className="text-4xl font-bold mb-4">Hi there, {user.user_metadata.username}!</h1>
                         <span className="text-zinc-400 font-light text-lg mx-auto p-4">Welcome to your Memory Garden! Plant your memories and let the timeline grow.</span>
@@ -82,7 +82,7 @@ export default function Home() {
                         {
                             memories.length > 0
                                 ? (<Timeline memories={memories} className="mb-8" links={true} />)
-                                : (<span className="text-zinc-400 mt-4 block mb-8">Your memory garden awaits for your first memory. Plant your memories and watch your timeline grow.</span>)
+                                : (<span className="text-zinc-400 mt-4 block mb-8 text-center">Your memory garden awaits for your first memory.<br />Plant your memories and watch your timeline grow.</span>)
                         }
                     </div>
                 </div>
