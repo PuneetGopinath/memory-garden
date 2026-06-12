@@ -57,7 +57,7 @@ export default function Memory() {
             if (m_id === memory.id)
                 doc = memory;
             else
-                doc = await supabase.from("memories").select("*").eq("id", m_id).single();
+                ({ data: doc } = await supabase.from("memories").select("*").eq("id", m_id).single());
 
             if (doc?.image_path)
                 ({ error } = await supabase.storage.from("memory_images").remove([doc.image_path]));
@@ -107,7 +107,7 @@ export default function Memory() {
                         </Link>
                         <button
                             className="rounded-3xl p-4 bg-red-500 hover:bg-red-400 transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-red-300 disabled:hover:bg-red-300"
-                            onClick={deleteMemory}
+                            onClick={() => deleteMemory(memory.id)}
                             disabled={deleting}
                         >
                             Delete Memory
