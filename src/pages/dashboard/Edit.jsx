@@ -87,9 +87,10 @@ export default function Edit() {
         ? <span>Loading...</span>
         : (
             <div className="text-white bg-zinc-900 p-6 rounded-lg border border-white/10 backdrop-blur max-w-lg mx-auto mb-12">
-                <div className="mb-6 text-center space-y-2">
+                <div className="flex flex-col mb-6 text-center gap-2">
                     <h1 className="font-semibold text-4xl">Edit Memory</h1>
                     <span className="text-zinc-400">Make your memory plants error free</span>
+                    <span className="text-red-500 text-xs">Note: The image of the memory can not be changed using the website until development is complete. Contact support for assistance.</span>
                 </div>
 
                 <form onSubmit={handleEdit} className="space-y-4">
