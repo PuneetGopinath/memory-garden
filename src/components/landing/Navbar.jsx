@@ -18,7 +18,7 @@ export default function Navbar() {
                     <a href="#about" className="font-medium text-zinc-400 hover:text-white transition-colors">About</a>
                 </div>
 
-                <Link to="/auth/signin" className="rounded-xl px-4 py-2 bg-white text-black hover:scale-105 transition-all duration-300">Get Started</Link>
+                <Link to="/auth/signup" className="rounded-xl px-4 py-2 bg-white text-black hover:scale-105 transition-all duration-300">Get Started</Link>
             </div>
         </nav>
     );
