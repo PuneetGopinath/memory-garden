@@ -17,3 +17,5 @@
 
 - Image replacement during editing not supported
 - AI not used yet to generate summaries and mood
+
+[v0.1.0]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.1.0

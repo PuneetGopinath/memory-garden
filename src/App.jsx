@@ -23,6 +23,8 @@ import Memory from "./pages/dashboard/Memory";
 import Edit from "./pages/dashboard/Edit";
 
 export default function App() {
+    console.log("MemoryGarden v0.1.0");
+    
     return (
         <AuthProvider>
             <BrowserRouter>
