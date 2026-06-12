@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 
 import supabase from "../../utils/supabase";
 
@@ -33,9 +34,14 @@ export default function Edit() {
             } catch (err) {
                 console.error("[EDIT] Unexpected error while fetching memory", err);
                 return alert("An unexpected error has occurred. Please try later.");
+            } finally {
+                setLoading(false);
             }
 
             setMemory(data);
+            setTitle(data.title);
+            setDesc(data.description);
+            setDate(new Date(data.memory_date));
         }
 
         loadMemory();
