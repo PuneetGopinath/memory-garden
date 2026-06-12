@@ -65,6 +65,7 @@ export default function Memory() {
             if (error) throw error;
         } catch (err) {
             console.error("[MEMORY] Unexpected error deleting memory image:", err);
+            setDeleting(false);
         }
 
         try {
@@ -73,9 +74,10 @@ export default function Memory() {
         } catch (err) {
             console.error("[MEMORY] Unexpected error deleting memory:", err);
             return alert("An unexpected error occurred, please try again later.");
+        } finally {
+            setDeleting(false);
         }
 
-        setDeleting(false);
         alert("Memory deleted successfully.");
         navigate("/dashboard");
     };
