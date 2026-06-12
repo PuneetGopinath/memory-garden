@@ -90,6 +90,7 @@ export default function Edit() {
                         <span className="text-sm font-medium">Title <span className="text-red-500">*</span></span>
                         <input
                             type="text"
+                            name="title"
                             className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
@@ -100,6 +101,7 @@ export default function Edit() {
                         <span className="text-sm font-medium">Description</span>
                         <textarea
                             value={desc}
+                            name="description"
                             className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
                             onChange={(e) => setDesc(e.target.value)}
                         />
@@ -109,6 +111,7 @@ export default function Edit() {
                         <span className="text-sm font-medium">Date <span className="text-red-500">*</span></span>
                         <input
                             type="date"
+                            name="memory_date"
                             className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
@@ -119,6 +122,7 @@ export default function Edit() {
                         <span className="text-sm font-medium">Image</span>
                         <input
                             type="file"
+                            name="image"
                             className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/90 file:text-white hover:file:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/70 focus:ring-offset-2"
                         />
                     </label>
