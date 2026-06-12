@@ -12,15 +12,16 @@ import supabase from "../../utils/supabase";
 export default function Edit() {
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
+    const [saving, setSaving] = useState(false);
     const [memory, setMemory] = useState(null);
 
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState(new Date().toISOString());
 
     const noChange = memory?.title === title
         && memory?.description === desc
-        && memory?.memory_date === date.toISOString();
+        && memory?.memory_date === date;
 
     useEffect(() => {
         setLoading(true);
@@ -41,7 +42,7 @@ export default function Edit() {
             setMemory(data);
             setTitle(data.title);
             setDesc(data.description);
-            setDate(new Date(data.memory_date));
+            setDate(data.memory_date);
         }
 
         loadMemory();
@@ -49,6 +50,7 @@ export default function Edit() {
 
     const handleEdit = async (e) => {
         e.preventDefault();
+        setSaving(true);
 
         let data, error;
 
@@ -63,8 +65,16 @@ export default function Edit() {
         } catch (err) {
             console.error("[EDIT] Unexpected error during editing memory: ", err);
             return alert("An unexpected error occurred, please try later.");
+        } finally {
+            setSaving(false);
         }
+
+        alert("Memory successfully saved!");
     };
+
+    const saveText = saving
+        ? "Saving Changes..."
+        : "Save Changes";
 
     return loading
         ? <span>Loading...</span>
@@ -80,7 +90,7 @@ export default function Edit() {
                         <span className="text-sm font-medium">Title <span className="text-red-500">*</span></span>
                         <input
                             type="text"
-                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-600/70"
+                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
@@ -90,7 +100,7 @@ export default function Edit() {
                         <span className="text-sm font-medium">Description</span>
                         <textarea
                             value={desc}
-                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-600/70"
+                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
                             onChange={(e) => setDesc(e.target.value)}
                         />
                     </label>
@@ -99,7 +109,7 @@ export default function Edit() {
                         <span className="text-sm font-medium">Date <span className="text-red-500">*</span></span>
                         <input
                             type="date"
-                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-600/70"
+                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
                         />
@@ -109,17 +119,18 @@ export default function Edit() {
                         <span className="text-sm font-medium">Image</span>
                         <input
                             type="file"
-                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-600/70"
+                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/90 file:text-white hover:file:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/70 focus:ring-offset-2"
                         />
                     </label>
 
                     <button
                         type="submit"
-                        className="rounded-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-cyan-300 disabled:hover:bg-cyan-300 disabled:cursor-not-allowed"
-                        disabled={loading || noChange}
+                        className="rounded-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-rose-400 disabled:hover:bg-rose-400 disabled:cursor-not-allowed"
+                        disabled={saving || noChange}
                     >
-                        {loading && !noChange ? "Saving Changes..." : "Save Changes"}
-                        {noChange && !loading ? "No changes to save" : ""}
+                        {noChange
+                            ? "No changes to save"
+                            : saveText}
                     </button>
                 </form>
             </div>
