@@ -18,9 +18,11 @@ import Landing from "./pages/Landing";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import Home from "./pages/dashboard/Home";
-import Upload from "./pages/dashboard/Upload";
 import Memory from "./pages/dashboard/Memory";
+import Upload from "./pages/dashboard/Upload";
 import Edit from "./pages/dashboard/Edit";
+
+import NotFound from "./pages/NotFound";
 
 export default function App() {
     console.log("MemoryGarden v0.1.0");
@@ -50,7 +52,7 @@ export default function App() {
                             </Route>
                         </Route>
 
-                        <Route path="*" element={<span className="text-white text-center bg-red-500/20">Error 404: Page Not Found</span>} />
+                        <Route path="*" element={<NotFound />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
