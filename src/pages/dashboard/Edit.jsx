@@ -101,10 +101,11 @@ export default function Edit() {
             return alert("An unexpected error occurred, please try later.");
         } finally {
             setSaving(false);
-            setImg(null);
         }
 
         alert("Memory successfully saved!");
+        
+        setImg(null);
         if (fileRef.current)
             fileRef.current.value = "";
     };
