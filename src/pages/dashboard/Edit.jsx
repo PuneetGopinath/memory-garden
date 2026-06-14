@@ -108,7 +108,6 @@ export default function Edit() {
                 <div className="flex flex-col mb-6 text-center gap-2">
                     <h1 className="font-semibold text-4xl">Edit Memory</h1>
                     <span className="text-zinc-400">Make your memory plants error free</span>
-                    <span className="text-red-500 text-xs">Note: The image of the memory can not be changed using the website until development is complete. Contact support for assistance.</span>
                 </div>
 
                 <form onSubmit={handleEdit} className="space-y-4">
