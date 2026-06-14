@@ -9,3 +9,7 @@
 html {
     scroll-behavior: smooth;
 }
+
+.cyan-neon-glow {
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+}
