@@ -65,8 +65,6 @@ export default function Edit() {
             const image = await supabase.storage.from("memory_images").upload(`${memory.user_id}/${Date.now()}.${ext}`, img);
 
             i = { image_path: image.data.path };
-        } else if (!img && memory?.image_path) {
-            i = { image_path: memory.image_path };
         }
 
         const newValues = {
@@ -90,6 +88,8 @@ export default function Edit() {
             return alert("An unexpected error occurred, please try later.");
         } finally {
             setSaving(false);
+            if (i.image_path)
+                setImg(null);
         }
 
         alert("Memory successfully saved!");
