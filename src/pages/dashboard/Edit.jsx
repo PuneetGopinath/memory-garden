@@ -18,10 +18,12 @@ export default function Edit() {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+    const [img, setImg] = useState(null);
 
     const noChange = memory?.title === title
         && (memory?.description ?? "") === desc
-        && memory?.memory_date === date;
+        && memory?.memory_date === date
+        && !img;
 
     useEffect(() => {
         setLoading(true);
@@ -53,11 +55,25 @@ export default function Edit() {
         setSaving(true);
 
         let error;
+        let i = {};
+
+        if (img && img.size > 0 && img.type.startsWith("image/") && memory?.image_path !== img.name) {
+            const ext = img.name.split(".").pop().toLowerCase();
+            if (img.size > 10 * 1024 * 1024)
+                return alert("Image size exceeds 10MB limit. Please choose a smaller image.");
+
+            const image = await supabase.storage.from("memory_images").upload(`${memory.user_id}/${Date.now()}.${ext}`, img);
+
+            i = { image_path: image.data.path };
+        } else if (!img && memory?.image_path) {
+            i = { image_path: memory.image_path };
+        }
 
         const newValues = {
             title,
             description: desc,
-            memory_date: date
+            memory_date: date,
+            ...i
         };
 
         try {
@@ -134,6 +150,8 @@ export default function Edit() {
                             type="file"
                             name="image"
                             className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/90 file:text-white hover:file:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/70 focus:ring-offset-2"
+                            accept="image/*"
+                            onChange={(e) => setImg(e.target.files[0])}
                         />
                     </label>
 
