@@ -40,7 +40,6 @@ export default function Memory() {
 
                 data.img = imgData?.signedUrl || null;
             }
-            console.log(data);
 
             setMemory(data);
             setLoading(false);
