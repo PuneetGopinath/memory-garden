@@ -101,8 +101,7 @@ export default function Edit() {
             return alert("An unexpected error occurred, please try later.");
         } finally {
             setSaving(false);
-            if (i.image_path)
-                setImg(null);
+            setImg(null);
         }
 
         alert("Memory successfully saved!");
