@@ -59,8 +59,10 @@ export default function Edit() {
 
         if (img && img.size > 0 && img.type.startsWith("image/") && memory?.image_path !== img.name) {
             const ext = img.name.split(".").pop().toLowerCase();
-            if (img.size > 10 * 1024 * 1024)
+            if (img.size > 10 * 1024 * 1024) {
+                setSaving(false);
                 return alert("Image size exceeds 10MB limit. Please choose a smaller image.");
+            }
 
             const image = await supabase.storage.from("memory_images").upload(`${memory.user_id}/${Date.now()}.${ext}`, img);
 
