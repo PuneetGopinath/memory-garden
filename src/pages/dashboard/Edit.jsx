@@ -4,13 +4,14 @@
  * License: MIT (see LICENSE)
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router";
 
 import supabase from "../../utils/supabase";
 
 export default function Edit() {
     const { id } = useParams();
+    const fileRef = useRef(null);
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [memory, setMemory] = useState(null);
@@ -57,7 +58,7 @@ export default function Edit() {
         let error;
         let i = {};
 
-        if (img && img.size > 0 && img.type.startsWith("image/") && memory?.image_path !== img.name) {
+        if (img && img.size > 0 && img.type.startsWith("image/")) {
             const ext = img.name.split(".").pop().toLowerCase();
             if (img.size > 10 * 1024 * 1024) {
                 setSaving(false);
@@ -65,6 +66,12 @@ export default function Edit() {
             }
 
             const image = await supabase.storage.from("memory_images").upload(`${memory.user_id}/${Date.now()}.${ext}`, img);
+            if (image.error) {
+                setSaving(false);
+                console.error("[EDIT] Error uploading image: ", image.error);
+                return alert("Error uploading image. Please try again later.");
+            }
+            // todo: Delete old image
 
             i = { image_path: image.data.path };
         }
@@ -86,6 +93,10 @@ export default function Edit() {
                 ...newValues
             }));
         } catch (err) {
+            if (i.image_path) {
+                await supabase.storage.from("memory_images").remove([i.image_path]);
+            }
+
             console.error("[EDIT] Unexpected error during editing memory: ", err);
             return alert("An unexpected error occurred, please try later.");
         } finally {
@@ -95,6 +106,8 @@ export default function Edit() {
         }
 
         alert("Memory successfully saved!");
+        if (fileRef.current)
+            fileRef.current.value = "";
     };
 
     const saveText = saving
@@ -152,6 +165,7 @@ export default function Edit() {
                             name="image"
                             className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/90 file:text-white hover:file:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/70 focus:ring-offset-2"
                             accept="image/*"
+                            ref={fileRef}
                             onChange={(e) => setImg(e.target.files[0])}
                         />
                     </label>
