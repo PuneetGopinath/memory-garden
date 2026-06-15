@@ -6,7 +6,7 @@
 
 import { Link } from "react-router";
 
-function Event({ date, title, description, img, clockwise, mood, link }) {
+export function Event({ date, title, description, img, clockwise, mood, link }) {
     const eventCard = (
         <div className={`relative overflow-hidden ${clockwise ? "rotate-1" : "-rotate-1"} hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 min-h-[24rem] min-w-[20rem] w-full max-w-sm p-6 rounded-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl`}>
             {img
