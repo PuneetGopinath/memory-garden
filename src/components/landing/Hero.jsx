@@ -7,6 +7,7 @@
 import { Link } from "react-router";
 
 import Navbar from "./Navbar";
+import { Event } from "../MemoryCard";
 
 export default function Hero() {
     return (
@@ -27,14 +28,13 @@ export default function Hero() {
                     <div className="absolute -top-12 left-1/4 h-72 w-72 animate-pulse rounded-full bg-purple-500/40 opacity-30 blur-3xl"></div>
                     <div className="absolute -bottom-12 right-1/4 h-80 w-80 rounded-full bg-cyan-500/30 opacity-30 blur-3xl"></div>
                 
-                    <div className="relative overflow-hidden rotate-1 hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 h-96 w-[340px] p-6 rounded-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl">
-                        <img src="../assets/kerala.png" alt="Kerala" className="hover:scale-103 transition-transform duration-300 h-44 w-full bg-gradient-to-br from-purple-500 to-cyan-500 object-cover rounded-2xl" />
-                        <div className="space-y-2">
-                            <p className="text-sm text-zinc-400 mt-4">July 18, 2025</p>
-                            <h5 className="text-xl font-semibold">Trip to Kerala</h5>
-                            <p className="text-zinc-400 leading-relaxed">A peaceful evening beside the backwaters with family and friends.</p>
-                        </div>
-                    </div>
+                    <Event
+                        date="July 18, 2025"
+                        title="Trip to Kerala"
+                        description="A peaceful evening beside the backwaters with family and friends."
+                        img="../assets/kerala.png"
+                        clockwise={true}
+                    />
                 </div>
             </div>
         </header>
