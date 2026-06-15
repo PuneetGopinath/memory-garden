@@ -13,9 +13,9 @@ export default function Navbar() {
                 <h1 className="font-semibold tracking-tight text-xl">Memory <span className="text-purple-500">Garden</span></h1>
 
                 <div className="gap-8 hidden md:flex">
-                    <a href="#features" className="font-medium text-zinc-400 hover:text-white transition-colors">Features</a>
-                    <a href="#timeline" className="font-medium text-zinc-400 hover:text-white transition-colors">Timeline</a>
-                    <a href="#about" className="font-medium text-zinc-400 hover:text-white transition-colors">About</a>
+                    <a href="/#features" className="font-medium text-zinc-400 hover:text-white transition-colors">Features</a>
+                    <a href="/#timeline" className="font-medium text-zinc-400 hover:text-white transition-colors">Timeline</a>
+                    <a href="/about" className="font-medium text-zinc-400 hover:text-white transition-colors">About</a>
                 </div>
 
                 <Link to="/auth/signup" className="rounded-xl px-4 py-2 bg-white text-black hover:scale-105 transition-all duration-300">Get Started</Link>
