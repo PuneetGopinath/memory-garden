@@ -22,7 +22,7 @@ export default function NotFound() {
                     The page you are looking for doesn't exist or may have been moved. <br />
                     You can return to the homepage and continue exploring your memory garden.
                 </p>
-                <Link to="/" className="font-medium bg-cyan-500 text-black px-6 py-3 rounded-xl hover:scale-105 hover:bg-cyan-400 transition-all">Go to Homepage</Link>
+                <Link to="/" className="font-medium bg-cyan-400 text-black px-6 py-3 rounded-xl hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50 transition-all">Go to Homepage</Link>
             </main>
         </div>
     );
