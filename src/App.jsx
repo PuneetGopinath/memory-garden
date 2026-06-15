@@ -8,8 +8,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 
 import AuthProvider from "./context/AuthContext";
 
-import DashboardLayout from "./layouts/DashboardLayout";
+import HomeLayout from "./layouts/HomeLayout";
 import AuthLayout from "./layouts/AuthLayout";
+import DashboardLayout from "./layouts/DashboardLayout";
 
 import ProtectedRoute from "./layouts/ProtectedRoute";
 import PublicOnlyRoute from "./layouts/PublicOnlyRoute";
@@ -32,8 +33,6 @@ export default function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/">
-                        <Route index element={<Landing />} />
-
                         <Route element={<PublicOnlyRoute />}>
                             <Route path="auth" element={<AuthLayout />}>
                                 <Route index element={<Navigate to="/auth/signin" replace />} />
@@ -52,7 +51,10 @@ export default function App() {
                             </Route>
                         </Route>
 
-                        <Route path="*" element={<NotFound />} />
+                        <Route element={<HomeLayout />}>
+                            <Route index element={<Landing />} />
+                            <Route path="*" element={<NotFound />} />
+                        </Route>
                     </Route>
                 </Routes>
             </BrowserRouter>
