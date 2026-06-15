@@ -6,7 +6,7 @@
 
 import { Link } from "react-router";
 
-function TimelineEvent({ date, title, description, img, clockwise, mood, link }) {
+function Event({ date, title, description, img, clockwise, mood, link }) {
     const eventCard = (
         <div className={`relative overflow-hidden ${clockwise ? "rotate-1" : "-rotate-1"} hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 min-h-[24rem] min-w-[20rem] w-full max-w-sm p-6 rounded-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl`}>
             {img
@@ -42,7 +42,7 @@ export default function MemoryCard({ column, dot = "purple", ...props }) {
     return (
         <div className="relative z-10 flex items-start justify-between">
             <div className={`w-5/12 ${column === 1 ? "flex justify-end" : ""}`}>
-                {column === 1 && <TimelineEvent {...props} clockwise={clockwise} /> /* Column 1 */}
+                {column === 1 && <Event {...props} clockwise={clockwise} /> /* Column 1 */}
             </div>
 
             <div className="relative flex justify-center w-2/12 pt-32">
@@ -50,7 +50,7 @@ export default function MemoryCard({ column, dot = "purple", ...props }) {
             </div>
 
             <div className={`w-5/12 ${column === 2 ? "flex justify-start" : ""}`}>
-                {column === 2 && <TimelineEvent {...props} clockwise={clockwise} /> /* Column 2 */}
+                {column === 2 && <Event {...props} clockwise={clockwise} /> /* Column 2 */}
             </div>
         </div>
     );
