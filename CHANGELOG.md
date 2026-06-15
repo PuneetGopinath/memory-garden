@@ -1,5 +1,22 @@
 # Changelog
 
+## [v0.2.0] - `yet-to-be-released`
+
+### Features
+
+- Implemented editing of image in a memory
+- Designed a "HTTP 404 Page Not Found" page for 404 errors
+- Add more meta tags for improved SEO, open graph previews and X previews
+
+### Bug Fixes
+
+- Add refs to clear input file state in the browser UI
+- Correct destination of navbar links
+
+### Chores
+
+- Added images for 3 other memory cards in landing page
+
 ## [v0.1.0] - `06-12-2026`
 
 ### Features
