@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
 
     return {
         root: "./src",
+        publicDir: "../public",
         plugins: [
             react(),
             tailwindcss()
