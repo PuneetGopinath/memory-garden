@@ -19,6 +19,7 @@ import Landing from "./pages/Landing";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import Reset from "./pages/auth/Reset";
+import NewPassword from "./pages/auth/NewPassword";
 import Home from "./pages/dashboard/Home";
 import Memory from "./pages/dashboard/Memory";
 import Upload from "./pages/dashboard/Upload";
@@ -40,6 +41,7 @@ export default function App() {
                                 <Route path="signin" element={<SignIn />} />
                                 <Route path="signup" element={<SignUp />} />
                                 <Route path="reset" element={<Reset />} />
+                                <Route path="new-password" element={<NewPassword />} />
                             </Route>
                         </Route>
                         
