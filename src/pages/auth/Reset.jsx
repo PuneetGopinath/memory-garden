@@ -63,6 +63,7 @@ export default function Reset() {
                                 type="email"
                                 name="email"
                                 className="mt-1 w-full rounded-lg bg-zinc-800/50 border border-white/20 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
+                                disabled={loading}
                                 required
                             />
                         </label>
