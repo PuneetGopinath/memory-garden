@@ -105,7 +105,7 @@ export default function SignUp() {
                     <input
                         type="password"
                         name="password"
-                        className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
+                        className={`rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none${pwdValid ? " focus:border-purple-500/40" : " focus:border-red-500/50"}`}
                         placeholder="Enter your password"
                         value={pwd}
                         disabled={loading}
