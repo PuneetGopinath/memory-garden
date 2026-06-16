@@ -18,10 +18,10 @@ export default function Reset() {
 
         const fd = new FormData(e.target);
         const email = fd.get("email");
-        let data, error;
+        let error;
 
         try {
-            ({ data, error } = await supabase.auth.resetPasswordForEmail(email, {
+            ({ error } = await supabase.auth.resetPasswordForEmail(email, {
                 redirectTo: `${window.location.origin}/auth/new-password`, // enter new password
             }));
 
