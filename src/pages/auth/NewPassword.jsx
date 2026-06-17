@@ -14,10 +14,9 @@ export default function NewPassword() {
     const [touched, setTouched] = useState(false);
     const [pwd, setPwd] = useState("");
     const [confirmPwd, setConfirmPwd] = useState("");
+    const [pwdValid, setPwdValid] = useState(false);
 
     const same = pwd === confirmPwd && pwd.length > 0;
-
-    const setPwdValid = () => {};
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,7 +36,7 @@ export default function NewPassword() {
                     <span>New Password: <span className="text-red-500">*</span></span>
                     <input
                         type="password"
-                        className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
+                        className={`rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none${pwdValid ? " focus:border-emerald-500/40" : " focus:border-red-500/50"}`}
                         value={pwd}
                         onChange={(e) => setPwd(e.target.value)}
                         onFocus={() => setTouched(true)}
@@ -48,16 +47,24 @@ export default function NewPassword() {
                     <span>Confirm Password: <span className="text-red-500">*</span></span>
                     <input
                         type="password"
-                        className="rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-purple-500/40"
+                        className={`rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none${same && touched ? " focus:border-emerald-500/40" : " focus:border-red-500/50"}`}
                         value={confirmPwd}
                         onChange={(e) => setConfirmPwd(e.target.value)}
                     />
                 </label>
 
-                {!same && touched && <p className="text-xs text-red-500 p-2 bg-zinc-900 font-medium rounded-lg hover:bg-zinc-700 transition-colors duration-200">Passwords do not match.</p>}
-                {same && touched && <p className="text-xs text-emerald-500 p-2 bg-zinc-900 font-medium rounded-lg hover:bg-zinc-700 transition-colors duration-200">Passwords match.</p>}
+                {!same && confirmPwd.length > 0 && <p className="text-xs text-red-500 p-2 bg-zinc-900 font-medium rounded-lg hover:bg-zinc-700 transition-colors duration-200">Passwords do not match.</p>}
+                {same && confirmPwd.length > 0 && <p className="text-xs text-emerald-500 p-2 bg-zinc-900 font-medium rounded-lg hover:bg-zinc-700 transition-colors duration-200">Passwords match.</p>}
 
                 {touched && <PasswordValidation pwd={pwd} onValidityChange={setPwdValid} />}
+
+                <button
+                    type="submit"
+                    className="rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white font-medium py-2 transition-colors duration-200 disabled:bg-emerald-500/50 disabled:hover:bg-emerald-400/50 disabled:cursor-not-allowed"
+                    disabled={!same || !pwdValid}
+                >
+                    Update Password
+                </button>
             </form>
         </div>
     );
