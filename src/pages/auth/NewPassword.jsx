@@ -104,6 +104,7 @@ export default function NewPassword() {
                         onChange={(e) => setPwd(e.target.value)}
                         onFocus={() => setTouched(true)}
                         required
+                        disabled={loading}
                     />
                 </label>
 
@@ -115,6 +116,7 @@ export default function NewPassword() {
                         value={confirmPwd}
                         onChange={(e) => setConfirmPwd(e.target.value)}
                         required
+                        disabled={loading}
                     />
                 </label>
 
