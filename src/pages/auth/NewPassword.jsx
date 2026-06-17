@@ -52,7 +52,7 @@ export default function NewPassword() {
     };
 
     if (s5n === "loading")
-        return <div className="bg-zinc-900/60 border borde-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">Loading...</div>
+        return <div className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">Loading...</div>
 
     if (!s5n)
         return (
