@@ -79,7 +79,7 @@ export default function NewPassword() {
                     Your password has been updated successfully.
                 </p>
 
-                <Link to="/auth/login" className="inline-block rounded-lg px-4 py-2 bg-emerald-500 font-medium hover:bg-emerald-400 transition-colors duration-200">
+                <Link to="/auth/signin" className="inline-block rounded-lg px-4 py-2 bg-emerald-500 font-medium hover:bg-emerald-400 transition-colors duration-200">
                     Go to Sign In
                 </Link>
             </div>
