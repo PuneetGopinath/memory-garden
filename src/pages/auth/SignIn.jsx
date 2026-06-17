@@ -21,6 +21,8 @@ export default function SignIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!pwdValid) return;
+
         setLoading(true);
         const fd = new FormData(e.target);
         const password = fd.get("password");

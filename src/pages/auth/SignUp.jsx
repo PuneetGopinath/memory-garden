@@ -22,6 +22,7 @@ export default function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!pwdValid) return;
 
         setLoading(true);
         const fd = new FormData(e.target);
