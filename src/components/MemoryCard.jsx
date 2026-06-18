@@ -25,6 +25,7 @@ export function Event({ date, title, description, img, clockwise, mood, link }) 
                 {description && <p className="text-zinc-400 leading-relaxed">{description}</p>}
                 {mood && <span className="inline-flex hover:translate-y-[-2px] transition-transform duration-300 items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide bg-purple-500/10 border border-purple-500/20 text-purple-300">{mood}</span>}
             </div>
+            {link && <Link to={link} className="block my-2 text-sm text-purple-400 hover:text-purple-300 transition-colors duration-300 font-medium">View Details &rarr;</Link>}
         </div>
     );
 }
