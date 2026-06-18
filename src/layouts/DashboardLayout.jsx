@@ -26,7 +26,7 @@ export default function DashboardLayout() {
                     <div className="flex items-center gap-6">
                         <a href="/dashboard" className="font-medium text-zinc-400 hover:text-white transition-colors">Dashboard</a>
                         <a href="/dashboard/upload" className="font-medium text-zinc-400 hover:text-white transition-colors">Upload</a>
-                        <a href="#" className="font-medium text-zinc-400 hover:text-white transition-colors">Profile</a>
+                        <a href="/dashboard/profile" className="font-medium text-zinc-400 hover:text-white transition-colors">Profile</a>
                         <button onClick={handleSignOut} className="font-medium text-zinc-400 hover:text-white transition-colors">
                             Sign Out
                         </button>
