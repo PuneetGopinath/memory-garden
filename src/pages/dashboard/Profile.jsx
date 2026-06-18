@@ -36,7 +36,9 @@ export default function Profile() {
         fetchProfileData();
     }, []);
 
-    return (
+    return loading
+    ? <div className="text-center text-2xl font-bold">Loading...</div>
+    : (
         <div className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">
             <h1 className="text-2xl font-bold">Hi there, {user?.user_metadata?.username}</h1>
 
