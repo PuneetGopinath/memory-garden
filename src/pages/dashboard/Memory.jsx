@@ -94,21 +94,22 @@ export default function Memory() {
                 <div className="flex flex-col gap-4 p-8 bg-zinc-900 rounded-2xl m-4 items-center">
                     <Link to="/dashboard" className="self-start text-xs p-2 text-gray-400 hover:text-gray-300 transition-colors duration-200">&larr; Back to Dashboard</Link>
                     {memory.img && <img src={memory.img} className="max-w-[60rem] max-h-[50vh] rounded-2xl border border-gray-600 object-contain" />}
+                    
                     <h1 className="font-semibold text-3xl">{memory.title}</h1>
                     <span className="text-gray-500 font-light">{memory.date}</span>
-                    {memory.description && <p className="mt-4 max-w-xl text-center">{memory.description}</p>}
+                    {memory.description && <p className="max-w-xl text-center">{memory.description}</p>}
                     <span className="text-xs">Created On: {new Date(memory.created_at).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
                     
                     
                     <div className="flex gap-4 mt-6">
                         <Link
                             to={`/dashboard/edit/${id}`}
-                            className="rounded-3xl p-4 bg-yellow-500 hover:bg-yellow-400 transition-colors duration-200"
+                            className="rounded-3xl px-4 py-2 bg-yellow-500 hover:bg-yellow-400 transition-colors duration-200"
                         >
                             Edit Memory
                         </Link>
                         <button
-                            className="rounded-3xl p-4 bg-red-500 hover:bg-red-400 transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-red-300 disabled:hover:bg-red-300"
+                            className="rounded-3xl px-4 py-2 bg-red-500 hover:bg-red-400 transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-red-300 disabled:hover:bg-red-300"
                             onClick={() => deleteMemory(memory.id)}
                             disabled={deleting}
                         >
