@@ -97,7 +97,7 @@ export default function Memory() {
                     <h1 className="font-semibold text-3xl">{memory.title}</h1>
                     <span className="text-gray-500 font-light">{memory.date}</span>
                     {memory.description && <p className="mt-4 max-w-xl text-center">{memory.description}</p>}
-                    <span className="text-xs">Created At: {new Date(memory.created_at).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
+                    <span className="text-xs">Created On: {new Date(memory.created_at).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
                     
                     
                     <div className="flex gap-4 mt-6">
