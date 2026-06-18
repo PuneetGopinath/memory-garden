@@ -58,6 +58,8 @@ export default function Home() {
                 setLoading(false);
             }
 
+            data.sort((a, b) => new Date(b.memory_date) - new Date(a.memory_date));
+
             setMemories(data);
         };
 
