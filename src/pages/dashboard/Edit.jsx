@@ -173,11 +173,11 @@ export default function Edit() {
 
                     <button
                         type="submit"
-                        className="rounded-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-rose-400 disabled:hover:bg-rose-400 disabled:cursor-not-allowed"
+                        className="rounded-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-zinc-900 disabled:hover:bg-zinc-900 disabled:text-zinc-400 disabled:cursor-not-allowed"
                         disabled={saving || noChange}
                     >
                         {noChange
-                            ? "No changes to save"
+                            ? "No Changes to Save"
                             : saveText}
                     </button>
                 </form>
