@@ -21,6 +21,7 @@ import SignUp from "./pages/auth/SignUp";
 import Reset from "./pages/auth/Reset";
 import NewPassword from "./pages/auth/NewPassword";
 import Home from "./pages/dashboard/Home";
+import Profile from "./pages/dashboard/Profile";
 import Memory from "./pages/dashboard/Memory";
 import Upload from "./pages/dashboard/Upload";
 import Edit from "./pages/dashboard/Edit";
@@ -48,8 +49,8 @@ export default function App() {
                         <Route element={<ProtectedRoute />}>
                             <Route path="dashboard" element={<DashboardLayout />}>
                                 <Route index element={<Home />} />
+                                <Route path="profile" element={<Profile />} />
                                 <Route path="upload" element={<Upload />} />
-                                <Route path="profile" element={<div>Profile Page</div>} />
                                 <Route path="memory/:id" element={<Memory />} />
                                 <Route path="edit/:id" element={<Edit />} />
                             </Route>
