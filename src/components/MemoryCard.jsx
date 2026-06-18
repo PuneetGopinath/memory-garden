@@ -12,7 +12,7 @@ export function Event({ date, title, description, img, clockwise, mood, link }) 
             {img
                 ? <img src={img} alt={title} className="h-44 w-full object-cover rounded-2xl hover:scale-103 transition-transform duration-300 bg-gradient-to-br from-purple-500 to-cyan-500" />
                 : <div className="w-full h-44 rounded-2xl bg-gradient-to-br from-purple-500 to-cyan-500 hover:scale-103 transition-transform duration-300"></div>}
-            <div className="space-y-3 mt-4">
+            <div className="relative space-y-3 mt-4">
                 <p className="text-sm text-zinc-400">{date}</p>
                 <h5 className="text-xl font-semibold">
                     {link
