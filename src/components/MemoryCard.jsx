@@ -27,8 +27,6 @@ export function Event({ date, title, description, img, clockwise, mood, link }) 
             </div>
         </div>
     );
-
-    return <Link to={link} className="block">{eventCard}</Link>;
 }
 
 const colors = {
