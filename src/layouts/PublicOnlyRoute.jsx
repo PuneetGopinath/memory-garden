@@ -13,7 +13,7 @@ export default function PublicOnlyRoute() {
     const { state } = useContext(AuthContext);
 
     if (state === "loading")
-        return <div className="text-center">Loading...</div>;
+        return <div className="bg-zinc-900/60 text-white text-center">Loading...</div>;
 
     if (state === "authenticated")
         return <Navigate to="/dashboard?notify=signedin" replace />;
