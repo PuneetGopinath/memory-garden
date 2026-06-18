@@ -90,8 +90,8 @@ export default function NewPassword() {
             <div className="flex flex-col gap-2 mb-6 text-center">
                 <h1 className="text-2xl font-bold">Create New Password</h1>
                 <p className="text-sm text-zinc-400">
-                    Enter your new password below. Make sure that you haven't used this password before.
-                </p>
+                    Enter your new password below.
+                </p> {/* Implement such that they cannot use last 2-3 recently used passwords */}
             </div>
 
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
