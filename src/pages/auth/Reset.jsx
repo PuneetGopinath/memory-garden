@@ -43,7 +43,7 @@ export default function Reset() {
                     <h1 className="text-2xl font-bold">Check Your Email</h1>
 
                     <p className="text-sm text-zinc-400">
-                        If an account with that email is registered, you should receive an email shortly with instructions to reset your password.<br /><br />
+                        If an account with that email exists, a password reset email will arrive shortly.<br /><br />
                         <span className="text-red-300">Please check your spam/junk folder if you don't find it in the inbox.</span>
                     </p>
                 </div>)
