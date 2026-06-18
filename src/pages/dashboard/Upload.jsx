@@ -5,6 +5,7 @@
  */
 
 import { useState, useContext } from "react";
+import { Link } from "react-router";
 
 import { AuthContext } from "../../context/AuthContext";
 
@@ -70,6 +71,7 @@ export default function Upload() {
 
     return (
         <div className="text-white bg-zinc-900/60 rounded-3xl border border-white/10 backdrop-blur max-w-lg mx-auto p-8 mb-12">
+            <Link to="/dashboard" className="text-xs text-gray-400 p-2 hover:text-gray-300 transition-colors duration-200">&larr; Back to Dashboard</Link>
             <div className="text-center font-semibold mb-2">
                 <h1 className="text-4xl font-semibold mb-4">Upload Memories</h1>
                 <p className="text-zinc-400">Add memories to your memory garden</p>
