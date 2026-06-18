@@ -5,7 +5,7 @@
  */
 
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 
 import supabase from "../../utils/supabase";
 
@@ -118,6 +118,7 @@ export default function Edit() {
         ? <span>Loading...</span>
         : (
             <div className="text-white bg-zinc-900 p-6 rounded-lg border border-white/10 backdrop-blur max-w-lg mx-auto mb-12">
+                <Link to={`/dashboard/memory/${id}`} className="bg-zinc-600 p-2 rounded-lg hover:bg-zinc-500">Go Back</Link>
                 <div className="flex flex-col mb-6 text-center gap-2">
                     <h1 className="font-semibold text-4xl">Edit Memory</h1>
                     <span className="text-zinc-400">Make your memory plants error free</span>
