@@ -8,12 +8,25 @@
 - Designed a "HTTP 404 Page Not Found" page for 404 errors
 - Add more meta tags for improved SEO, open graph previews and X previews
 - Add robots.txt for web crawlers
+- Reset passwords if forgotten
+- Designed a profile page for showing account details and memory garden stats
+
+### UX Enhancements
+
+- Use dark theme for Loading view in protected and public only route layouts for consistent theme
+- Add links to go back accordingly in edit memory, view memory and upload memory pages
+- Reduce height of image in view memory to 50% of view port height
+- Remove margin top for description and reduce vertical padding for buttons in the memory view page
+- The button in edit memory that shows "No changes to save" with a rose background looks weird, so make the background same as the background of container and use zinc for font color
+- Improve accessibility for screen readers, if we wrap anchor tag all over the memory card, then whenever screen readers navigate through links only, they have to listen to the whole content
+but this method makes sure the screen reader reads only the title
 
 ### Bug Fixes
 
 - Add refs to clear input file state in the browser UI
 - Correct destination of navbar links
 - wrap timeline event in a Link component only if the link prop is received
+- Fix link to profile in the navbar of dashboard to correct route
 
 ### Chores
 
@@ -47,3 +60,5 @@
 [#5]:https://github.com/PuneetGopinath/memory-garden/pull/5
 
 [v0.1.0]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.1.0
+
+[b01d643]: https://github.com/PuneetGopinath/memory-garden/commit/b01d6430627d27bb62d43a428a4641247345b1fb
