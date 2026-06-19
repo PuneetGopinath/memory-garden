@@ -18,7 +18,7 @@ export default function Home() {
 
     const [memories, setMemories] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [sort, setSort] = useState("");
+    const [sort, setSort] = useState("date_desc");
 
     useEffect(() => {
         setLoading(true);
@@ -113,21 +113,23 @@ export default function Home() {
                         <span className="text-zinc-400 font-light text-lg mx-auto p-4">Welcome to your Memory Garden! Plant your memories and let the timeline grow.</span>
                     </div>
 
-                    <div className="flex flex-row justify-center items-center gap-8">
-                        <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 mt-6 hover:bg-cyan-500 transition-colors duration-300 inline-block mb-8">
+                    <div className="flex flex-row justify-center items-center gap-8 p-4 mb-8">
+                        <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 hover:bg-cyan-500 transition-colors duration-300 inline-block">
                             Upload Memories
                         </Link>
-                        <select
-                            className="rounded-2xl text-sm font-medium border border-white/10 bg-zinc-800 w-[20%] p-4 mt-6 inline-block mb-8 hover:bg-zinc-700 transition-colors duration-300"
-                            value={sort}
-                            onChange={(e) => setSort(e.target.value)}
-                        >
-                            <option value="" disabled>Sort by...</option>
-                            <option value="date_desc">Date (Latest First)</option>
-                            <option value="date_asc">Date (Oldest First)</option>
-                            <option value="title_asc">Title (A-Z)</option>
-                            <option value="title_desc">Title (Z-A)</option>
-                        </select>
+                        <div className="flex flex-row justify-center items-center gap-2">
+                            <span className="text-zinc-400">Sort by:</span>
+                            <select
+                                className="rounded-2xl text-sm font-medium border border-white/10 bg-zinc-800 p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
+                                value={sort}
+                                onChange={(e) => setSort(e.target.value)}
+                            >
+                                <option value="date_desc">Date (Latest First)</option>
+                                <option value="date_asc">Date (Oldest First)</option>
+                                <option value="title_asc">Title (A-Z)</option>
+                                <option value="title_desc">Title (Z-A)</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div className="text-left">
