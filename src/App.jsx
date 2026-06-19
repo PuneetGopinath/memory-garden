@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate, useNavigation, Outlet } from "react-router";
 
 import AuthProvider from "./context/AuthContext";
 
@@ -28,6 +28,26 @@ import Edit from "./pages/dashboard/Edit";
 
 import NotFound from "./pages/NotFound";
 
+function RootLayout() {
+    const navigation = useNavigation();
+    const isLoading = navigation.state === "loading";
+
+    return (
+        <>
+            <div className={`fixed top-0 left-0 right-0 h-[3px] z-[9999] pointer-events-none ${isLoading ? "opacity-100" : "opacity-0"} transition-opacity duration-300 delay-300`}>
+                <div
+                    className={`h-full bg-blue-500 transition-width duration-400 ease-[cubic-bezier(0.08, 0.82, 0.17, 1)]`}
+                    style={{ width: isLoading ? "75%" : "100%" }}
+                >
+
+                </div>
+            </div>
+
+            <Outlet />
+        </>
+    );
+}
+
 export default function App() {
     console.log("MemoryGarden v0.1.0");
     
@@ -35,7 +55,7 @@ export default function App() {
         <AuthProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/">
+                    <Route path="/" element={<RootLayout />}>
                         <Route element={<PublicOnlyRoute />}>
                             <Route path="auth" element={<AuthLayout />}>
                                 <Route index element={<Navigate to="/auth/signin" replace />} />
