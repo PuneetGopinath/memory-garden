@@ -18,6 +18,7 @@ export default function Home() {
 
     const [memories, setMemories] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [sort, setSort] = useState("");
 
     useEffect(() => {
         setLoading(true);
@@ -58,13 +59,47 @@ export default function Home() {
                 setLoading(false);
             }
 
-            data.sort((a, b) => new Date(b.memory_date) - new Date(a.memory_date));
-
             setMemories(data);
         };
 
         fetchMemories();
     }, [user.id]);
+    
+    let s;
+
+    switch (sort) {
+        case "date_desc":
+        default:
+            s = (a, b) => new Date(b.memory_date) - new Date(a.memory_date);
+            break;
+        case "date_asc":
+            s = (a, b) => new Date(a.memory_date) - new Date(b.memory_date);
+            break;
+        case "title_asc":
+            s = (a, b) => {
+                const diff = (i) => a.title.charCodeAt(i) - b.title.charCodeAt(i);
+                let d;
+                for (let i = 0; i < Math.min(a.title.length, b.title.length); i++) {
+                    d = diff(i);
+                    if (d !== 0)
+                        return d;
+                }
+            };
+            break;
+        case "title_desc":
+            s = (a, b) => {
+                const diff = (i) => b.title.charCodeAt(i) - a.title.charCodeAt(i);
+                let d;
+                for (let i = 0; i < Math.min(a.title.length, b.title.length); i++) {
+                    d = diff(i);
+                    if (d !== 0)
+                        return d;
+                }
+            };
+            break;
+    }
+
+    memories.sort(s);
 
     return (
         loading
@@ -76,9 +111,22 @@ export default function Home() {
                         <span className="text-zinc-400 font-light text-lg mx-auto p-4">Welcome to your Memory Garden! Plant your memories and let the timeline grow.</span>
                     </div>
 
-                    <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 mt-6 hover:bg-cyan-500 transition-colors duration-300 inline-block mb-8">
-                        Upload Memories
-                    </Link>
+                    <div className="flex flex-row justify-center items-center gap-8">
+                        <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 mt-6 hover:bg-cyan-500 transition-colors duration-300 inline-block mb-8">
+                            Upload Memories
+                        </Link>
+                        <select
+                            className="rounded-2xl text-sm font-medium border border-white/10 bg-zinc-800 w-[20%] p-4 mt-6 inline-block mb-8 hover:bg-zinc-700 transition-colors duration-300"
+                            value={sort}
+                            onChange={(e) => setSort(e.target.value)}
+                        >
+                            <option value="" disabled>Sort by...</option>
+                            <option value="date_desc">Date (Latest First)</option>
+                            <option value="date_asc">Date (Oldest First)</option>
+                            <option value="title_asc">Title (A-Z)</option>
+                            <option value="title_desc">Title (Z-A)</option>
+                        </select>
+                    </div>
 
                     <div className="text-left">
                         {
