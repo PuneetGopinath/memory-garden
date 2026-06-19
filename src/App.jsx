@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-import { BrowserRouter, Routes, Route, Navigate, useNavigation, Outlet } from "react-router";
+import { createBrowserRouter, RouterProvider, Navigate, useNavigation, Outlet } from "react-router";
 
 import AuthProvider from "./context/AuthContext";
 
@@ -48,41 +48,96 @@ function RootLayout() {
     );
 }
 
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <RootLayout />,
+        children: [
+            {
+                element: <PublicOnlyRoute />,
+                children: [
+                    {
+                        path: "auth",
+                        element: <AuthLayout />,
+                        children: [
+                            {
+                                index: true,
+                                element: <Navigate to="/auth/signin" replace />
+                            },
+                            {
+                                path: "signin",
+                                element: <SignIn />
+                            },
+                            {
+                                path: "signup",
+                                element: <SignUp />
+                            },
+                            {
+                                path: "reset",
+                                element: <Reset />
+                            },
+                            {
+                                path: "new-password",
+                                element: <NewPassword />
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                element: <ProtectedRoute />,
+                children: [
+                    {
+                        path: "dashboard",
+                        element: <DashboardLayout />,
+                        children: [
+                            {
+                                index: true,
+                                element: <Home />
+                            },
+                            {
+                                path: "profile",
+                                element: <Profile />
+                            },
+                            {
+                                path: "upload",
+                                element: <Upload />
+                            },
+                            {
+                                path: "memory/:id",
+                                element: <Memory />
+                            },
+                            {
+                                path: "edit/:id",
+                                element: <Edit />
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                element: <HomeLayout />,
+                children: [
+                    {
+                        index: true,
+                        element: <Landing />
+                    },
+                    {
+                        path: "*",
+                        element: <NotFound />
+                    }
+                ]
+            }
+        ]
+    }
+]);
+
 export default function App() {
     console.log("MemoryGarden v0.1.0");
     
     return (
         <AuthProvider>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<RootLayout />}>
-                        <Route element={<PublicOnlyRoute />}>
-                            <Route path="auth" element={<AuthLayout />}>
-                                <Route index element={<Navigate to="/auth/signin" replace />} />
-                                <Route path="signin" element={<SignIn />} />
-                                <Route path="signup" element={<SignUp />} />
-                                <Route path="reset" element={<Reset />} />
-                                <Route path="new-password" element={<NewPassword />} />
-                            </Route>
-                        </Route>
-                        
-                        <Route element={<ProtectedRoute />}>
-                            <Route path="dashboard" element={<DashboardLayout />}>
-                                <Route index element={<Home />} />
-                                <Route path="profile" element={<Profile />} />
-                                <Route path="upload" element={<Upload />} />
-                                <Route path="memory/:id" element={<Memory />} />
-                                <Route path="edit/:id" element={<Edit />} />
-                            </Route>
-                        </Route>
-
-                        <Route element={<HomeLayout />}>
-                            <Route index element={<Landing />} />
-                            <Route path="*" element={<NotFound />} />
-                        </Route>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+            <RouterProvider router={router} />
         </AuthProvider>
     );
 };
