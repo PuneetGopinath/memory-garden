@@ -65,41 +65,43 @@ export default function Home() {
         fetchMemories();
     }, [user.id]);
     
-    let s;
+    let s = () => 0;
 
-    switch (sort) {
-        case "date_desc":
-        default:
-            s = (a, b) => new Date(b.memory_date) - new Date(a.memory_date);
-            break;
-        case "date_asc":
-            s = (a, b) => new Date(a.memory_date) - new Date(b.memory_date);
-            break;
-        case "title_asc":
-            s = (a, b) => {
-                const diff = (i) => a.title.charCodeAt(i) - b.title.charCodeAt(i);
-                let d;
-                for (let i = 0; i < Math.min(a.title.length, b.title.length); i++) {
-                    d = diff(i);
-                    if (d !== 0)
-                        return d;
-                }
-            };
-            break;
-        case "title_desc":
-            s = (a, b) => {
-                const diff = (i) => b.title.charCodeAt(i) - a.title.charCodeAt(i);
-                let d;
-                for (let i = 0; i < Math.min(a.title.length, b.title.length); i++) {
-                    d = diff(i);
-                    if (d !== 0)
-                        return d;
-                }
-            };
-            break;
+    if (memories.length > 0) {
+        switch (sort) {
+            case "date_desc":
+            default:
+                s = (a, b) => new Date(b.memory_date) - new Date(a.memory_date);
+                break;
+            case "date_asc":
+                s = (a, b) => new Date(a.memory_date) - new Date(b.memory_date);
+                break;
+            case "title_asc":
+                s = (a, b) => {
+                    const diff = (i) => a.title.charCodeAt(i) - b.title.charCodeAt(i);
+                    let d;
+                    for (let i = 0; i < Math.min(a.title.length, b.title.length); i++) {
+                        d = diff(i);
+                        if (d !== 0)
+                            return d;
+                    }
+                };
+                break;
+            case "title_desc":
+                s = (a, b) => {
+                    const diff = (i) => b.title.charCodeAt(i) - a.title.charCodeAt(i);
+                    let d;
+                    for (let i = 0; i < Math.min(a.title.length, b.title.length); i++) {
+                        d = diff(i);
+                        if (d !== 0)
+                            return d;
+                    }
+                };
+                break;
+        }
     }
 
-    memories.sort(s);
+    const sortedMemories = [...memories].sort(s);
 
     return (
         loading
@@ -130,8 +132,8 @@ export default function Home() {
 
                     <div className="text-left">
                         {
-                            memories.length > 0
-                                ? (<Timeline memories={memories} className="mb-8" links={true} />)
+                            sortedMemories.length > 0
+                                ? (<Timeline memories={sortedMemories} className="mb-8" links={true} />)
                                 : (<span className="text-zinc-400 mt-4 block mb-8 text-center">Your memory garden awaits for your first memory.<br />Plant your memories and watch your timeline grow.</span>)
                         }
                     </div>
