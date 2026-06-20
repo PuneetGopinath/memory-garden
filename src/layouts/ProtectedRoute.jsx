@@ -14,7 +14,7 @@ export default function ProtectedRoute() {
     const location = useLocation();
 
     if (state === "loading")
-        return <div className="bg-zinc-900/60 text-white text-center">Loading...</div>;
+        return <div className="min-h-screen bg-zinc-950 text-white text-center">Loading...</div>;
 
     if (state === "unauthenticated")
         return <Navigate to="/auth/signin" state={{ from: location.pathname }} replace />;
