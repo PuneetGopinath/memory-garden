@@ -66,7 +66,7 @@ export default function Home() {
         fetchMemories();
     }, [user.id]);
 
-    const filteredMemories = memories.filter(m => m.title.toLowerCase().includes(search.toLowerCase()) || m?.description?.toLowerCase?.()?.includes?.(search.toLowerCase()));
+    const filteredMemories = memories.filter(m => m.title.toLowerCase().includes(search.toLowerCase()) || (m?.description && m.description.toLowerCase().includes(search.toLowerCase())));
     
     let s = () => 0;
 
