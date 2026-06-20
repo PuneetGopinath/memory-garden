@@ -58,7 +58,7 @@ but this method makes sure the screen reader reads only the title
 - Image replacement during editing not supported
 - AI not used yet to generate summaries and mood
 
-[$#7]: https://github.com/PuneetGopinath/memory-garden/pull/7
+[#7]: https://github.com/PuneetGopinath/memory-garden/pull/7
 [#6]: https://github.com/PuneetGopinath/memory-garden/pull/6
 [#5]:https://github.com/PuneetGopinath/memory-garden/pull/5
 
