@@ -88,6 +88,7 @@ export default function Home() {
                         if (d !== 0)
                             return d;
                     }
+                    return a.title.length - b.title.length;
                 };
                 break;
             case "title_desc":
@@ -99,6 +100,7 @@ export default function Home() {
                         if (d !== 0)
                             return d;
                     }
+                    return b.title.length - a.title.length;
                 };
                 break;
         }
