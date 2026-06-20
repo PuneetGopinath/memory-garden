@@ -13,6 +13,7 @@ import supabase from "../../utils/supabase";
 
 export default function Upload() {
     const [loading, setLoading] = useState(false);
+    const [img, setImg] = useState(null);
     const { user } = useContext(AuthContext);
 
     const handleUpload = async (e) => {
@@ -72,7 +73,7 @@ export default function Upload() {
     return (
         <div className="text-white bg-zinc-900/60 rounded-3xl border border-white/10 backdrop-blur max-w-lg mx-auto p-8 mb-12">
             <Link to="/dashboard" className="text-xs text-gray-400 p-2 hover:text-gray-300 transition-colors duration-200">&larr; Back to Dashboard</Link>
-            <div className="text-center font-semibold mb-2">
+            <div className="text-center my-2">
                 <h1 className="text-4xl font-semibold mb-4">Upload Memories</h1>
                 <p className="text-zinc-400">Add memories to your memory garden</p>
             </div>
@@ -114,7 +115,14 @@ export default function Upload() {
                         name="image"
                         className="w-full rounded-lg bg-zinc-800/50 border border-white/10 text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/70 file:text-white hover:file:bg-cyan-500/80 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:ring-offset-2 p-2"
                         accept="image/*"
+                        onChange={(e) => setImg(e.target.files[0])}
                     />
+                    
+                    {img && 
+                        (<>
+                            <span className="text-sm text-zinc-500 mt-1">Preview Image</span>
+                            <img src={URL.createObjectURL(img)} alt={img.name} className="mt-2 max-h-60 rounded-lg border border-white/10" />
+                        </>)}
                 </label>
 
                 <button
