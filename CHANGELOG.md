@@ -1,5 +1,8 @@
 # Changelog
 
+Format: [vx.y.z] - `YYYY-MM-DD`
+Dates follow ISO 8601 standard.
+
 ## [v0.2.0] - `yet-to-be-released`
 
 ### Features
@@ -37,7 +40,7 @@ but this method makes sure the screen reader reads only the title
 - bump tailwindcss from 4.3.0 to 4.3.1 [#6]
 - bump @supabase/supabase-js from 2.108.0 to 2.108.2 [#7]
 
-## [v0.1.0] - `06-12-2026`
+## [v0.1.0] - `2026-06-12`
 
 ### Features
 
