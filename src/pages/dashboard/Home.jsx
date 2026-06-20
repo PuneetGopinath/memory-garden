@@ -117,7 +117,12 @@ export default function Home() {
                         <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 hover:bg-cyan-500 transition-colors duration-300 inline-block">
                             Upload Memories
                         </Link>
-                        <div className="flex flex-row justify-center items-center gap-2">
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            className="rounded-full text-sm font-medium border border-white/10 bg-zinc-800 min-w-[40%] p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
+                        />
+                        <div className="flex flex-row justify-center items-center gap-4">
                             <span className="text-zinc-400">Sort by:</span>
                             <select
                                 className="rounded-2xl text-sm font-medium border border-white/10 bg-zinc-800 p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
