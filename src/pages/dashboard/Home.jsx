@@ -65,10 +65,12 @@ export default function Home() {
 
         fetchMemories();
     }, [user.id]);
+
+    const filteredMemories = memories.filter(m => m.title.toLowerCase().includes(search.toLowerCase()) || m?.description?.toLowerCase?.()?.includes?.(search.toLowerCase()));
     
     let s = () => 0;
 
-    if (memories.length > 0) {
+    if (filteredMemories.length > 0) {
         switch (sort) {
             case "date_desc":
             default:
@@ -102,7 +104,7 @@ export default function Home() {
         }
     }
 
-    const sortedMemories = [...memories].sort(s);
+    const sortedMemories = [...filteredMemories].sort(s);
 
     return (
         loading
