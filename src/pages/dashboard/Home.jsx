@@ -18,6 +18,7 @@ export default function Home() {
 
     const [memories, setMemories] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [search, setSearch] = useState("");
     const [sort, setSort] = useState("date_desc");
 
     useEffect(() => {
@@ -121,6 +122,8 @@ export default function Home() {
                             type="text"
                             placeholder="Search..."
                             className="rounded-full text-sm font-medium border border-white/10 bg-zinc-800 min-w-[40%] p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
                         />
                         <div className="flex flex-row justify-center items-center gap-4">
                             <span className="text-zinc-400">Sort by:</span>
