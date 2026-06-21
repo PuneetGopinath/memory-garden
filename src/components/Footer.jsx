@@ -6,7 +6,7 @@
 
 export default function Footer({ children }) {
     return (
-        <footer className="border-t border-white/10 flex flex-col items-center bg-zinc-950 text-white text-center py-4">
+        <footer className="border-t border-white/10 flex flex-col items-center bg-zinc-950 text-white text-center py-4 mt-8">
             {children}
 
             <span className="text-md font-medium text-zinc-100 mb-2">
