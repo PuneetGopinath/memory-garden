@@ -13,6 +13,7 @@ Dates follow ISO 8601 standard.
 - Add robots.txt for web crawlers
 - Reset passwords if forgotten
 - Designed a profile page for showing account details and memory garden stats
+- Sort memories in the timeline based on user preferences and by default sorted on date descending order
 
 ### UX Enhancements
 
@@ -23,6 +24,11 @@ Dates follow ISO 8601 standard.
 - The button in edit memory that shows "No changes to save" with a rose background looks weird, so make the background same as the background of container and use zinc for font color
 - Improve accessibility for screen readers, if we wrap anchor tag all over the memory card, then whenever screen readers navigate through links only, they have to listen to the whole content
 but this method makes sure the screen reader reads only the title
+    - Removed the image out of the span coverage as it blocked the hover effect on image, and generally users won't click the image
+    - Remove hover effect of mood in memory card as it can not be hovered due to the span
+- Add link to view memory in each memory card displayed in the dashboard home
+- Add a feature to search through the memories' title and description
+- Show a preview of image selected in upload page and edit page
 
 ### Bug Fixes
 
@@ -39,6 +45,7 @@ but this method makes sure the screen reader reads only the title
 - bump @tailwindcss/vite from 4.3.0 to 4.3.1 [#5]
 - bump tailwindcss from 4.3.0 to 4.3.1 [#6]
 - bump @supabase/supabase-js from 2.108.0 to 2.108.2 [#7]
+- (Refactor) move react app from declarative mode to data router mode
 
 ## [v0.1.0] - `2026-06-12`
 
