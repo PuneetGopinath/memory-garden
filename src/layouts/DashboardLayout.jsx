@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-import { Outlet } from "react-router";
+import { Outlet, Link } from "react-router";
 
 import Footer from "../components/Footer";
 
@@ -20,7 +20,9 @@ export default function DashboardLayout() {
             <header className="bg-zinc-950">
                 <nav className="fixed top-0 left-0 right-0 bg-zinc-950/80 backdrop-blur border-b border-white/10 text-white p-4 flex justify-end gap-4 z-10">
                     <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                        <h2 className="text-lg font-bold text-white">Memory <span className="text-purple-500">Garden</span></h2>
+                        <Link to="/">
+                            <h2 className="text-lg font-bold text-white">Memory <span className="text-purple-500">Garden</span></h2>
+                        </Link>
                     </div>
 
                     <div className="flex items-center gap-6">
