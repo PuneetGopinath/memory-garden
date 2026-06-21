@@ -169,6 +169,12 @@ export default function Edit() {
                             ref={fileRef}
                             onChange={(e) => setImg(e.target.files[0])}
                         />
+
+                        {img &&
+                            (<>
+                                <span className="text-sm text-zinc-400 mt-1">Preview Image</span>
+                                <img src={URL.createObjectURL(img)} alt={img.name} className="mt-2 max-h-60 rounded-lg border border-white/10" />
+                            </>)}
                     </label>
 
                     <button

@@ -120,7 +120,7 @@ export default function Upload() {
                     
                     {img && 
                         (<>
-                            <span className="text-sm text-zinc-500 mt-1">Preview Image</span>
+                            <span className="text-sm text-zinc-400 mt-1">Preview Image</span>
                             <img src={URL.createObjectURL(img)} alt={img.name} className="mt-2 max-h-60 rounded-lg border border-white/10" />
                         </>)}
                 </label>
