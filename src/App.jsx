@@ -16,6 +16,7 @@ import ProtectedRoute from "./layouts/ProtectedRoute";
 import PublicOnlyRoute from "./layouts/PublicOnlyRoute";
 
 import Landing from "./pages/Landing";
+import About from "./pages/About";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import Reset from "./pages/auth/Reset";
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
                     {
                         index: true,
                         element: <Landing />
+                    },
+                    {
+                        path: "about",
+                        element: <About />
                     },
                     {
                         path: "*",
