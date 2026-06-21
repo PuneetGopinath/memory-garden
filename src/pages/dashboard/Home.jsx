@@ -124,7 +124,7 @@ export default function Home() {
                         </Link>
                         <input
                             type="text"
-                            placeholder="Search..."
+                            placeholder="Search by title/description..."
                             className="rounded-full text-sm font-medium border border-white/10 bg-zinc-800 min-w-[40%] p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
