@@ -12,8 +12,8 @@ export default function Privacy() {
                 <span className="text-sm text-gray-400 mb-4">Last Updated: June 22, 2026</span>
                 <p className="text-lg mb-4">
                     We protect your privacy and do not collect information more than necessary to provide our service.
-                    We do not sell or share your data with third parties. For more details, please refer to our <a href="/terms" className="text-blue-400 hover:underline">Terms of Service</a>.
-                    We collect your data to provide our services. We store your data securely at <a href="https://supabase.com" className="text-blue-400 hover:underline">Supabase</a>.
+                    We do not sell your data with third parties. For more details, please refer to our <a href="/terms" className="text-blue-400 hover:underline">Terms of Service</a>.
+                    We collect your data to provide our services. We store your data securely at our trusted third-party, <a href="https://supabase.com" className="text-blue-400 hover:underline">Supabase</a>.
                 </p>
                 <p className="text-lg mb-4">
                     This policy is subject to change, and we encourage you to review it periodically. We will notify users of any significant changes to our privacy practices before they take effect.
