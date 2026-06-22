@@ -4,6 +4,8 @@
  * License: MIT (see LICENSE)
  */
 
+import { Link } from "react-router";
+
 export default function Privacy() {
     return (
         <main className="flex flex-col bg-zinc-950 min-h-screen items-center gap-6 pt-30">
@@ -12,7 +14,7 @@ export default function Privacy() {
                 <span className="text-sm text-gray-400 mb-4">Last Updated: June 22, 2026</span>
                 <p className="text-lg mb-4">
                     We protect your privacy and do not collect information more than necessary to provide our service.
-                    We do not sell your data with third parties. For more details, please refer to our <a href="/terms" className="text-blue-400 hover:underline">Terms of Service</a>.
+                    We do not sell your data with third parties. For more details, please refer to our <Link to="/terms" className="text-blue-400 hover:underline">Terms of Service</Link>.
                     We collect your data to provide our services. We store your data securely at our trusted third-party, <a href="https://supabase.com" className="text-blue-400 hover:underline">Supabase</a>.
                 </p>
                 <p className="text-lg mb-4">
