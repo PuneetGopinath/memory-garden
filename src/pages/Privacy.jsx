@@ -13,12 +13,15 @@ export default function Privacy() {
                 <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
                 <p className="text-sm text-gray-400 mb-4">Last Updated: June 22, 2026</p>
                 <p className="text-lg mb-4">
-                    We protect your privacy and do not collect information more than necessary to provide our service.
-                    We do not sell your data with third parties. For more details, please refer to our <Link to="/terms" className="text-blue-400 hover:underline">Terms of Service</Link>.
-                    We collect your data to provide our services. We store your data securely at our trusted third-party, <a href="https://supabase.com" className="text-blue-400 hover:underline">Supabase</a>.
+                    We only collect information necessary to provide our service to you.
+                    This includes your email address for account creation and authentication, uploaded memories, images and the metadata required to operate on our platform.
+                    We do not sell your data to third parties.
+                    For more details, please refer to our <Link to="/terms" className="text-blue-400 hover:underline">Terms of Service</Link>.
+                    We store your data securely at our trusted third-party, <a href="https://supabase.com" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Supabase</a>.
                 </p>
-                <p className="text-lg mb-4">
-                    This policy is subject to change, and we encourage you to review it periodically. We will notify users of any significant changes to our privacy practices before they take effect.
+                <p className="text-normal italic mb-4">
+                    This policy is subject to change, and we encourage you to review it periodically.
+                    We may notify users of any significant changes when appropriate before they take effect.
                 </p>
             </section>
         </main>
