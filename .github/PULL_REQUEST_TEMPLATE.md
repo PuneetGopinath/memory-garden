@@ -2,7 +2,7 @@
     Thank you for your interest in contributing to Memory Garden.
     Please read all the instructions below and provide necessary details.
 
-    Not following the template below may result in your PR getting closed without any warning!
+    Please complete all relevant sections below. Pull requests with incomplete information may be closed until the required information is provided.
 -->
 
 ## Description
