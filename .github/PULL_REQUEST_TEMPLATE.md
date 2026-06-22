@@ -42,4 +42,4 @@ Attach screenshots if any changes to UI were made
 **If you used AI:**
 
 - [ ] I understood every line of AI written code and can explain it if asked during review
-- [ ] I have tested with various cases, understood how the code handles them and also found no bugs
+- [ ] I have tested the AI-generated code with relevant cases and understood how the code works
