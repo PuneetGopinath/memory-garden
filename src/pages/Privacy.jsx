@@ -11,7 +11,7 @@ export default function Privacy() {
         <main className="flex flex-col bg-zinc-950 min-h-screen items-center gap-6 pt-30">
             <section className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8 max-w-2xl text-center">
                 <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
-                <span className="text-sm text-gray-400 mb-4">Last Updated: June 22, 2026</span>
+                <p className="text-sm text-gray-400 mb-4">Last Updated: June 22, 2026</p>
                 <p className="text-lg mb-4">
                     We protect your privacy and do not collect information more than necessary to provide our service.
                     We do not sell your data with third parties. For more details, please refer to our <Link to="/terms" className="text-blue-400 hover:underline">Terms of Service</Link>.
