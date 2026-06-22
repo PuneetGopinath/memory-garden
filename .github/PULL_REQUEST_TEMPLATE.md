@@ -11,6 +11,11 @@ Describe your changes in detail here
 
 <!-- If this PR closes any issue, mention the number below -->
 Closes #
+<!-- Leave blank if no issue exists -->
+
+## Screenshots (if applicable)
+
+Attach screenshots if any changes to UI were made
 
 <!-- Select on the below options by replacing "[ ]" with "[x]" -->
 ## Type of pull request
@@ -21,6 +26,12 @@ Closes #
 - [ ] **Documentation**
 - [ ] **Other:** `_____________` <!-- Replace _____________ with the type of pr you think it is -->
 
+## Testing
+
+- [ ] I have tested my changes locally
+- [ ] I have verified existing functionality still works
+- [ ] I have not introduced new console errors
+
 ## Code Cognizance and AI Usage
 
 **Did you use AI (ChatGPT, Claude, Gemini, Copilot, etc.) to write any part of the code in the pull request?**
@@ -30,5 +41,5 @@ Closes #
 
 **If you used AI:**
 
-- [ ] I understood every line of AI written code
+- [ ] I understood every line of AI written code and can explain it if asked during review
 - [ ] I have tested with various cases, understood how the code handles them and also found no bugs
