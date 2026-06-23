@@ -3,7 +3,7 @@
 Format: [vx.y.z] - `YYYY-MM-DD`
 Dates follow ISO 8601 standard.
 
-## [v0.2.0] - `yet-to-be-released`
+## [v0.2.0] - `2026-06-23`
 
 ### Features
 
@@ -74,6 +74,7 @@ but this method makes sure the screen reader reads only the title
 [#6]: https://github.com/PuneetGopinath/memory-garden/pull/6
 [#5]:https://github.com/PuneetGopinath/memory-garden/pull/5
 
+[v0.2.0]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.2.0
 [v0.1.0]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.1.0
 
 [b01d643]: https://github.com/PuneetGopinath/memory-garden/commit/b01d6430627d27bb62d43a428a4641247345b1fb

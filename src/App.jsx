@@ -127,7 +127,7 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-    console.log("MemoryGarden v0.1.0");
+    console.log("MemoryGarden v0.2.0");
     
     return (
         <AuthProvider>
