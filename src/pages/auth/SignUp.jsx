@@ -26,6 +26,10 @@ export default function SignUp() {
 
         setLoading(true);
         const fd = new FormData(e.target);
+
+        if (!fd.get("legal"))
+            return alert("You must agree to the Terms of Service and Privacy Policy to create an account.");
+
         const password = fd.get("password");
         const username = sanitize(fd.get("username"), "username");
         const email = sanitize(fd.get("email"), "email");
@@ -118,6 +122,13 @@ export default function SignUp() {
                 </label>
 
                 {touched && <PasswordValidation pwd={pwd} onValidityChange={setPwdValid} />}
+
+                <label className="flex items-center gap-2 mt-2">
+                    <input type="checkbox" name="legal" id="legal" disabled={loading} required />
+                    <span className="text-sm text-zinc-400 ml-2">
+                        I agree to the <Link to="/terms" className="text-purple-400 hover:text-purple-300">Terms of Service</Link> and <Link to="/privacy" className="text-purple-400 hover:text-purple-300">Privacy Policy</Link> <span className="text-red-500">(required)</span>.
+                    </span>
+                </label>
 
                 <button
                     type="submit"
