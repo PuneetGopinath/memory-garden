@@ -125,8 +125,8 @@ export default function SignUp() {
 
                 <label className="flex items-center gap-2 mt-2">
                     <input type="checkbox" name="legal" id="legal" disabled={loading} required />
-                    <span className="text-sm text-zinc-400 ml-2">
-                        I agree to the <Link to="/terms" className="text-purple-400 hover:text-purple-300">Terms of Service</Link> and <Link to="/privacy" className="text-purple-400 hover:text-purple-300">Privacy Policy</Link> <span className="text-red-500">(required)</span>.
+                    <span className="text-sm text-zinc-400">
+                        I agree to the <Link to="/terms" className="text-purple-400 hover:text-purple-300" target="_blank" rel="noopener noreferrer">Terms of Service</Link> and <Link to="/privacy" className="text-purple-400 hover:text-purple-300" target="_blank" rel="noopener noreferrer">Privacy Policy</Link> <span className="text-red-500">(required)</span>.
                     </span>
                 </label>
 
