@@ -19,7 +19,7 @@ export default function Privacy() {
                     For more details, please refer to our <Link to="/terms" className="text-blue-400 hover:underline">Terms of Service</Link>.
                     We store your data securely at our trusted third-party, <a href="https://supabase.com" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Supabase</a>.
                 </p>
-                <p className="text-normal italic mb-4">
+                <p className="text-sm italic mb-4 text-gray-400">
                     This policy is subject to change, and we encourage you to review it periodically.
                     We may notify users of any significant changes when appropriate before they take effect.
                 </p>
