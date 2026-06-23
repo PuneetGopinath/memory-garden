@@ -16,6 +16,7 @@ Dates follow ISO 8601 standard.
 - Sort memories in the timeline based on user preferences and by default sorted on date descending order
 - Added a about page with 3 sections: About Us, About The Author and Open Source
 - Added placeholders for legal pages like privacy policy and terms of service
+- Add a feature to search through the memories' title and description
 
 ### UX Enhancements
 
@@ -29,7 +30,6 @@ but this method makes sure the screen reader reads only the title
     - Removed the image out of the span coverage as it blocked the hover effect on image, and generally users won't click the image
     - Remove hover effect of mood in memory card as it can not be hovered due to the span
 - Add link to view memory in each memory card displayed in the dashboard home so that users can understand that clicking it goes somewhere else
-- Add a feature to search through the memories' title and description
 - Show a preview of image selected in upload page and edit page
 - Clicking on Logo in the navbar should direct the user to landing page ("/")
 
