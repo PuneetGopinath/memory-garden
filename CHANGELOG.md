@@ -14,6 +14,8 @@ Dates follow ISO 8601 standard.
 - Reset passwords if forgotten
 - Designed a profile page for showing account details and memory garden stats
 - Sort memories in the timeline based on user preferences and by default sorted on date descending order
+- Added a about page with 3 sections: About Us, About The Author and Open Source
+- Added placeholders for legal pages like privacy policy and terms of service
 
 ### UX Enhancements
 
@@ -29,6 +31,7 @@ but this method makes sure the screen reader reads only the title
 - Add link to view memory in each memory card displayed in the dashboard home
 - Add a feature to search through the memories' title and description
 - Show a preview of image selected in upload page and edit page
+- Clicking on Logo in the navbar should direct the user to landing page ("/")
 
 ### Bug Fixes
 
@@ -46,6 +49,8 @@ but this method makes sure the screen reader reads only the title
 - bump tailwindcss from 4.3.0 to 4.3.1 [#6]
 - bump @supabase/supabase-js from 2.108.0 to 2.108.2 [#7]
 - (Refactor) move react app from declarative mode to data router mode
+- Added a pull request template with basic checks
+- Update deps using npm update
 
 ## [v0.1.0] - `2026-06-12`
 
