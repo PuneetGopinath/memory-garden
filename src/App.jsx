@@ -18,6 +18,7 @@ import PublicOnlyRoute from "./layouts/PublicOnlyRoute";
 import Landing from "./pages/Landing";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import Reset from "./pages/auth/Reset";
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
                     {
                         path: "privacy",
                         element: <Privacy />
+                    },
+                    {
+                        path: "terms",
+                        element: <Terms />
                     },
                     {
                         path: "*",
