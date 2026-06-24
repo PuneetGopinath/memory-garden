@@ -7,6 +7,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router";
 
+import { toast } from "sonner";
+
 import supabase from "../../utils/supabase";
 
 export default function Edit() {
@@ -42,7 +44,7 @@ export default function Edit() {
                 setDate(data.memory_date);
             } catch (err) {
                 console.error("[EDIT] Unexpected error while fetching memory", err);
-                return alert("An unexpected error has occurred. Please try later.");
+                return toast.error("An unexpected error has occurred. Please try later.");
             } finally {
                 setLoading(false);
             }
@@ -62,14 +64,14 @@ export default function Edit() {
             const ext = img.name.split(".").pop().toLowerCase();
             if (img.size > 10 * 1024 * 1024) {
                 setSaving(false);
-                return alert("Image size exceeds 10MB limit. Please choose a smaller image.");
+                return toast.error("Image size exceeds 10MB limit. Please choose a smaller image.");
             }
 
             const image = await supabase.storage.from("memory_images").upload(`${memory.user_id}/${Date.now()}.${ext}`, img);
             if (image.error) {
                 setSaving(false);
                 console.error("[EDIT] Error uploading image: ", image.error);
-                return alert("Error uploading image. Please try again later.");
+                return toast.error("Error uploading image. Please try again later.");
             }
             // todo: Delete old image
 
@@ -98,12 +100,12 @@ export default function Edit() {
             }
 
             console.error("[EDIT] Unexpected error during editing memory: ", err);
-            return alert("An unexpected error occurred, please try later.");
+            return toast.error("An unexpected error occurred, please try later.");
         } finally {
             setSaving(false);
         }
 
-        alert("Memory successfully saved!");
+        toast.success("Memory successfully saved!");
         
         setImg(null);
         if (fileRef.current)

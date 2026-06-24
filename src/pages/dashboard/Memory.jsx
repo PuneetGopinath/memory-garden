@@ -7,6 +7,8 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router";
 
+import { toast } from "sonner";
+
 import supabase from "../../utils/supabase";
 
 export default function Memory() {
@@ -27,7 +29,7 @@ export default function Memory() {
                     throw error;
             } catch (err) {
                 console.error("[MEMORY] Unexpected error fetching memory:", err);
-                return alert("An unexpected error occurred while fetching the memory. Please try again later.");
+                return toast.error("An unexpected error occurred while fetching the memory. Please try again later.");
             }
 
             data.date = new Date(data.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
@@ -72,12 +74,12 @@ export default function Memory() {
             if (error) throw error;
         } catch (err) {
             console.error("[MEMORY] Unexpected error deleting memory:", err);
-            return alert("An unexpected error occurred, please try again later.");
+            return toast.error("An unexpected error occurred, please try again later.");
         } finally {
             setDeleting(false);
         }
 
-        alert("Memory deleted successfully.");
+        toast.success("Memory deleted successfully.");
         navigate("/dashboard");
     };
 
