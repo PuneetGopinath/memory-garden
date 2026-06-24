@@ -6,8 +6,6 @@
 
 import { Link } from "react-router";
 
-import Navbar from "../components/home/Navbar";
-
 export default function NotFound() {
     return (
         <main className="flex flex-col min-h-screen items-center justify-center gap-4">
