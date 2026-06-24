@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 export default function AuthLayout() {
     return (
         <>
-            <Toaster position="top-right" richColors theme="dark" />
+            <Toaster position="top-right" richColors theme="dark" offset={{ top: "5rem", right: "1rem" }} />
 
             <div className="min-h-screen flex flex-col bg-zinc-950 text-white">
                 <Link to="/">
