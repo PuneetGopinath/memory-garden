@@ -181,7 +181,7 @@ export default function Edit() {
 
                     <button
                         type="submit"
-                        className="rounded-lg w-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-zinc-900 disabled:hover:bg-zinc-900 disabled:text-zinc-400 disabled:cursor-not-allowed"
+                        className="rounded-lg w-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-cyan-900 disabled:hover:bg-cyan-900 disabled:text-zinc-400 disabled:cursor-not-allowed"
                         disabled={saving || noChange}
                     >
                         {noChange
