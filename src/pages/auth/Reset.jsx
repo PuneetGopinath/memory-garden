@@ -6,6 +6,8 @@
 
 import { useState } from "react";
 
+import { toast } from "sonner";
+
 import supabase from "../../utils/supabase";
 
 export default function Reset() {
@@ -28,7 +30,7 @@ export default function Reset() {
             if (error) throw error;
         } catch (err) {
             console.error("[RESET] Error:", err);
-            return alert("An error occurred while sending the reset email. Please try again later.");
+            return toast.error("An error occurred while sending the reset email. Please try again later.");
         } finally {
             setLoading(false);
         }

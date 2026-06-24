@@ -7,6 +7,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
+import { toast } from "sonner";
+
 import PasswordValidation from "../../components/auth/PasswordValidation";
 
 import supabase from "../../utils/supabase";
@@ -22,28 +24,28 @@ export default function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!pwdValid) return;
+        if (!pwdValid) return toast.error("Please enter a valid password based on the provided criteria.");
 
         setLoading(true);
         const fd = new FormData(e.target);
 
         if (!fd.get("legal"))
-            return alert("You must agree to the Terms of Service and Privacy Policy to create an account.");
+            return toast.error("You must agree to the Terms of Service and Privacy Policy to create an account.");
 
         const password = fd.get("password");
         const username = sanitize(fd.get("username"), "username");
         const email = sanitize(fd.get("email"), "email");
 
         if (!username)
-            return alert("Please enter a valid username.");
+            return toast.error("Please enter a valid username.");
         if (username.length < 3 || username.length > 32)
-            return alert("Username should be between 3 and 32 characters.");
+            return toast.error("Username should be between 3 and 32 characters.");
 
         if (!email)
-            return alert("Please enter a valid email.");
+            return toast.error("Please enter a valid email.");
 
         if (!password)
-            return alert("Please enter a valid password.");
+            return toast.error("Please enter a valid password.");
 
         let error;
         const msg = "An error has occurred while signing up. Please try again later or contact support.";
@@ -56,14 +58,14 @@ export default function SignUp() {
             }));
         } catch (err) {
             console.error("[SIGN UP] Error signing up:", err);
-            return alert(msg);
+            return toast.error(msg);
         } finally {
             setLoading(false);
         }
 
         if (error) {
             console.error("[SIGN UP] Sign up error:", error);
-            return alert(error?.status && error?.code 
+            return toast.error(error?.status && error?.code 
                 ? `${error?.status}: ${i18n(error?.code)}`
                 : msg);
         }

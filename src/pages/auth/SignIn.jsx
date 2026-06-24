@@ -7,6 +7,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
+import { toast } from "sonner";
+
 import PasswordValidation from "../../components/auth/PasswordValidation";
 
 import supabase from "../../utils/supabase";
@@ -21,7 +23,7 @@ export default function SignIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!pwdValid) return;
+        if (!pwdValid) return toast.error("Please enter a valid password based on the provided criteria.");
 
         setLoading(true);
         const fd = new FormData(e.target);
@@ -29,10 +31,10 @@ export default function SignIn() {
         const email = sanitize(fd.get("email"), "email");
 
         if (!email)
-            return alert("Please enter a valid email.");
+            return toast.error("Please enter a valid email.");
 
         if (!password)
-            return alert("Please enter the password.");
+            return toast.error("Please enter the password.");
         
         let error;
         const msg = "An error has occurred while signing in. Please try again later or contact support.";
@@ -41,14 +43,14 @@ export default function SignIn() {
             ({ error } = await supabase.auth.signInWithPassword({ email, password }));
         } catch (err) {
             console.error("[SIGN IN] Error signing in:", err);
-            return alert(msg);
+            return toast.error(msg);
         } finally {
             setLoading(false);
         }
 
         if (error) {
             console.error("[SIGN IN] Sign in error:", error);
-            return alert(error?.status && error?.code
+            return toast.error(error?.status && error?.code
                 ? `${error?.status}: ${i18n(error?.code)}` 
                 : msg);
         }

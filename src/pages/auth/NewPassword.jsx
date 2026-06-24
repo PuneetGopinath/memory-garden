@@ -7,6 +7,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
+import { toast } from "sonner";
+
 import PasswordValidation from "../../components/auth/PasswordValidation";
 
 import supabase from "../../utils/supabase";
@@ -45,7 +47,7 @@ export default function NewPassword() {
             setSuccess(true);
         } catch (err) {
             console.error("[NEW PASSWORD] Error: ", err);
-            return alert("An error occurred while updating the password. Please try again later.");
+            return toast.error("An error occurred while updating the password. Please try again later.");
         } finally {
             setLoading(false);
         }
