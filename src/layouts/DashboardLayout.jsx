@@ -6,6 +6,8 @@
 
 import { Outlet, Link } from "react-router";
 
+import { Toaster } from "sonner";
+
 import Footer from "../components/Footer";
 
 import supabase from "../utils/supabase";
@@ -17,6 +19,8 @@ export default function DashboardLayout() {
     
     return (
         <>
+            <Toaster position="top-right" richColors theme="dark" />
+            
             <header className="bg-zinc-950">
                 <nav className="fixed top-0 left-0 right-0 bg-zinc-950/80 backdrop-blur border-b border-white/10 text-white p-4 flex justify-end gap-4 z-10">
                     <div className="absolute left-4 top-1/2 -translate-y-1/2">
