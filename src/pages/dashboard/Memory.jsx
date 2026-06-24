@@ -63,7 +63,7 @@ export default function Memory() {
 
             if (error) throw error;
         } catch (err) {
-            console.error("[MEMORY] Unexpected error deleting memory image:", err);
+            console.error("[MEMORY] Unexpected error deleting previously exising memory image:", err);
             setDeleting(false);
         }
 
