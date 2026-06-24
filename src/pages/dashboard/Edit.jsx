@@ -112,10 +112,6 @@ export default function Edit() {
             fileRef.current.value = "";
     };
 
-    const saveText = saving
-        ? "Updating..."
-        : "Update Memory";
-
     return loading
         ? <span>Loading...</span>
         : (
@@ -183,10 +179,11 @@ export default function Edit() {
                         type="submit"
                         className="rounded-lg w-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-cyan-900 disabled:hover:bg-cyan-900 disabled:text-zinc-400 disabled:cursor-not-allowed"
                         disabled={saving || noChange}
+                        title={noChange ? "No changes made to save" : "Update this memory"}
                     >
-                        {noChange
-                            ? "No Changes to Save"
-                            : saveText}
+                        {saving
+                            ? "Updating..."
+                            : "Update Memory"}
                     </button>
                 </form>
             </div>
