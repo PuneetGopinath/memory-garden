@@ -6,6 +6,8 @@
 
 import { useState, useEffect, useContext } from "react";
 
+import { toast } from "sonner";
+
 import { AuthContext } from "../../context/AuthContext";
 
 import supabase from "../../utils/supabase";
@@ -25,7 +27,7 @@ export default function Profile() {
                 if (error) throw error;
             } catch (err) {
                 console.error("[PROFILE] Error:", err);
-                return alert("An error occurred while fetching profile data. Please try again later.");
+                return toast.error("An error occurred while fetching profile data. Please try again later.");
             } finally {
                 setLoading(false);
             }

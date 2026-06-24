@@ -7,6 +7,8 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router";
 
+import { toast } from "sonner";
+
 import { AuthContext } from "../../context/AuthContext";
 
 import supabase from "../../utils/supabase";
@@ -31,13 +33,13 @@ export default function Upload() {
         if (imageFile && imageFile.size > 0 && imageFile.type.startsWith("image/")) {
             const ext = imageFile.name.split(".").pop().toLowerCase();
             if (imageFile.size > 10 * 1024 * 1024)
-                return alert("Image size exceeds 10MB limit. Please choose a smaller image.");
+                return toast.error("Image size exceeds 10MB limit. Please choose a smaller image.");
 
             image = await supabase.storage.from("memory_images").upload(`${user.id}/${Date.now()}.${ext}`, imageFile);
 
             if (image.error) {
                 console.error("[UPLOAD] Error uploading image to bucket:", image.error.toJSON())
-                return alert("Failed to upload image. Please try again.");
+                return toast.error("Failed to upload image. Please try again.");
             }
         }
 
@@ -62,12 +64,12 @@ export default function Upload() {
             }
 
             console.error("[UPLOAD] Error inserting memory into memories table:", err?.toJSON?.() ?? err);
-            return alert("Failed to save memory. Please try again.");
+            return toast.error("Failed to save memory. Please try again.");
         } finally {
             setLoading(false);
         }
 
-        alert("Memory planted successfully!");
+        toast.success("Memory planted successfully!");
     };
 
     return (
