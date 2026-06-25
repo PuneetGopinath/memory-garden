@@ -95,8 +95,15 @@ export default function Memory() {
             : (
                 <div className="flex flex-col gap-4 p-8 bg-zinc-900 rounded-2xl m-4 items-center">
                     <Link to="/dashboard" className="self-start text-xs p-2 text-gray-400 hover:text-gray-300 transition-colors duration-200">&larr; Back to Dashboard</Link>
-                    {memory.img && <img src={memory.img} className="max-w-[60rem] max-h-[50vh] rounded-2xl border border-gray-600 object-contain" />}
                     
+                    <div className="rounded-(--container-radius) p-(--container-padding) bg-white/15 backdrop-blur-md outline -outline-offset-1 outline-white/25 [--container-radius:var(--radius-3xl)] [--container-padding:--spacing(3)]">
+                        {memory.img
+                            && <img
+                                src={memory.img}
+                                className="max-w-[60rem] max-h-[50vh] rounded-[calc(var(--container-radius)-var(--container-padding))] object-contain"
+                            />}
+                    </div>
+
                     <h1 className="font-semibold text-3xl">{memory.title}</h1>
                     <span className="text-gray-500 font-light">{memory.date}</span>
                     {memory.description && <p className="max-w-xl text-center">{memory.description}</p>}
