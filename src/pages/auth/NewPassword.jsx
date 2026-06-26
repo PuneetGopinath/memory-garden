@@ -26,9 +26,15 @@ export default function NewPassword() {
 
     useEffect(() => {
         async function checkSession() {
-            const { data: { session } } = await supabase.auth.getSession();
+            try {
+                const { data: { session }, error } = await supabase.auth.getSession();
+                if (error) throw error;
 
-            setS5n(!!session?.access_token || null);
+                setS5n(!!session?.access_token || null);
+            } catch (err) {
+                console.error("[NEW PASSWORD] Error checking session:", err);
+                setS5n(null);
+            }
         }
 
         checkSession();
@@ -54,7 +60,7 @@ export default function NewPassword() {
     };
 
     if (s5n === "loading")
-        return <div className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">Loading...</div>
+        return <div className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">Loading...</div>;
 
     if (!s5n)
         return (
