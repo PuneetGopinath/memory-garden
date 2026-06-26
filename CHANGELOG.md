@@ -3,6 +3,35 @@
 Format: [vx.y.z] - `YYYY-MM-DD`
 Dates follow ISO 8601 standard.
 
+## [v0.3.0] - `yet-to-release`
+
+### Features
+
+- Added toast notifications using sonner package for errors and successes in auth and dashboard pages
+- Added glasmorphism for image in memory view page (repeated below in others section)
+- Added loading spinners in new password page and public only route (different styled ones)
+
+### UX Enhancements
+
+- Improve edit button in edit memory page
+    - set full width for edit button
+    - reduce border radius from full to lg
+    - change text from "Save Changes" &rarr; "Update Memory"
+    - change bg color to cyan for disabled buttons also
+    - Replaced "No Changes to Save" with a tooltip
+- Improve accessibility by adding `role` attribute for password validation component
+
+### Bug Fixes
+
+- Added try catch block in new password page for session check
+
+### Chores
+
+- Added `sonner` package to dependencies to add toast notifications
+- bump `react-router` from 7.18.0 to 8.0.1 [#8]
+- add `supabase` cli to dev dependencies for supabase edge functions
+- Remove unnecessary navbar import in 404 page
+
 ## [v0.2.0] - `2026-06-23`
 
 ### Features
@@ -70,6 +99,7 @@ but this method makes sure the screen reader reads only the title
 - Image replacement during editing not supported
 - AI not used yet to generate summaries and mood
 
+[#8]: https://github.com/PuneetGopinath/memory-garden/pull/8
 [#7]: https://github.com/PuneetGopinath/memory-garden/pull/7
 [#6]: https://github.com/PuneetGopinath/memory-garden/pull/6
 [#5]:https://github.com/PuneetGopinath/memory-garden/pull/5
