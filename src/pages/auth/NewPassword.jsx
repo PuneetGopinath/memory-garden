@@ -20,7 +20,7 @@ export default function NewPassword() {
     const [pwdValid, setPwdValid] = useState(false);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [s5n, setS5n] = useState("loading");
+    const [s5n, setS5n] = useState(null);
 
     const same = pwd === confirmPwd && pwd.length > 0;
 
@@ -30,10 +30,10 @@ export default function NewPassword() {
                 const { data: { session }, error } = await supabase.auth.getSession();
                 if (error) throw error;
 
-                setS5n(!!session?.access_token || null);
+                setS5n(!!session?.access_token || false);
             } catch (err) {
                 console.error("[NEW PASSWORD] Error checking session:", err);
-                setS5n(null);
+                setS5n(false);
             }
         }
 
@@ -59,8 +59,21 @@ export default function NewPassword() {
         }
     };
 
-    if (s5n === "loading")
-        return <div className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">Loading...</div>;
+    if (s5n === null) {
+        return (
+            <div className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">
+                <div className="flex flex-col gap-2 mb-6 text-center">
+                    <h1 className="text-3xl font-bold">Verifying reset link...</h1>
+                    <p className="text-sm text-zinc-400">
+                        Please wait while we verify your reset password link.
+                    </p>
+                </div>
+                <div role="status" aria-live="polite" className="flex justify-center">
+                    <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </div>
+        );
+    }
 
     if (!s5n)
         return (
