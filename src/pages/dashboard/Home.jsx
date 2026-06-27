@@ -108,50 +108,59 @@ export default function Home() {
 
     const sortedMemories = [...filteredMemories].sort(s);
 
+    if (loading)
+        return (
+            <div className="bg-zinc-950 min-h-screen flex flex-col gap-4 text-white text-center items-center justify-center" role="status" aria-live="polite" aria-label="Loading memories">
+                <div className="rounded-full w-25 h-25 border-10 border-cyan-500 border-dotted animate-[spin_3s_linear_infinite]"></div>
+                <h1 className="text-2xl font-bold mt-4">Loading your memories...</h1>
+                <p className="text-sm text-zinc-400">
+                    Please wait while we load your memories.
+                    <br />
+                    This may take a few seconds.
+                </p>
+            </div>
+        );
+
     return (
-        loading
-            ? <span className="text-zinc-400">Loading...</span>
-            : (
-                <div className="text-white text-center min-h-screen">
-                    <div className="max-w-2xl mx-auto">
-                        <h1 className="text-4xl font-bold mb-4">Hi there, {user.user_metadata.username}!</h1>
-                        <span className="text-zinc-400 font-light text-lg mx-auto p-4">Welcome to your Memory Garden! Plant your memories and let the timeline grow.</span>
-                    </div>
+        <div className="text-white text-center min-h-screen">
+            <div className="max-w-2xl mx-auto">
+                <h1 className="text-4xl font-bold mb-4">Hi there, {user.user_metadata.username}!</h1>
+                <span className="text-zinc-400 font-light text-lg mx-auto p-4">Welcome to your Memory Garden! Plant your memories and let the timeline grow.</span>
+            </div>
 
-                    <div className="flex flex-row justify-center items-center gap-8 p-4 mb-8">
-                        <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 hover:bg-cyan-500 transition-colors duration-300 inline-block">
-                            Upload Memories
-                        </Link>
-                        <input
-                            type="text"
-                            placeholder="Search by title/description..."
-                            className="rounded-full text-sm font-medium border border-white/10 bg-zinc-800 min-w-[40%] p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
-                        <div className="flex flex-row justify-center items-center gap-4">
-                            <span className="text-zinc-400">Sort by:</span>
-                            <select
-                                className="rounded-2xl text-sm font-medium border border-white/10 bg-zinc-800 p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
-                                value={sort}
-                                onChange={(e) => setSort(e.target.value)}
-                            >
-                                <option value="date_desc">Date (Latest First)</option>
-                                <option value="date_asc">Date (Oldest First)</option>
-                                <option value="title_asc">Title (A-Z)</option>
-                                <option value="title_desc">Title (Z-A)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="text-left">
-                        {
-                            sortedMemories.length > 0
-                                ? (<Timeline memories={sortedMemories} className="mb-8" links={true} />)
-                                : (<span className="text-zinc-400 mt-4 block mb-8 text-center">Your memory garden awaits for your first memory.<br />Plant your memories and watch your timeline grow.</span>)
-                        }
-                    </div>
+            <div className="flex flex-row justify-center items-center gap-8 p-4 mb-8">
+                <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 hover:bg-cyan-500 transition-colors duration-300 inline-block">
+                    Upload Memories
+                </Link>
+                <input
+                    type="text"
+                    placeholder="Search by title/description..."
+                    className="rounded-full text-sm font-medium border border-white/10 bg-zinc-800 min-w-[40%] p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+                <div className="flex flex-row justify-center items-center gap-4">
+                    <span className="text-zinc-400">Sort by:</span>
+                    <select
+                        className="rounded-2xl text-sm font-medium border border-white/10 bg-zinc-800 p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
+                        value={sort}
+                        onChange={(e) => setSort(e.target.value)}
+                    >
+                        <option value="date_desc">Date (Latest First)</option>
+                        <option value="date_asc">Date (Oldest First)</option>
+                        <option value="title_asc">Title (A-Z)</option>
+                        <option value="title_desc">Title (Z-A)</option>
+                    </select>
                 </div>
-            )
+            </div>
+
+            <div className="text-left">
+                {
+                    sortedMemories.length > 0
+                        ? (<Timeline memories={sortedMemories} className="mb-8" links={true} />)
+                        : (<span className="text-zinc-400 mt-4 block mb-8 text-center">Your memory garden awaits for your first memory.<br />Plant your memories and watch your timeline grow.</span>)
+                }
+            </div>
+        </div>
     );
 };
