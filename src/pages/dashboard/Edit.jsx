@@ -112,80 +112,91 @@ export default function Edit() {
             fileRef.current.value = "";
     };
 
-    return loading
-        ? <span>Loading...</span>
-        : (
-            <div className="text-white bg-zinc-900 p-6 rounded-lg border border-white/10 backdrop-blur max-w-lg mx-auto mb-12">
-                <Link to={`/dashboard/memory/${id}`} className="text-gray-400 text-xs p-2 hover:text-gray-300 transition-colors duration-200">&larr; Back to Memory</Link>
-                <div className="flex flex-col mb-6 text-center gap-2">
-                    <h1 className="font-semibold text-4xl">Edit Memory</h1>
-                    <span className="text-zinc-400">Make your memory plants error free</span>
-                </div>
-
-                <form onSubmit={handleEdit} className="space-y-4">
-                    <label className="flex flex-col gap-1">
-                        <span className="text-sm font-medium">Title <span className="text-red-500">*</span></span>
-                        <input
-                            type="text"
-                            name="title"
-                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            required
-                        />
-                    </label>
-
-                    <label className="flex flex-col gap-1">
-                        <span className="text-sm font-medium">Description</span>
-                        <textarea
-                            value={desc}
-                            name="description"
-                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
-                            onChange={(e) => setDesc(e.target.value)}
-                        />
-                    </label>
-
-                    <label className="flex flex-col gap-1">
-                        <span className="text-sm font-medium">Date <span className="text-red-500">*</span></span>
-                        <input
-                            type="date"
-                            name="memory_date"
-                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
-                            required
-                        />
-                    </label>
-
-                    <label className="flex flex-col gap-1">
-                        <span className="text-sm font-medium">Image</span>
-                        <input
-                            type="file"
-                            name="image"
-                            className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/90 file:text-white hover:file:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/70 focus:ring-offset-2"
-                            accept="image/*"
-                            ref={fileRef}
-                            onChange={(e) => setImg(e.target.files[0])}
-                        />
-
-                        {img &&
-                            (<>
-                                <span className="text-sm text-zinc-400 mt-1">Preview Image</span>
-                                <img src={URL.createObjectURL(img)} alt={img.name} className="mt-2 max-h-60 rounded-lg border border-white/10" />
-                            </>)}
-                    </label>
-
-                    <button
-                        type="submit"
-                        className="rounded-lg w-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-cyan-900 disabled:hover:bg-cyan-900 disabled:text-zinc-400 disabled:cursor-not-allowed"
-                        disabled={saving || noChange}
-                        title={noChange ? "No changes made to save" : "Update this memory"}
-                    >
-                        {saving
-                            ? "Updating..."
-                            : "Update Memory"}
-                    </button>
-                </form>
+    if (loading)
+        return (
+            <div className="bg-zinc-950 min-h-screen text-white flex flex-col gap-4 text-center items-center justify-center" role="status" aria-live="polite" aria-label="Loading memory">
+                <div className="rounded-full w-25 h-25 border-10 border-cyan-500 border-dotted animate-[spin_3s_linear_infinite]"></div>
+                <h1 className="text-2xl font-bold">Loading memory...</h1>
+                <p className="text-sm text-zinc-400">
+                    Please wait while we load your memory.
+                    <br />
+                    This may take a few seconds.
+                </p>
             </div>
         );
+
+    return (
+        <div className="text-white bg-zinc-900 p-6 rounded-lg border border-white/10 backdrop-blur max-w-lg mx-auto mb-12">
+            <Link to={`/dashboard/memory/${id}`} className="text-gray-400 text-xs p-2 hover:text-gray-300 transition-colors duration-200">&larr; Back to Memory</Link>
+            <div className="flex flex-col mb-6 text-center gap-2">
+                <h1 className="font-semibold text-4xl">Edit Memory</h1>
+                <span className="text-zinc-400">Make your memory plants error free</span>
+            </div>
+
+            <form onSubmit={handleEdit} className="space-y-4">
+                <label className="flex flex-col gap-1">
+                    <span className="text-sm font-medium">Title <span className="text-red-500">*</span></span>
+                    <input
+                        type="text"
+                        name="title"
+                        className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                    />
+                </label>
+
+                <label className="flex flex-col gap-1">
+                    <span className="text-sm font-medium">Description</span>
+                    <textarea
+                        value={desc}
+                        name="description"
+                        className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
+                        onChange={(e) => setDesc(e.target.value)}
+                    />
+                </label>
+
+                <label className="flex flex-col gap-1">
+                    <span className="text-sm font-medium">Date <span className="text-red-500">*</span></span>
+                    <input
+                        type="date"
+                        name="memory_date"
+                        className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                        required
+                    />
+                </label>
+
+                <label className="flex flex-col gap-1">
+                    <span className="text-sm font-medium">Image</span>
+                    <input
+                        type="file"
+                        name="image"
+                        className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/90 file:text-white hover:file:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/70 focus:ring-offset-2"
+                        accept="image/*"
+                        ref={fileRef}
+                        onChange={(e) => setImg(e.target.files[0])}
+                    />
+
+                    {img &&
+                        (<>
+                            <span className="text-sm text-zinc-400 mt-1">Preview Image</span>
+                            <img src={URL.createObjectURL(img)} alt={img.name} className="mt-2 max-h-60 rounded-lg border border-white/10" />
+                        </>)}
+                </label>
+
+                <button
+                    type="submit"
+                    className="rounded-lg w-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-cyan-900 disabled:hover:bg-cyan-900 disabled:text-zinc-400 disabled:cursor-not-allowed"
+                    disabled={saving || noChange}
+                    title={noChange ? "No changes made to save" : "Update this memory"}
+                >
+                    {saving
+                        ? "Updating..."
+                        : "Update Memory"}
+                </button>
+            </form>
+        </div>
+    );
 };
