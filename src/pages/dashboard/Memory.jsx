@@ -28,6 +28,10 @@ export default function Memory() {
                 if (error)
                     throw error;
             } catch (err) {
+                setLoading(false);
+                if (err.code === "PGRST116") {
+                    return toast.error("The memory with the given ID does not exist.");
+                }
                 console.error("[MEMORY] Unexpected error fetching memory:", err);
                 return toast.error("An unexpected error occurred while fetching the memory. Please try again later.");
             }
