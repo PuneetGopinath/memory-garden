@@ -89,43 +89,52 @@ export default function Memory() {
     if (!memory && !loading)
         return <span className="text-lg">A memory plant with the given id does not exist</span>;
 
-    return (
-        loading
-            ? <span className="text-white text-center">Loading...</span>
-            : (
-                <div className="flex flex-col gap-4 p-8 bg-zinc-900 rounded-2xl m-4 items-center">
-                    <Link to="/dashboard" className="self-start text-xs p-2 text-gray-400 hover:text-gray-300 transition-colors duration-200">&larr; Back to Dashboard</Link>
-                    
-                    <div className="rounded-(--container-radius) p-(--container-padding) bg-white/15 backdrop-blur-md outline -outline-offset-1 outline-white/25 [--container-radius:var(--radius-3xl)] [--container-padding:--spacing(3)]">
-                        {memory.img
-                            && <img
-                                src={memory.img}
-                                className="max-w-[60rem] max-h-[50vh] rounded-[calc(var(--container-radius)-var(--container-padding))] object-contain"
-                            />}
-                    </div>
+    if (loading)
+        return (
+            <div className="min-h-screen bg-zinc-950 flex flex-col gap-4 text-white text-center items-center justify-center" role="status" aria-live="polite" aria-label={`Loading memory #${id}`}>
+                <div className="rounded-full w-25 h-25 border-10 border-cyan-500 border-dotted animate-[spin_3s_linear_infinite]"></div>
+                <h1 className="text-2xl font-bold">Loading memory #{id}</h1>
+                <p className="text-sm text-zinc-400">
+                    Please wait while we load your requested memory.
+                    <br />
+                    This may take a few seconds.
+                </p>
+            </div>
+        );
 
-                    <h1 className="font-semibold text-3xl">{memory.title}</h1>
-                    <span className="text-gray-500 font-light">{memory.date}</span>
-                    {memory.description && <p className="max-w-xl text-center">{memory.description}</p>}
-                    <span className="text-xs">Created On: {new Date(memory.created_at).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
-                    
-                    
-                    <div className="flex gap-4 mt-6">
-                        <Link
-                            to={`/dashboard/edit/${id}`}
-                            className="rounded-3xl px-4 py-2 bg-yellow-500 hover:bg-yellow-400 transition-colors duration-200"
-                        >
-                            Edit Memory
-                        </Link>
-                        <button
-                            className="rounded-3xl px-4 py-2 bg-red-500 hover:bg-red-400 transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-red-300 disabled:hover:bg-red-300"
-                            onClick={() => deleteMemory(memory.id)}
-                            disabled={deleting}
-                        >
-                            Delete Memory
-                        </button>
-                    </div>
-                </div>
-            )
+    return (
+        <div className="flex flex-col gap-4 p-8 bg-zinc-900 rounded-2xl m-4 items-center">
+            <Link to="/dashboard" className="self-start text-xs p-2 text-gray-400 hover:text-gray-300 transition-colors duration-200">&larr; Back to Dashboard</Link>
+            
+            <div className="rounded-(--container-radius) p-(--container-padding) bg-white/15 backdrop-blur-md outline -outline-offset-1 outline-white/25 [--container-radius:var(--radius-3xl)] [--container-padding:--spacing(3)]">
+                {memory.img
+                    && <img
+                        src={memory.img}
+                        className="max-w-[60rem] max-h-[50vh] rounded-[calc(var(--container-radius)-var(--container-padding))] object-contain"
+                    />}
+            </div>
+
+            <h1 className="font-semibold text-3xl">{memory.title}</h1>
+            <span className="text-gray-500 font-light">{memory.date}</span>
+            {memory.description && <p className="max-w-xl text-center">{memory.description}</p>}
+            <span className="text-xs">Created On: {new Date(memory.created_at).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
+            
+            
+            <div className="flex gap-4 mt-6">
+                <Link
+                    to={`/dashboard/edit/${id}`}
+                    className="rounded-3xl px-4 py-2 bg-yellow-500 hover:bg-yellow-400 transition-colors duration-200"
+                >
+                    Edit Memory
+                </Link>
+                <button
+                    className="rounded-3xl px-4 py-2 bg-red-500 hover:bg-red-400 transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-red-300 disabled:hover:bg-red-300"
+                    onClick={() => deleteMemory(memory.id)}
+                    disabled={deleting}
+                >
+                    Delete Memory
+                </button>
+            </div>
+        </div>
     );
 };
