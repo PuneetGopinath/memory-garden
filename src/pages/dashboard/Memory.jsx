@@ -28,15 +28,19 @@ export default function Memory() {
                 if (error)
                     throw error;
             } catch (err) {
-                setLoading(false);
                 if (err.code === "PGRST116") {
                     return toast.error("The memory with the given ID does not exist.");
                 }
                 console.error("[MEMORY] Unexpected error fetching memory:", err);
                 return toast.error("An unexpected error occurred while fetching the memory. Please try again later.");
+            } finally {
+                setLoading(false);
             }
 
-            data.date = new Date(data.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+            const formattedMemory = {
+                ...data,
+                date: new Date(data.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+            };
 
             if (data.image_path) {
                 const { data: imgData, error: imgError } = await supabase.storage.from("memory_images").createSignedUrl(data.image_path, 60 * 60);
@@ -44,11 +48,10 @@ export default function Memory() {
                 if (imgError)
                     console.error("[MEMORY] Error fetching memory image:", imgError);
 
-                data.img = imgData?.signedUrl || null;
+                formattedMemory.img = imgData?.signedUrl || null;
             }
 
-            setMemory(data);
-            setLoading(false);
+            setMemory(formattedMemory);
         };
 
         fetchMemory();
