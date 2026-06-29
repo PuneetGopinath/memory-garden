@@ -11,6 +11,7 @@ const apiKey = Deno.env.get("GEMINI_API_KEY");
 const genAI = new GoogleGenAI({ apiKey });
 
 Deno.serve(async () => {
+
     const response = await genAI.models.generateContent({
         model: "gemini-3.1-flash-lite",
         contents: `
@@ -26,7 +27,7 @@ Deno.serve(async () => {
                     moodEmoji: { type: "string" },
                     tags: { type: "array", items: { type: "string" } }
                 },
-                required: ["summary", "mood", "tags"],
+                required: ["summary", "mood", "moodEmoji", "tags"],
                 additionalProperties: false
             }
         }
