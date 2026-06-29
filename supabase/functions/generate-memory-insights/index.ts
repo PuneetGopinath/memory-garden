@@ -10,12 +10,15 @@ import { GoogleGenAI } from "@google/genai";
 const apiKey = Deno.env.get("GEMINI_API_KEY");
 const genAI = new GoogleGenAI({ apiKey });
 
-Deno.serve(async () => {
+Deno.serve(async (req) => {
+    const body = await req.json();
+
+    if (!body) return Response.json({ error: "No body provided" }, { status: 400 });
 
     const response = await genAI.models.generateContent({
         model: "gemini-3.1-flash-lite",
         contents: `
-            Analyse this memory: date: November 3, 2024, title: First Hackathon, description: Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months.
+            Analyse this memory:\n${JSON.stringify(body)}
         `,
         config: {
             responseMimeType: "application/json",
