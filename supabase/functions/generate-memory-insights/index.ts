@@ -11,13 +11,14 @@ const apiKey = Deno.env.get("GEMINI_API_KEY");
 const genAI = new GoogleGenAI({ apiKey });
 
 Deno.serve(async () => {
-    const interaction = await genAI.interactions.create({
+    const response = await genAI.models.generateContent({
         model: "gemini-3.1-flash-lite",
-        input: "Summarize the following memory using the given details: date: November 3, 2024, title: First Hackathon, description: Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months.\n\nPlease provide a JSON object with the following keys: summary, mood, and tags.",
-        response_format: {
-            type: "text",
-            mime_type: "application/json",
-            schema: {
+        contents: `
+            Summarize the following memory using these: date: November 3, 2024, title: First Hackathon, description: Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months.
+        `,
+        config: {
+            responseMimeType: "application/json",
+            responseSchema: {
                 type: "object",
                 properties: {
                     summary: { type: "string" },
@@ -30,7 +31,7 @@ Deno.serve(async () => {
         }
     });
 
-    const result = JSON.parse(interaction.output_text ?? "");
-    console.log(interaction.output_text);
+    const result = JSON.parse(response.text ?? "");
+    console.log(response.text);
     return Response.json(result);
 });
