@@ -14,7 +14,7 @@ Deno.serve(async () => {
     const response = await genAI.models.generateContent({
         model: "gemini-3.1-flash-lite",
         contents: `
-            Summarize the following memory using these: date: November 3, 2024, title: First Hackathon, description: Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months.
+            Analyse this memory: date: November 3, 2024, title: First Hackathon, description: Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months.
         `,
         config: {
             responseMimeType: "application/json",
@@ -23,6 +23,7 @@ Deno.serve(async () => {
                 properties: {
                     summary: { type: "string" },
                     mood: { type: "string" },
+                    moodEmoji: { type: "string" },
                     tags: { type: "array", items: { type: "string" } }
                 },
                 required: ["summary", "mood", "tags"],
