@@ -39,7 +39,10 @@ export default function Memory() {
 
             const formattedMemory = {
                 ...data,
-                date: new Date(data.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+                date: new Date(data.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+                memory_date: null,
+                mood: data.ai_insights?.mood ? `${data.ai_insights.moodEmoji} ${data.ai_insights.mood}` : null,
+                ai_insights: null
             };
 
             if (data.image_path) {
@@ -121,7 +124,10 @@ export default function Memory() {
                     />}
             </div>
 
-            <h1 className="font-semibold text-3xl">{memory.title}</h1>
+            <div className="flex gap-4 items-center justify-center flex-wrap">
+                <h1 className="font-semibold text-3xl">{memory.title}</h1>
+                {memory.mood && <span className="rounded-full text-sm bg-purple-500/10 text-purple-400 uppercase font-medium px-3 py-1">{memory.mood}</span>}
+            </div>
             <span className="text-gray-500 font-light">{memory.date}</span>
             {memory.description && <p className="max-w-xl text-center">{memory.description}</p>}
             <span className="text-xs">Created On: {new Date(memory.created_at).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
