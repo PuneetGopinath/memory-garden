@@ -42,16 +42,19 @@ export default function Home() {
                 return;
             }
 
+            const mappedMemories = [...data];
+
             try {
-                for (let i = 0; i < data.length; i++) {
-                    data[i].date = new Date(data[i].memory_date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
-                    if (data[i].image_path) {
-                        const { data: d, error: imgErr } = await supabase.storage.from("memory_images").createSignedUrl(data[i].image_path, 60 * 60);
+                for (let i = 0; i < mappedMemories.length; i++) {
+                    mappedMemories[i].date = new Date(mappedMemories[i].memory_date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+                    
+                    if (mappedMemories[i].image_path) {
+                        const { data: d, error: imgErr } = await supabase.storage.from("memory_images").createSignedUrl(mappedMemories[i].image_path, 60 * 60);
                         if (imgErr)
                             throw imgErr;
                         
                         const { signedUrl } = d;
-                        data[i].img = signedUrl;
+                        mappedMemories[i].img = signedUrl;
                     }
                 }
             } catch (err) {
@@ -60,7 +63,7 @@ export default function Home() {
                 setLoading(false);
             }
 
-            setMemories(data);
+            setMemories(mappedMemories);
         };
 
         fetchMemories();
@@ -111,6 +114,7 @@ export default function Home() {
         .map(m => ({
             ...m,
             mood: m.ai_insights?.mood ? `${m.ai_insights.moodEmoji} ${m.ai_insights.mood}` : null,
+            memory_date: null,
             ai_insights: null
         }));
 
