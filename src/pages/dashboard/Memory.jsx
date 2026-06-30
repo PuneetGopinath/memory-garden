@@ -125,7 +125,7 @@ export default function Memory() {
             </div>
 
             <div className="flex gap-4 items-center justify-center flex-wrap">
-                <h1 className="font-semibold text-3xl">{memory.title}</h1>
+                <h1 className="font-semibold text-3xl sm:pl-16 md:pl-20">{memory.title}</h1>
                 {memory.mood && <span className="rounded-full text-sm bg-purple-500/10 text-purple-400 uppercase font-medium px-3 py-1">{memory.mood}</span>}
             </div>
             <span className="text-gray-500 font-light">{memory.date}</span>
