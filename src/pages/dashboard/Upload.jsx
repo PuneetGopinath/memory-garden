@@ -43,7 +43,29 @@ export default function Upload() {
             }
         }
 
-        let error;
+        let data, error;
+
+        try {
+            if (true) {
+                ({ data, error } = await supabase.functions.invoke("generate-memory-insights", {
+                    body: {
+                        title,
+                        description,
+                        date: memory_date
+                    }
+                }));
+
+                if (error) throw error;
+
+                console.log("[UPLOAD] Memory insights generated:", data);
+            }
+        } catch (err) {
+            data = null;
+            console.error("[UPLOAD] Error generating memory insights:", err?.toJSON?.() ?? err);
+            toast.error("Failed to generate memory insights. Please try again in the view memory details page.")
+        }
+
+        error = null;
 
         try {
             ({ error } = await supabase.from("memories").insert({
@@ -51,7 +73,8 @@ export default function Upload() {
                 title,
                 description,
                 memory_date,
-                image_path: image?.data?.path ?? null
+                image_path: image?.data?.path ?? null,
+                ai_insights: data ?? null
             }));
         
             if (error)
@@ -125,6 +148,11 @@ export default function Upload() {
                             <span className="text-sm text-zinc-400 mt-1">Preview Image</span>
                             <img src={URL.createObjectURL(img)} alt={img.name} className="mt-2 max-h-60 rounded-lg border border-white/10" />
                         </>)}
+                </label>
+
+                <label className="flex gap-1">
+                    <span className="text-sm font-medium">Do you want to generate AI Insights?</span>
+                    <input type="checkbox" name="ai_insights" className="w-4 h-4 accent-cyan-500" defaultChecked />
                 </label>
 
                 <button
