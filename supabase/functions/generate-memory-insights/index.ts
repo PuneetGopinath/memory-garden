@@ -25,12 +25,11 @@ Deno.serve(async (req) => {
             responseSchema: {
                 type: "object",
                 properties: {
-                    summary: { type: "string" },
                     mood: { type: "string" },
                     moodEmoji: { type: "string" },
                     tags: { type: "array", items: { type: "string" } }
                 },
-                required: ["summary", "mood", "moodEmoji", "tags"],
+                required: ["mood", "moodEmoji", "tags"],
                 additionalProperties: false
             }
         }
