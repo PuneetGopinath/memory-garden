@@ -106,7 +106,13 @@ export default function Home() {
         }
     }
 
-    const sortedMemories = [...filteredMemories].sort(s);
+    const finalMemories = [...filteredMemories]
+        .sort(s)
+        .map(m => ({
+            ...m,
+            mood: m.ai_insights?.mood ? `${m.ai_insights.moodEmoji} ${m.ai_insights.mood}` : null,
+            ai_insights: null
+        }));
 
     if (loading)
         return (
@@ -156,8 +162,8 @@ export default function Home() {
 
             <div className="text-left">
                 {
-                    sortedMemories.length > 0
-                        ? (<Timeline memories={sortedMemories} className="mb-8" links={true} />)
+                    finalMemories.length > 0
+                        ? (<Timeline memories={finalMemories} className="mb-8" links={true} />)
                         : (<span className="text-zinc-400 mt-4 block mb-8 text-center">Your memory garden awaits for your first memory.<br />Plant your memories and watch your timeline grow.</span>)
                 }
             </div>
