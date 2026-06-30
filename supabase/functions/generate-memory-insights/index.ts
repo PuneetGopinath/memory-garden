@@ -10,10 +10,24 @@ import { GoogleGenAI } from "@google/genai";
 const apiKey = Deno.env.get("GEMINI_API_KEY");
 const genAI = new GoogleGenAI({ apiKey });
 
+const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type"
+};
+
 Deno.serve(async (req) => {
+    if (req.method === "OPTIONS") {
+        return new Response("OK", {
+            headers: corsHeaders
+        });
+    }
+
     const body = await req.json();
 
-    if (!body) return Response.json({ error: "No body provided" }, { status: 400 });
+    if (!body) return Response.json({ error: "No body provided" }, {
+        status: 400,
+        headers: corsHeaders
+    });
 
     const response = await genAI.models.generateContent({
         model: "gemini-3.1-flash-lite",
@@ -37,5 +51,7 @@ Deno.serve(async (req) => {
 
     const result = JSON.parse(response.text ?? "");
     console.log(response.text);
-    return Response.json(result);
+    return Response.json(result, {
+        headers: corsHeaders
+    });
 });
