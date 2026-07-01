@@ -67,7 +67,7 @@ export default function Landing() {
         <main>
             <Hero />
 
-            <section className="features bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950 max-w-7xl mx-auto py-24 px-8" id="features">
+            <section className="features bg-linear-to-b from-zinc-950 via-zinc-900 to-zinc-950 max-w-7xl mx-auto py-24 px-8" id="features">
                 <div className="space-y-4">
                     <span className="text-purple-400 uppercase tracking-widest text-sm font-medium">FEATURES</span>
                     <h3 className="text-4xl font-bold tracking-tight">Built for preserving moments that matter.</h3>
