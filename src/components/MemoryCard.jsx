@@ -6,7 +6,26 @@
 
 import { Link } from "react-router";
 
+const moodColors = [
+    "bg-purple-500/10 text-purple-300 border-purple-500/20",
+    "bg-cyan-500/10 text-cyan-300 border-cyan-500/20",
+    "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
+    "bg-amber-500/10 text-amber-300 border-amber-500/20",
+    "bg-blue-500/10 text-blue-300 border-blue-500/20",
+    "bg-pink-500/10 text-pink-300 border-pink-500/20",
+    "bg-violet-500/10 text-violet-300 border-violet-500/20",
+    "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
+    "bg-sky-500/10 text-sky-300 border-sky-500/20",
+    "bg-green-500/10 text-green-300 border-green-500/20",
+    "bg-orange-500/10 text-orange-300 border-orange-500/20",
+    "bg-red-500/10 text-red-300 border-red-500/20",
+    "bg-fuchsia-500/10 text-fuchsia-300 border-fuchsia-500/20",
+    "bg-teal-500/10 text-teal-300 border-teal-500/20",
+    "bg-yellow-500/10 text-yellow-300 border-yellow-500/20"
+];
+
 export function Event({ date, title, description, img, clockwise, mood, link }) {
+    const randomIndex = Math.floor(Math.random() * moodColors.length);
     return (
         <div className={`relative overflow-hidden ${clockwise ? "rotate-1" : "-rotate-1"} hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 min-h-[24rem] min-w-[20rem] w-full max-w-sm p-6 rounded-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl`}>
             {img
@@ -23,7 +42,7 @@ export function Event({ date, title, description, img, clockwise, mood, link }) 
                         : title}
                 </h5>
                 {description && <p className="text-zinc-400 leading-relaxed">{description}</p>}
-                {mood && <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide bg-purple-500/10 border border-purple-500/20 text-purple-300">{mood}</span>}
+                {mood && <span className={`${moodColors[randomIndex]} border inline-flex items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide`}>{mood}</span>}
             </div>
             {link && <Link to={link} className="block my-2 text-sm text-purple-400 hover:text-purple-300 transition-colors duration-300 font-medium">View Details &rarr;</Link>}
         </div>
