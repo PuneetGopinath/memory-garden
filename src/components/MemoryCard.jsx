@@ -24,8 +24,18 @@ const moodColors = [
     "bg-yellow-500/10 text-yellow-300 border-yellow-500/20"
 ];
 
-export function Event({ date, title, description, img, clockwise, mood, link }) {
-    const randomIndex = Math.floor(Math.random() * moodColors.length);
+function getMoodColor(mood) {
+    let hash = 0;
+
+    for (const char of mood)
+        hash += char.charCodeAt(0);
+
+    return moodColors[hash % moodColors.length];
+}
+
+export function Event({ date, title, description, img, clockwise, mood, link, ...props }) {
+    const moodColor = mood ? getMoodColor(mood) : null;
+
     return (
         <div className={`relative overflow-hidden ${clockwise ? "rotate-1" : "-rotate-1"} hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 min-h-[24rem] min-w-[20rem] w-full max-w-sm p-6 rounded-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl`}>
             {img
@@ -42,7 +52,7 @@ export function Event({ date, title, description, img, clockwise, mood, link }) 
                         : title}
                 </h5>
                 {description && <p className="text-zinc-400 leading-relaxed">{description}</p>}
-                {mood && <span className={`${moodColors[randomIndex]} border inline-flex items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide`}>{mood}</span>}
+                {mood && <span className={`${moodColor} border inline-flex items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide`}>{mood}</span>}
             </div>
             {link && <Link to={link} className="block my-2 text-sm text-purple-400 hover:text-purple-300 transition-colors duration-300 font-medium">View Details &rarr;</Link>}
         </div>
