@@ -36,14 +36,12 @@ Deno.serve(async (req) => {
             headers: corsHeaders
         });
 
-    const { title, description, date } = body;        
-
-    const memory = { title, description, date };
+    const { title, description, date } = body;
 
     const response = await genAI.models.generateContent({
         model: "gemini-3.1-flash-lite",
         contents: `
-            Analyse this memory:\n${JSON.stringify(memory)}
+            Analyse this memory:\n${JSON.stringify({ title, description, date })}
         `,
         config: {
             responseMimeType: "application/json",
