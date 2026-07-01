@@ -83,28 +83,10 @@ export default function Home() {
                 s = (a, b) => new Date(a.memory_date) - new Date(b.memory_date);
                 break;
             case "title_asc":
-                s = (a, b) => {
-                    const diff = (i) => a.title.charCodeAt(i) - b.title.charCodeAt(i);
-                    let d;
-                    for (let i = 0; i < Math.min(a.title.length, b.title.length); i++) {
-                        d = diff(i);
-                        if (d !== 0)
-                            return d;
-                    }
-                    return a.title.length - b.title.length;
-                };
+                s = (a, b) => a.title.localeCompare(b.title);
                 break;
             case "title_desc":
-                s = (a, b) => {
-                    const diff = (i) => b.title.charCodeAt(i) - a.title.charCodeAt(i);
-                    let d;
-                    for (let i = 0; i < Math.min(a.title.length, b.title.length); i++) {
-                        d = diff(i);
-                        if (d !== 0)
-                            return d;
-                    }
-                    return b.title.length - a.title.length;
-                };
+                s = (a, b) => b.title.localeCompare(a.title);
                 break;
         }
     }
