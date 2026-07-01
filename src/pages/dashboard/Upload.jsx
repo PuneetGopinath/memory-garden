@@ -13,6 +13,24 @@ import { AuthContext } from "../../context/AuthContext";
 
 import supabase from "../../utils/supabase";
 
+async function generateInsights(memory) {
+    let data, error;
+
+    try {
+        ({ data, error } = await supabase.functions.invoke("generate-memory-insights", {
+            body: memory
+        }));
+
+        if (error) throw error;
+    } catch (err) {
+        data = null;
+        console.error("[UPLOAD] Error generating memory insights:", err?.toJSON?.() ?? err);
+        toast.error("Failed to generate memory insights. Please try again in the view memory details page.");
+    }
+
+    return data;
+}
+
 export default function Upload() {
     const [loading, setLoading] = useState(false);
     const [img, setImg] = useState(null);
@@ -38,35 +56,25 @@ export default function Upload() {
             image = await supabase.storage.from("memory_images").upload(`${user.id}/${Date.now()}.${ext}`, imageFile);
 
             if (image.error) {
-                console.error("[UPLOAD] Error uploading image to bucket:", image.error.toJSON())
+                console.error("[UPLOAD] Error uploading image to bucket:", image.error.toJSON());
                 return toast.error("Failed to upload image. Please try again.");
             }
         }
 
-        let data, error;
         const insightsEnabled = fd.get("ai_insights") === "on";
+        let insights;
 
-        try {
-            if (insightsEnabled) {
-                ({ data, error } = await supabase.functions.invoke("generate-memory-insights", {
-                    body: {
-                        title,
-                        description,
-                        date: memory_date
-                    }
-                }));
+        if (insightsEnabled) {
+            insights = await generateInsights({
+                title,
+                description,
+                date: memory_date
+            });
 
-                if (error) throw error;
-
-                console.log("[UPLOAD] Memory insights generated:", data);
-            }
-        } catch (err) {
-            data = null;
-            console.error("[UPLOAD] Error generating memory insights:", err?.toJSON?.() ?? err);
-            toast.error("Failed to generate memory insights. Please try again in the view memory details page.")
+            console.log("[UPLOAD] Memory insights generated:", insights);
         }
 
-        error = null;
+        let error;
 
         try {
             ({ error } = await supabase.from("memories").insert({
@@ -75,7 +83,7 @@ export default function Upload() {
                 description,
                 memory_date,
                 image_path: image?.data?.path ?? null,
-                ai_insights: data ?? null
+                ai_insights: insights ?? null
             }));
         
             if (error)
