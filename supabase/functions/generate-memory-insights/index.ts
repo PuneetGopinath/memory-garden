@@ -24,15 +24,26 @@ Deno.serve(async (req) => {
 
     const body = await req.json();
 
-    if (!body) return Response.json({ error: "No body provided" }, {
-        status: 400,
-        headers: corsHeaders
-    });
+    if (!body)
+        return Response.json({ error: "No body provided" }, {
+            status: 400,
+            headers: corsHeaders
+        });
+
+    if (!body.title || !body.description || !body.date)
+        return Response.json({ error: "Missing required fields" }, {
+            status: 400,
+            headers: corsHeaders
+        });
+
+    const { title, description, date } = body;        
+
+    const memory = { title, description, date };
 
     const response = await genAI.models.generateContent({
         model: "gemini-3.1-flash-lite",
         contents: `
-            Analyse this memory:\n${JSON.stringify(body)}
+            Analyse this memory:\n${JSON.stringify(memory)}
         `,
         config: {
             responseMimeType: "application/json",
