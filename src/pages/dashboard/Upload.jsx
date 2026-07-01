@@ -44,9 +44,10 @@ export default function Upload() {
         }
 
         let data, error;
+        const insightsEnabled = fd.get("ai_insights") === "on";
 
         try {
-            if (true) {
+            if (insightsEnabled) {
                 ({ data, error } = await supabase.functions.invoke("generate-memory-insights", {
                     body: {
                         title,
