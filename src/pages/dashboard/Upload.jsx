@@ -25,7 +25,6 @@ async function generateInsights(memory) {
     } catch (err) {
         data = null;
         console.error("[UPLOAD] Error generating memory insights:", err?.toJSON?.() ?? err);
-        toast.error("Failed to generate memory insights. Please try again in the view memory details page.");
     }
 
     return data;
@@ -61,30 +60,16 @@ export default function Upload() {
             }
         }
 
-        const insightsEnabled = fd.get("ai_insights") === "on";
-        let insights;
-
-        if (insightsEnabled) {
-            insights = await generateInsights({
-                title,
-                description,
-                date: memory_date
-            });
-
-            console.log("[UPLOAD] Memory insights generated:", insights);
-        }
-
-        let error;
+        let data, error;
 
         try {
-            ({ error } = await supabase.from("memories").insert({
+            ({ data, error } = await supabase.from("memories").insert({
                 user_id: user.id,
                 title,
                 description,
                 memory_date,
-                image_path: image?.data?.path ?? null,
-                ai_insights: insights ?? null
-            }));
+                image_path: image?.data?.path ?? null
+            }).select().single());
         
             if (error)
                 throw error;
@@ -101,7 +86,29 @@ export default function Upload() {
             setLoading(false);
         }
 
-        toast.success("Memory planted successfully!");
+        toast.success("Memory planted successfully!", {
+            id: "toast-upload",
+            description: "AI insights are optional and can be done later in the memory details page.",
+            action: {
+                label: "Generate Insights",
+                onClick: async () => {
+                    toast.loading("Generating insights...", { id: "toast-upload" });
+                    const insights = await generateInsights({
+                        title: data.title,
+                        description: data.description,
+                        date: data.memory_date
+                    });
+
+                    if (!insights) return toast.error("Failed to generate insights. Please try again later.", { id: "toast-upload" });
+
+                    await supabase.from("memories").update({ ai_insights: insights }).eq("id", data.id);
+                    
+                    toast.success("Insights generated successfully!", { id: "toast-upload" });
+                }
+            },
+            actionButtonStyle: "text-emerald-400 hover:text-emerald-500",
+            closeButton: true,
+        });
     };
 
     return (
@@ -159,10 +166,7 @@ export default function Upload() {
                         </>)}
                 </label>
 
-                <label className="flex gap-1">
-                    <span className="text-sm font-medium">Do you want to generate AI Insights?</span>
-                    <input type="checkbox" name="ai_insights" className="w-4 h-4 accent-cyan-500" defaultChecked />
-                </label>
+                <span className="text-sm font-medium">Do you want to generate AI Insights?</span>
 
                 <button
                     type="submit"
