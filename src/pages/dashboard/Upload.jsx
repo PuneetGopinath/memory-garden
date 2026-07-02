@@ -109,7 +109,9 @@ export default function Upload() {
                     toast.success("Insights generated successfully!", { id: "toast-upload" });
                 }
             },
-            actionButtonStyle: "text-emerald-400 hover:text-emerald-500",
+            classNames: {
+                actionButton: "text-emerald-400 hover:text-emerald-500"
+            },
             closeButton: true,
         });
     };
