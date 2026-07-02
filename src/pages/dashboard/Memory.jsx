@@ -90,7 +90,7 @@ export default function Memory() {
         }
 
         toast.success("Memory deleted successfully.");
-        navigate("/dashboard");
+        navigate("/dashboard", { replace: true });
     };
 
     if (!id)
