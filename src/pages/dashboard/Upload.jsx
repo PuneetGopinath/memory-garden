@@ -49,13 +49,16 @@ export default function Upload() {
 
         if (imageFile && imageFile.size > 0 && imageFile.type.startsWith("image/")) {
             const ext = imageFile.name.split(".").pop().toLowerCase();
-            if (imageFile.size > 10 * 1024 * 1024)
+            if (imageFile.size > 10 * 1024 * 1024) {
+                setLoading(false);
                 return toast.error("Image size exceeds 10MB limit. Please choose a smaller image.");
+            }
 
             image = await supabase.storage.from("memory_images").upload(`${user.id}/${Date.now()}.${ext}`, imageFile);
 
             if (image.error) {
                 console.error("[UPLOAD] Error uploading image to bucket:", image.error.toJSON());
+                setLoading(false);
                 return toast.error("Failed to upload image. Please try again.");
             }
         }
