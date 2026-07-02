@@ -8,9 +8,19 @@ Dates follow ISO 8601 standard.
 ### Features
 
 - Added toast notifications using sonner package for errors and successes in auth and dashboard pages
-- Added glasmorphism for image in memory view page (repeated below in others section)
-- Added loading spinners in new password page and public only route (different styled ones)
-
+- Added glasmorphism for image in memory view page
+- Added loading screens in the following pages/layouts: (all of them aren't 100% same)
+    - new password page
+    - public only route
+    - protected route
+    - edit memory page
+    - dashboard home page
+    - memory details page
+- Add `generate-memory-insights` supabase edge functions to generate insights using AI (here we use Gemini)
+    - AI returns a JSON containing these mood, moodEmoji and tags
+    - Request a call to this function in upload memory page, once the user uploads the memory, we offer them to generate ai insights through an action button in the toast notification shown up
+    - Display mood with emoji in dashboard home and memory details page as a badge (shaped as a pill)
+    
 ### UX Enhancements
 
 - Improve edit button in edit memory page
@@ -20,10 +30,21 @@ Dates follow ISO 8601 standard.
     - change bg color to cyan for disabled buttons also
     - Replaced "No Changes to Save" with a tooltip
 - Improve accessibility by adding `role` attribute for password validation component
+- If the memory which the user is looking for doesn't exist, tell them it doesn't exist instead of telling that an unexpected error occurred.
+- Randomize color of mood badge displayed in memory card component (although random, it is determined based on the mood)
+- replace the url in browser history while navigating since the memory no longer exists after deletion of memory in memory details page
 
 ### Bug Fixes
 
 - Added try catch block in new password page for session check
+- comparison logic of titles written by me has flaws, instead use built-in method `localeCompare`
+- set loading state to false on early returns in upload memory page
+
+### Refactorings
+
+- Remove redundancy of code in memory details page and avoid mutation of a fetched object
+- Do not mutate on the fetched memories object in dashboard home
+- Use canonical class names fro tailwind styles (as suggested by tailwind intellisense)
 
 ### Chores
 
@@ -31,6 +52,7 @@ Dates follow ISO 8601 standard.
 - bump `react-router` from 7.18.0 to 8.0.1 [#8]
 - add `supabase` cli to dev dependencies for supabase edge functions
 - Remove unnecessary navbar import in 404 page
+- bump supabase from 2.107.0 to 2.108.0
 
 ## [v0.2.0] - `2026-06-23`
 
