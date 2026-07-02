@@ -101,9 +101,9 @@ export default function Memory() {
 
     if (loading)
         return (
-            <div className="min-h-screen bg-zinc-950 flex flex-col gap-4 text-white text-center items-center justify-center" role="status" aria-live="polite" aria-label={`Loading memory #${id}`}>
+            <div className="min-h-screen bg-zinc-950 flex flex-col gap-4 text-white text-center items-center justify-center" role="status" aria-live="polite" aria-label="Loading memory...">
                 <div className="rounded-full w-25 h-25 border-10 border-cyan-500 border-dotted animate-[spin_3s_linear_infinite]"></div>
-                <h1 className="text-2xl font-bold">Loading memory #{id}</h1>
+                <h1 className="text-2xl font-bold">Loading memory...</h1>
                 <p className="text-sm text-zinc-400">
                     Please wait while we load your requested memory.
                     <br />
