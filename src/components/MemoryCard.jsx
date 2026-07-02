@@ -6,23 +6,7 @@
 
 import { Link } from "react-router";
 
-const moodColors = [
-    "bg-purple-500/10 text-purple-300 border-purple-500/20",
-    "bg-cyan-500/10 text-cyan-300 border-cyan-500/20",
-    "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
-    "bg-amber-500/10 text-amber-300 border-amber-500/20",
-    "bg-blue-500/10 text-blue-300 border-blue-500/20",
-    "bg-pink-500/10 text-pink-300 border-pink-500/20",
-    "bg-violet-500/10 text-violet-300 border-violet-500/20",
-    "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
-    "bg-sky-500/10 text-sky-300 border-sky-500/20",
-    "bg-green-500/10 text-green-300 border-green-500/20",
-    "bg-orange-500/10 text-orange-300 border-orange-500/20",
-    "bg-red-500/10 text-red-300 border-red-500/20",
-    "bg-fuchsia-500/10 text-fuchsia-300 border-fuchsia-500/20",
-    "bg-teal-500/10 text-teal-300 border-teal-500/20",
-    "bg-yellow-500/10 text-yellow-300 border-yellow-500/20"
-];
+import { moodColors, markerColors } from "../constants";
 
 function getMoodColor(mood) {
     let hash = 0;
@@ -59,13 +43,6 @@ export function Event({ date, title, description, img, clockwise, mood, link, ..
     );
 }
 
-const colors = {
-    purple: "bg-purple-400",
-    cyan: "bg-cyan-400",
-    blue: "bg-blue-400",
-    amber: "bg-amber-400"
-};
-
 export default function MemoryCard({ column, dot = "purple", ...props }) {
     if ([1, 2].indexOf(column) === -1)
         throw new Error("Invalid column number for MemoryCard. Must be 1 or 2.");
@@ -79,7 +56,7 @@ export default function MemoryCard({ column, dot = "purple", ...props }) {
             </div>
 
             <div className="relative flex justify-center w-2/12 pt-32">
-                <div className={`h-5 w-5 rounded-full ${colors[dot]} shadow-lg shadow-purple-500/50 z-10`}></div>
+                <div className={`h-5 w-5 rounded-full ${markerColors[dot]} shadow-lg shadow-purple-500/50 z-10`}></div>
             </div>
 
             <div className={`w-5/12 ${column === 2 ? "flex justify-start" : ""}`}>

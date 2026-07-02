@@ -6,6 +6,8 @@
 
 import { createBrowserRouter, RouterProvider, Navigate, useNavigation, Outlet } from "react-router";
 
+import { VERSION } from "./constants";
+
 import AuthProvider from "./context/AuthContext";
 
 import HomeLayout from "./layouts/HomeLayout";
@@ -127,7 +129,7 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-    console.log("MemoryGarden v0.2.0");
+    console.log(`MemoryGarden v${VERSION} - Copyright (c) 2026 Puneet Gopinath - License: MIT (see LICENSE)`);
     
     return (
         <AuthProvider>
