@@ -89,24 +89,24 @@ export default function Upload() {
             setLoading(false);
         }
 
-        toast.success("Memory planted successfully!", {
-            id: "toast-upload",
+        const toastId = toast.success("Memory planted successfully!", {
             description: "AI insights are optional and can be done later in the memory details page.",
             action: {
                 label: "Generate Insights",
                 onClick: async () => {
-                    toast.loading("Generating insights...", { id: "toast-upload" });
+                    toast.dismiss(toastId);
+                    const loadingToast = toast.loading("Generating insights...");
                     const insights = await generateInsights({
                         title: data.title,
                         description: data.description,
                         date: data.memory_date
                     });
 
-                    if (!insights) return toast.error("Failed to generate insights. Please try again later.", { id: "toast-upload" });
+                    if (!insights) return toast.error("Failed to generate insights. Please try again later.", { id: loadingToast });
 
                     await supabase.from("memories").update({ ai_insights: insights }).eq("id", data.id);
                     
-                    toast.success("Insights generated successfully!", { id: "toast-upload" });
+                    toast.success("Insights generated successfully!", { id: loadingToast });
                 }
             },
             classNames: {
