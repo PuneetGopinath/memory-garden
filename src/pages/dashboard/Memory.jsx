@@ -120,7 +120,7 @@ export default function Memory() {
                 <div className="rounded-(--container-radius) p-(--container-padding) bg-white/15 backdrop-blur-md outline -outline-offset-1 outline-white/25 [--container-radius:var(--radius-3xl)] [--container-padding:--spacing(3)]">
                     <img
                         src={memory.img}
-                        className="max-w-[60rem] max-h-[50vh] rounded-[calc(var(--container-radius)-var(--container-padding))] object-contain"
+                        className="max-w-240 max-h-[50vh] rounded-[calc(var(--container-radius)-var(--container-padding))] object-contain"
                     />
                 </div>}
 
