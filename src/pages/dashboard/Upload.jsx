@@ -109,10 +109,15 @@ export default function Upload() {
                     toast.success("Insights generated successfully!", { id: loadingToast });
                 }
             },
-            classNames: {
-                actionButton: "text-emerald-400 hover:text-emerald-500"
+            actionButtonStyle: {
+                backgroundColor: "white",
+                color: "rgb(16 185 129)",
+                padding: "0.25rem 0.5rem",
+                fontWeight: "bold",
+                border: "1px solid rgb(16 185 129)"
             },
             closeButton: true,
+            duration: 10000
         });
     };
 
