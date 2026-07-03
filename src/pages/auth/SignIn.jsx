@@ -49,9 +49,9 @@ export default function SignIn() {
         }
 
         if (error) {
-            console.error("[SIGN IN] Sign in error:", error);
-            return toast.error(error?.status && error?.code
-                ? `${error?.status}: ${i18n(error?.code)}` 
+            console.error("[SIGN IN] Sign in error:", error?.toJSON?.() ?? error);
+            return toast.error(error?.code
+                ? i18n(error?.code)
                 : msg);
         }
 
