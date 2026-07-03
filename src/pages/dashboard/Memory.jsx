@@ -37,12 +37,7 @@ export default function Memory() {
                 setLoading(false);
             }
 
-            const formattedMemory = {
-                ...data,
-                date: new Date(data.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
-                memory_date: null,
-                mood: data?.ai_insights?.mood ? `${data.ai_insights.moodEmoji} ${data.ai_insights.mood}` : null
-            };
+            const m = { ...data };
 
             if (data.image_path) {
                 const { data: imgData, error: imgError } = await supabase.storage.from("memory_images").createSignedUrl(data.image_path, 60 * 60);
@@ -50,10 +45,10 @@ export default function Memory() {
                 if (imgError)
                     console.error("[MEMORY] Error fetching memory image:", imgError);
 
-                formattedMemory.img = imgData?.signedUrl || null;
+                m.img = imgData?.signedUrl || null;
             }
 
-            setMemory(formattedMemory);
+            setMemory(m);
         };
 
         fetchMemory();
@@ -99,7 +94,7 @@ export default function Memory() {
         let data, error;
 
         try {
-            ({ data, error } = await supabase.functions.invoke("generate-insights", {
+            ({ data, error } = await supabase.functions.invoke("generate-memory-insights", {
                 body: JSON.stringify({
                     title: memory.title,
                     description: memory.description,
@@ -156,6 +151,14 @@ export default function Memory() {
         </div>);
     }
 
+    const fMemory = {
+        ...memory,
+        date: new Date(memory.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+        memory_date: null,
+        mood: memory?.ai_insights?.mood ? `${memory.ai_insights.moodEmoji} ${memory.ai_insights.mood}` : null,
+        ai_insights: null
+    };
+
     return (
         <div className="flex flex-col gap-4 p-8 bg-zinc-900 rounded-2xl m-4 items-center">
             <Link to="/dashboard" className="self-start text-xs p-2 text-gray-400 hover:text-gray-300 transition-colors duration-200">&larr; Back to Dashboard</Link>
@@ -170,9 +173,9 @@ export default function Memory() {
 
             <div className="flex gap-4 items-center justify-center flex-wrap">
                 <h1 className="font-semibold text-3xl sm:pl-16 md:pl-20">{memory.title}</h1>
-                {memory.mood && <span className="rounded-full text-sm bg-purple-500/10 text-purple-400 uppercase font-medium px-3 py-1">{memory.mood}</span>}
+                {fMemory.mood && <span className="rounded-full text-xs bg-purple-500/10 text-purple-400 uppercase font-medium px-3 py-1">{fMemory.mood}</span>}
             </div>
-            <span className="text-gray-500 font-light">{memory.date}</span>
+            <span className="text-gray-500 font-light">{fMemory.date}</span>
             {memory.description && <p className="max-w-xl text-center">{memory.description}</p>}
 
             {tags}
