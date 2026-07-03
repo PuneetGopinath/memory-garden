@@ -23,7 +23,7 @@ function getMoodColor(mood) {
 
 export function RenderMarkdown(props) {
     return (
-        <div className="prose prose-invert prose-sm max-w-full text-zinc-400 leading-relaxed">
+        <div className="prose prose-invert prose-sm max-w-full wrap-break-word text-zinc-400 leading-relaxed">
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeSanitize]}
@@ -33,7 +33,7 @@ export function RenderMarkdown(props) {
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-300 underline transition-colors duration-300"
+                            className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors duration-300"
                         >
                             {children}
                         </a>
