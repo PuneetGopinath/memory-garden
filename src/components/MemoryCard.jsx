@@ -6,6 +6,10 @@
 
 import { Link } from "react-router";
 
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
+
 import { moodColors, markerColors } from "../constants";
 
 function getMoodColor(mood) {
@@ -17,7 +21,7 @@ function getMoodColor(mood) {
     return moodColors[hash % moodColors.length];
 }
 
-export function Event({ date, title, description, img, clockwise, mood, link, ...props }) {
+export function Event({ date, title, description = null, img, clockwise, mood, link, markdown = true }) {
     const moodColor = mood ? getMoodColor(mood) : null;
 
     return (
@@ -35,7 +39,19 @@ export function Event({ date, title, description, img, clockwise, mood, link, ..
                         </Link>
                         : title}
                 </h5>
-                {description && <p className="text-zinc-400 leading-relaxed">{description}</p>}
+                {description &&
+                    (markdown
+                        ? (
+                            <ReactMarkdown
+                                remarkPlugins={[remarkGfm]}
+                                rehypePlugins={[rehypeSanitize]}
+                            >
+                                {description}
+                            </ReactMarkdown>
+                        )
+                        : <p className="text-zinc-400 leading-relaxed">{description}</p>
+                    )
+                }
                 {mood && <span className={`${moodColor} border inline-flex items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide`}>{mood}</span>}
             </div>
             {link && <Link to={link} className="block my-2 text-sm text-purple-400 hover:text-purple-300 transition-colors duration-300 font-medium">View Details &rarr;</Link>}
