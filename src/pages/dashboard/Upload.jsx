@@ -9,6 +9,8 @@ import { Link } from "react-router";
 
 import { toast } from "sonner";
 
+import { MAX_IMAGE_SIZE } from "../../constants";
+
 import { AuthContext } from "../../context/AuthContext";
 
 import supabase from "../../utils/supabase";
@@ -49,7 +51,7 @@ export default function Upload() {
 
         if (imageFile && imageFile.size > 0 && imageFile.type.startsWith("image/")) {
             const ext = imageFile.name.split(".").pop().toLowerCase();
-            if (imageFile.size > 10 * 1024 * 1024) {
+            if (imageFile.size > MAX_IMAGE_SIZE) {
                 setLoading(false);
                 return toast.error("Image size exceeds 10MB limit. Please choose a smaller image.");
             }

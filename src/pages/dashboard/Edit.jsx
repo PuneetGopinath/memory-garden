@@ -9,6 +9,8 @@ import { useParams, Link } from "react-router";
 
 import { toast } from "sonner";
 
+import { MAX_IMAGE_SIZE } from "../../constants";
+
 import supabase from "../../utils/supabase";
 
 export default function Edit() {
@@ -62,7 +64,7 @@ export default function Edit() {
 
         if (img && img.size > 0 && img.type.startsWith("image/")) {
             const ext = img.name.split(".").pop().toLowerCase();
-            if (img.size > 10 * 1024 * 1024) {
+            if (img.size > MAX_IMAGE_SIZE) {
                 setSaving(false);
                 return toast.error("Image size exceeds 10MB limit. Please choose a smaller image.");
             }
