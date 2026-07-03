@@ -7,7 +7,6 @@
 import { Link } from "react-router";
 
 import Hero from "../components/home/Hero";
-import Footer from "../components/Footer";
 
 import Timeline from "../components/Timeline";
 
