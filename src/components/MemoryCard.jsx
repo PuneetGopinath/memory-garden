@@ -21,6 +21,29 @@ function getMoodColor(mood) {
     return moodColors[hash % moodColors.length];
 }
 
+export function RenderMarkdown(props) {
+    return (
+        <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeSanitize]}
+            components={{
+                a: ({ href, children }) => (
+                    <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-cyan-400 hover:text-cyan-300 underline transition-colors duration-300"
+                    >
+                        {children}
+                    </a>
+                )
+            }}
+        >
+            {props.children}
+        </ReactMarkdown>
+    );
+}
+
 export function Event({ date, title, description = null, img, clockwise, mood, link, markdown = true }) {
     const moodColor = mood ? getMoodColor(mood) : null;
 
@@ -42,12 +65,9 @@ export function Event({ date, title, description = null, img, clockwise, mood, l
                 {description &&
                     (markdown
                         ? (
-                            <ReactMarkdown
-                                remarkPlugins={[remarkGfm]}
-                                rehypePlugins={[rehypeSanitize]}
-                            >
+                            <RenderMarkdown>
                                 {description}
-                            </ReactMarkdown>
+                            </RenderMarkdown>
                         )
                         : <p className="text-zinc-400 leading-relaxed">{description}</p>
                     )
