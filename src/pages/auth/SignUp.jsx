@@ -64,9 +64,9 @@ export default function SignUp() {
         }
 
         if (error) {
-            console.error("[SIGN UP] Sign up error:", error);
-            return toast.error(error?.status && error?.code 
-                ? `${error?.status}: ${i18n(error?.code)}`
+            console.error("[SIGN UP] Sign up error:", error?.toJSON?.() ?? error);
+            return toast.error(error?.code 
+                ? i18n(error?.code)
                 : msg);
         }
 
