@@ -41,7 +41,8 @@ export default function Memory() {
                 ...data,
                 date: new Date(data.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
                 memory_date: null,
-                mood: data.ai_insights?.mood ? `${data.ai_insights.moodEmoji} ${data.ai_insights.mood}` : null,
+                mood: data?.ai_insights?.mood ? `${data.ai_insights.moodEmoji} ${data.ai_insights.mood}` : null,
+                tags: data?.ai_insights?.tags || null,
                 ai_insights: null
             };
 
@@ -111,6 +112,19 @@ export default function Memory() {
                 </p>
             </div>
         );
+    
+    let tags = null;
+    if (memory?.tags) {
+        tags = (<div className="flex gap-4 text-center flex-wrap justify-center items-center p-4">
+            <span className="text-lg font-semibold">Tags:</span>
+
+            {memory.tags.map((tag, index) => (
+                <span key={index} className="text-sm bg-zinc-700 text-zinc-300 px-3 py-1 rounded-full">
+                    #{tag}
+                </span>
+            ))}
+        </div>);
+    }
 
     return (
         <div className="flex flex-col gap-4 p-8 bg-zinc-900 rounded-2xl m-4 items-center">
@@ -130,8 +144,10 @@ export default function Memory() {
             </div>
             <span className="text-gray-500 font-light">{memory.date}</span>
             {memory.description && <p className="max-w-xl text-center">{memory.description}</p>}
+
+            {tags}
+
             <span className="text-xs">Created On: {new Date(memory.created_at).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
-            
             
             <div className="flex gap-4 mt-6">
                 <Link
