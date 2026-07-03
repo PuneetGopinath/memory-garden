@@ -23,26 +23,28 @@ function getMoodColor(mood) {
 
 export function RenderMarkdown(props) {
     return (
-        <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeSanitize]}
-            components={{
-                a: ({ href, children }) => (
-                    <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-300 underline transition-colors duration-300"
-                    >
-                        {children}
-                    </a>
-                )
-            }}
-        >
-            {props.children}
-        </ReactMarkdown>
+        <div className="prose prose-invert prose-sm max-w-full text-zinc-400 leading-relaxed">
+            <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeSanitize]}
+                components={{
+                    a: ({ href, children }) => (
+                        <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-400 hover:text-blue-300 underline transition-colors duration-300"
+                        >
+                            {children}
+                        </a>
+                    )
+                }}
+            >
+                {props.children}
+            </ReactMarkdown>
+        </div>
     );
-}
+};
 
 export function Event({ date, title, description = null, img, clockwise, mood, link, markdown = true }) {
     const moodColor = mood ? getMoodColor(mood) : null;
