@@ -9,6 +9,8 @@ import { useParams, Link, useNavigate } from "react-router";
 
 import { toast } from "sonner";
 
+import { RenderMarkdown } from "../../components/MemoryCard";
+
 import supabase from "../../utils/supabase";
 
 export default function Memory() {
@@ -176,7 +178,7 @@ export default function Memory() {
                 {fMemory.mood && <span className="rounded-full text-xs bg-purple-500/10 text-purple-400 uppercase font-medium px-3 py-1">{fMemory.mood}</span>}
             </div>
             <span className="text-gray-500 font-light">{fMemory.date}</span>
-            {memory.description && <p className="max-w-xl text-center">{memory.description}</p>}
+            {memory.description && <RenderMarkdown>{memory.description}</RenderMarkdown>}
 
             {tags}
 

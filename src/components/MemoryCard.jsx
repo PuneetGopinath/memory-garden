@@ -32,7 +32,7 @@ export function RenderMarkdown(props) {
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-cyan-400 hover:text-cyan-300 underline transition-colors duration-300"
+                        className="text-blue-400 hover:text-blue-300 underline transition-colors duration-300"
                     >
                         {children}
                     </a>
