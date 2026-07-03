@@ -41,9 +41,7 @@ export default function Memory() {
                 ...data,
                 date: new Date(data.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
                 memory_date: null,
-                mood: data?.ai_insights?.mood ? `${data.ai_insights.moodEmoji} ${data.ai_insights.mood}` : null,
-                tags: data?.ai_insights?.tags || null,
-                ai_insights: null
+                mood: data?.ai_insights?.mood ? `${data.ai_insights.moodEmoji} ${data.ai_insights.mood}` : null
             };
 
             if (data.image_path) {
@@ -94,6 +92,38 @@ export default function Memory() {
         navigate("/dashboard", { replace: true });
     };
 
+    const generateInsights = async () => {
+        if (!memory || memory.ai_insights) return;
+
+        const loadingToast = toast.loading("Generating insights...");
+        let data, error;
+
+        try {
+            ({ data, error } = await supabase.functions.invoke("generate-insights", {
+                body: JSON.stringify({
+                    title: memory.title,
+                    description: memory.description,
+                    date: memory.date
+                })
+            }));
+
+            if (error) throw error;
+        } catch (err) {
+            data = null;
+            console.error("[MEMORY] Error generating insights:", err);
+            return toast.error("Failed to generate insights. Please try again later.", { id: loadingToast });
+        }
+
+        await supabase.from("memories").update({ ai_insights: data }).eq("id", memory.id);
+
+        toast.success("Insights generated successfully.", { id: loadingToast });
+
+        setMemory(prev => ({
+            ...prev,
+            ai_insights: data
+        }));
+    };
+
     if (!id)
         return <span className="text-lg">The memory ID is not provided</span>;
 
@@ -114,11 +144,11 @@ export default function Memory() {
         );
     
     let tags = null;
-    if (memory?.tags) {
+    if (memory?.ai_insights?.tags) {
         tags = (<div className="flex gap-4 text-center flex-wrap justify-center items-center p-4">
             <span className="text-lg font-semibold">Tags:</span>
 
-            {memory.tags.map((tag, index) => (
+            {memory.ai_insights.tags.map((tag, index) => (
                 <span key={index} className="text-sm bg-zinc-700 text-zinc-300 px-3 py-1 rounded-full">
                     #{tag}
                 </span>
@@ -150,6 +180,13 @@ export default function Memory() {
             <span className="text-xs">Created On: {new Date(memory.created_at).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
             
             <div className="flex gap-4 mt-6">
+                {!memory?.ai_insights &&
+                    <button
+                        className="rounded-3xl px-4 py-2 bg-cyan-500 hover:bg-cyan-400 transition-colors duration-200"
+                        onClick={generateInsights}
+                    >
+                        Generate Insights
+                    </button>}
                 <Link
                     to={`/dashboard/edit/${id}`}
                     className="rounded-3xl px-4 py-2 bg-yellow-500 hover:bg-yellow-400 transition-colors duration-200"
