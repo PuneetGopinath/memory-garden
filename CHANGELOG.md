@@ -8,7 +8,7 @@ Dates follow ISO 8601 standard.
 ### Features
 
 - Added toast notifications using sonner package for errors and successes in auth and dashboard pages
-- Added glasmorphism for image in memory view page
+- Added glasmorphism for image in memory details page
 - Added loading screens in the following pages/layouts: (all of them aren't 100% same)
     - new password page
     - public only route
@@ -19,7 +19,10 @@ Dates follow ISO 8601 standard.
 - Add `generate-memory-insights` supabase edge functions to generate insights using AI (here we use Gemini)
     - AI returns a JSON containing these mood, moodEmoji and tags
     - Request a call to this function in upload memory page, once the user uploads the memory, we offer them to generate ai insights through an action button in the toast notification shown up
-    - Display mood with emoji in dashboard home and memory details page as a badge (shaped as a pill)
+    - Display mood with emoji in dashboard home and memory details page as a badge (shaped as a pill)- Display tags in memory details page
+    - User can also generate insights in memory details page
+- Add support for markdown in description of any memory
+    - allows links in a secure way
     
 ### UX Enhancements
 
@@ -39,12 +42,19 @@ Dates follow ISO 8601 standard.
 - Added try catch block in new password page for session check
 - comparison logic of titles written by me has flaws, instead use built-in method `localeCompare`
 - set loading state to false on early returns in upload memory page
+- remove status number shown in toast notification (of an error) while signing in or signing up
+- removed feature that allows user to click anywhere on the memory and redirect to memory details of that specific memory (because description is markdown supported and may contain links)
 
 ### Refactorings
 
 - Remove redundancy of code in memory details page and avoid mutation of a fetched object
 - Do not mutate on the fetched memories object in dashboard home
 - Use canonical class names fro tailwind styles (as suggested by tailwind intellisense)
+- Add constants/index.js to store constants such as:
+    - Version of the web app
+    - Mood badge colors
+    - Timeline marker colors
+    - Max image size that can be uploaded
 
 ### Chores
 
@@ -53,6 +63,7 @@ Dates follow ISO 8601 standard.
 - add `supabase` cli to dev dependencies for supabase edge functions
 - Remove unnecessary navbar import in 404 page
 - bump supabase from 2.107.0 to 2.108.0
+- add rehype-sanitize, react-markdown, remark-gfm and @tailwind/typography for rendering markdown provided by user in memory description
 
 ## [v0.2.0] - `2026-06-23`
 
