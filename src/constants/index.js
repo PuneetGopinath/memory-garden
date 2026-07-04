@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-export const VERSION = "0.2.0";
+export const VERSION = "0.3.0";
 
 export const moodColors = [
     "bg-purple-500/10 text-purple-300 border-purple-500/20",
