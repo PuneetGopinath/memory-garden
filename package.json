@@ -14,7 +14,9 @@
   "author": "PuneetGopinath",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "lint": "npx eslint src",
+    "lint:fix": "npx eslint src --fix"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
