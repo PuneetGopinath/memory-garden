@@ -13,3 +13,7 @@ Memory Garden, a digital space that chronologically stores your memories using A
 
 - ReactJS (with Vite)
 - Supabase
+
+## License
+
+This project is licensed under the MIT License - checkout the [LICENSE](https://github.com/PuneetGopinath/memory-garden/blob/main/LICENSE) file.
