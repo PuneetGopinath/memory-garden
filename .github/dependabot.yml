@@ -10,7 +10,7 @@ updates:
     schedule:
       interval: "weekly"
     labels:
-      - "dependabot"
+      - "dependencies"
     commit-message:
       prefix: ""
       include: "scope"
