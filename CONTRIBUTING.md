@@ -13,8 +13,8 @@ We welcome contributions to Memory Garden! Whether it's fixing bugs, adding new 
     ```bash
     git checkout -b your-branch-name
     ```
-4. **Make Changes**: Make your changes in the codebase. Ensure that your code follows the project's coding style and conventions. Use ESLint to check for any linting errors and fix them before committing your changes.
-5. **Commit Your Changes**: Commit your changes in regular intervals with clear and concise commit messages. Use the following format for commit messages:
+4. **Make Changes**: Make your changes in the codebase. Ensure that your code follows the project's coding style and conventions. Use ESLint to check for any linting errors and fix them before committing your changes. (Use `npm run lint` to check for linting errors and `npm run lint:fix` to automatically fix them.)
+5. **Commit Your Changes**: Commit your changes in logical self-contained increments with clear and concise commit messages. Use the following format for commit messages:
     ```
     [TYPE]: Short description of the change
     [TYPE] should be replaced with any of the following:
