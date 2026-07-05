@@ -4,7 +4,7 @@ Memory Garden, a digital space that chronologically stores your memories using A
 
 ## Features
 
-- AI Memory Summaries
+- AI Generated Memory Insights
 - Timeline Visualization
 - Smart Tagging
 - Private Capsules (UPCOMING)
@@ -12,8 +12,12 @@ Memory Garden, a digital space that chronologically stores your memories using A
 ## Tech Stack
 
 - ReactJS (with Vite)
-- Supabase
+- Supabase (Authentication, Database, Storage and Edge Functions)
 
 ## License
 
 This project is licensed under the MIT License - checkout the [LICENSE](https://github.com/PuneetGopinath/memory-garden/blob/main/LICENSE) file.
+
+## Contributing
+
+Contributions are welcome! Please read the [contributing guidelines](https://github.com/PuneetGopinath/memory-garden/blob/main/CONTRIBUTING.md) before submitting a pull request.
