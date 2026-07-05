@@ -5,9 +5,9 @@ We welcome contributions to Memory Garden! Whether it's fixing bugs, adding new 
 ## How to Contribute (for First-Time Contributors)
 
 1. **Fork the Repository**: Click the "Fork" button at the top right of the repository page to create a copy of the repository under your GitHub account.
-2. **Clone the Forked Repository**: Clone your forked repository to your local machine using the following command:
+2. **Clone the Forked Repository**: Clone your forked repository to your local machine using the following command: (replace `<your-username>` with your GitHub username)
     ```bash
-    git clone https://github.com/PuneetGopinath/memory-garden.git
+    git clone https://github.com/<your-username>/memory-garden.git
     ```
 3. **Create a New Branch**: Create a new branch for your changes. Use a descriptive name for the branch, such as `fix-bug` or `add-feature`.
     ```bash
