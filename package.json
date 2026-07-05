@@ -20,7 +20,7 @@
     "lint:fix": "npx eslint . --fix"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.108.2",
+    "@supabase/supabase-js": "^2.110.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-markdown": "^10.1.0",
