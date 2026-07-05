@@ -8,28 +8,28 @@ export default defineConfig(
     js.configs.recommended,
     eslintReact.configs.recommended,
     {
-        files: ["**/*.{js,jsx}"],
+        files: ["**/*.{js,jsx,json}"],
         ignores: [
             "node_modules/**",
             "dist/**",
             "build/**",
-            "supabase/functions/**/dist/**"
+            "supabase/functions/**/dist/**",
         ],
         languageOptions: {
             ecmaVersion: "latest",
             sourceType: "module",
             globals: {
                 ...globals.browser,
-                ...globals.node
+                ...globals.node,
             },
             parserOptions: {
                 ecmaFeatures: {
-                    jsx: true
-                }
-            }
+                    jsx: true,
+                },
+            },
         },
         plugins: {
-            "react-hooks": reactHooks
+            "react-hooks": reactHooks,
         },
         rules: {
             "semi": ["error", "always"],
@@ -45,11 +45,12 @@ export default defineConfig(
             "comma-dangle": ["error", "always-multiline"], // Without this, git sees two lines changed when adding a new property
             "no-unreachable": "error",
             "default-case": "warn",
+            "indent": ["error", 4, { "SwitchCase": 1 }],
 
             "react-hooks/rules-of-hooks": "error",
             "react-hooks/exhaustive-deps": "warn",
 
             "@eslint-react/no-nested-component-definitions": "warn",
-        }
-    }
+        },
+    },
 );
