@@ -6,6 +6,7 @@
   "bugs": {
     "url": "https://github.com/PuneetGopinath/memory-garden/issues"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PuneetGopinath/memory-garden.git"
@@ -15,8 +16,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "lint": "npx eslint src",
-    "lint:fix": "npx eslint src --fix"
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . --fix"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
