@@ -8,7 +8,7 @@ export default defineConfig(
     js.configs.recommended,
     eslintReact.configs.recommended,
     {
-        files: ["**/*.{js,jsx,json}"],
+        files: ["**/*.{js,jsx}"],
         ignores: [
             "node_modules/**",
             "dist/**",
