@@ -46,6 +46,7 @@ export default defineConfig(
             "no-unreachable": "error",
             "default-case": "warn",
             "indent": ["error", 4, { "SwitchCase": 1 }],
+            "eol-last": ["warn", "always"],
 
             "react-hooks/rules-of-hooks": "error",
             "react-hooks/exhaustive-deps": "warn",
