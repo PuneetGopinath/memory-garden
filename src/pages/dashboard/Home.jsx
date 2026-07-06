@@ -97,7 +97,7 @@ export default function Home() {
             ...m,
             mood: m.ai_insights?.mood ? `${m.ai_insights.moodEmoji} ${m.ai_insights.mood}` : null,
             memory_date: null,
-            ai_insights: null
+            ai_insights: null,
         }));
 
     if (loading)

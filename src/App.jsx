@@ -129,7 +129,7 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-    console.log(`MemoryGarden v${VERSION} - Copyright (c) 2026 Puneet Gopinath - License: MIT (see LICENSE)`);
+    console.info(`MemoryGarden v${VERSION} - Copyright (c) 2026 Puneet Gopinath - License: MIT (see LICENSE)`);
     
     return (
         <AuthProvider>

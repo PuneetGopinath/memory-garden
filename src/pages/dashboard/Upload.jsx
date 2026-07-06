@@ -20,7 +20,7 @@ async function generateInsights(memory) {
 
     try {
         ({ data, error } = await supabase.functions.invoke("generate-memory-insights", {
-            body: memory
+            body: memory,
         }));
 
         if (error) throw error;
@@ -73,7 +73,7 @@ export default function Upload() {
                 title,
                 description,
                 memory_date,
-                image_path: image?.data?.path ?? null
+                image_path: image?.data?.path ?? null,
             }).select().single());
         
             if (error)
@@ -101,7 +101,7 @@ export default function Upload() {
                     const insights = await generateInsights({
                         title: data.title,
                         description: data.description,
-                        date: data.memory_date
+                        date: data.memory_date,
                     });
 
                     if (!insights) return toast.error("Failed to generate insights. Please try again later.", { id: loadingToast });
@@ -109,17 +109,17 @@ export default function Upload() {
                     await supabase.from("memories").update({ ai_insights: insights }).eq("id", data.id);
                     
                     toast.success("Insights generated successfully!", { id: loadingToast });
-                }
+                },
             },
             actionButtonStyle: {
                 backgroundColor: "white",
                 color: "rgb(16 185 129)",
                 padding: "0.25rem 0.5rem",
                 fontWeight: "bold",
-                border: "1px solid rgb(16 185 129)"
+                border: "1px solid rgb(16 185 129)",
             },
             closeButton: true,
-            duration: 10000
+            duration: 10000,
         });
     };
 

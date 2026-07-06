@@ -84,7 +84,7 @@ export default function Edit() {
             title,
             description: desc,
             memory_date: date,
-            ...i
+            ...i,
         };
 
         try {
@@ -94,7 +94,7 @@ export default function Edit() {
 
             setMemory(prev => ({
                 ...prev,
-                ...newValues
+                ...newValues,
             }));
         } catch (err) {
             if (i.image_path) {

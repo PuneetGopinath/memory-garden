@@ -100,8 +100,8 @@ export default function Memory() {
                 body: JSON.stringify({
                     title: memory.title,
                     description: memory.description,
-                    date: memory.date
-                })
+                    date: memory.date,
+                }),
             }));
 
             if (error) throw error;
@@ -117,7 +117,7 @@ export default function Memory() {
 
         setMemory(prev => ({
             ...prev,
-            ai_insights: data
+            ai_insights: data,
         }));
     };
 
@@ -158,7 +158,7 @@ export default function Memory() {
         date: new Date(memory.memory_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
         memory_date: null,
         mood: memory?.ai_insights?.mood ? `${memory.ai_insights.moodEmoji} ${memory.ai_insights.mood}` : null,
-        ai_insights: null
+        ai_insights: null,
     };
 
     return (
