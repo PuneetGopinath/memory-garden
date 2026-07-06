@@ -10,14 +10,14 @@ export default defineConfig(({ mode }) => {
         publicDir: "../public",
         plugins: [
             react(),
-            tailwindcss()
+            tailwindcss(),
         ],
         server: {
-            port: Number(env.PORT) || 3000
+            port: Number(env.PORT) || 3000,
         },
         build: {
             outDir: "./client-dist",
             emptyOutDir: true,
-        }
+        },
     };
 });

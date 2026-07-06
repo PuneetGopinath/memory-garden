@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-import { createBrowserRouter, RouterProvider, Navigate, useNavigation, Outlet } from "react-router";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 
 import { VERSION } from "./constants";
 
@@ -46,27 +46,27 @@ const router = createBrowserRouter([
                         children: [
                             {
                                 index: true,
-                                element: <Navigate to="/auth/signin" replace />
+                                element: <Navigate to="/auth/signin" replace />,
                             },
                             {
                                 path: "signin",
-                                element: <SignIn />
+                                element: <SignIn />,
                             },
                             {
                                 path: "signup",
-                                element: <SignUp />
+                                element: <SignUp />,
                             },
                             {
                                 path: "reset",
-                                element: <Reset />
+                                element: <Reset />,
                             },
                             {
                                 path: "new-password",
-                                element: <NewPassword />
-                            }
-                        ]
-                    }
-                ]
+                                element: <NewPassword />,
+                            },
+                        ],
+                    },
+                ],
             },
             {
                 element: <ProtectedRoute />,
@@ -77,55 +77,55 @@ const router = createBrowserRouter([
                         children: [
                             {
                                 index: true,
-                                element: <Home />
+                                element: <Home />,
                             },
                             {
                                 path: "profile",
-                                element: <Profile />
+                                element: <Profile />,
                             },
                             {
                                 path: "upload",
-                                element: <Upload />
+                                element: <Upload />,
                             },
                             {
                                 path: "memory/:id",
-                                element: <Memory />
+                                element: <Memory />,
                             },
                             {
                                 path: "edit/:id",
-                                element: <Edit />
-                            }
-                        ]
-                    }
-                ]
+                                element: <Edit />,
+                            },
+                        ],
+                    },
+                ],
             },
             {
                 element: <HomeLayout />,
                 children: [
                     {
                         index: true,
-                        element: <Landing />
+                        element: <Landing />,
                     },
                     {
                         path: "about",
-                        element: <About />
+                        element: <About />,
                     },
                     {
                         path: "privacy",
-                        element: <Privacy />
+                        element: <Privacy />,
                     },
                     {
                         path: "terms",
-                        element: <Terms />
+                        element: <Terms />,
                     },
                     {
                         path: "*",
-                        element: <NotFound />
-                    }
-                ]
-            }
-        ]
-    }
+                        element: <NotFound />,
+                    },
+                ],
+            },
+        ],
+    },
 ]);
 
 export default function App() {
