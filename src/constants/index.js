@@ -32,3 +32,39 @@ export const markerColors = {
 };
 
 export const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10MB
+
+export const memories = [
+    {
+        date: "November 3, 2024",
+        img: "../assets/hackathon.png",
+        title: "First Hackathon",
+        description: "Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months.",
+        mood: "⚡ Excited",
+        dot: "purple",
+    },
+    {
+        date: "January 13, 2025",
+        img: "../assets/temple.png",
+        title: "Temple Festival Night",
+        description: "The streets glowed with lamps, music echoed through the air, and the entire evening felt timeless.",
+        mood: "🪔 Spiritual",
+        dot: "amber",
+    },
+    {
+        date: "March 28, 2025",
+        img: "../assets/drive.png",
+        title: "Rainy Evening Drive",
+        description: "Driving through empty roads while rain tapped softly against the windows felt strangely peaceful.",
+        mood: "🌧 Reflective",
+        dot: "blue",
+    },
+    {
+        date: "July 18, 2025",
+        img: "../assets/kerala.png",
+        title: "Trip to Kerala",
+        description: "A peaceful evening beside the backwaters with family and friends.",
+        mood: "🌊 Peaceful",
+        dot: "cyan",
+    },
+]
+    .map(m => ({ ...m, markdown: false }));
