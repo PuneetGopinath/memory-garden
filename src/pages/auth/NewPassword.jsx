@@ -89,7 +89,7 @@ export default function NewPassword() {
                     </Link>
                 </div>
             </div>
-    );
+        );
 
     if (success)
         return (

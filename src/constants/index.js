@@ -21,14 +21,14 @@ export const moodColors = [
     "bg-red-500/10 text-red-300 border-red-500/20",
     "bg-fuchsia-500/10 text-fuchsia-300 border-fuchsia-500/20",
     "bg-teal-500/10 text-teal-300 border-teal-500/20",
-    "bg-yellow-500/10 text-yellow-300 border-yellow-500/20"
+    "bg-yellow-500/10 text-yellow-300 border-yellow-500/20",
 ];
 
 export const markerColors = {
     purple: "bg-purple-400",
     cyan: "bg-cyan-400",
     blue: "bg-blue-400",
-    amber: "bg-amber-400"
+    amber: "bg-amber-400",
 };
 
 export const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10MB

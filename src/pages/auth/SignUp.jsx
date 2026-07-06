@@ -54,7 +54,7 @@ export default function SignUp() {
             ({ error } = await supabase.auth.signUp({
                 email,
                 password,
-                options: { data: { username }}
+                options: { data: { username }},
             }));
         } catch (err) {
             console.error("[SIGN UP] Error signing up:", err);
