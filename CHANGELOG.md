@@ -32,6 +32,8 @@ Dates follow ISO 8601 standard.
 - Bump `tailwindcss` from 4.3.1 to 4.3.2 [#11]
 - Bump `@supabase/supabase-js` from 2.108.2 to 2.110.0 [#12]
 - Bump `vite` from 8.1.0 to 8.1.3 [#13]
+- Bump `@eslint-react/eslint-plugin` from 5.10.3 to 5.11.2 [#14]
+- Bump `supabase` from 2.108.0 to 2.109.0 [#15]
 
 ## [v0.3.0] - `2026-07-04`
 
@@ -166,6 +168,8 @@ but this method makes sure the screen reader reads only the title
 - Image replacement during editing not supported
 - AI not used yet to generate summaries and mood
 
+[#15]: https://github.com/PuneetGopinath/memory-garden/pull/15
+[#14]: https://github.com/PuneetGopinath/memory-garden/pull/14
 [#13]: https://github.com/PuneetGopinath/memory-garden/pull/13
 [#12]: https://github.com/PuneetGopinath/memory-garden/pull/12
 [#11]: https://github.com/PuneetGopinath/memory-garden/pull/11
