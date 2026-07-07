@@ -27,7 +27,7 @@ export default function PasswordValidation({ pwd, onValidityChange }) {
     const hasUpper = /[A-Z]/.test(pwd);
     const hasLower = /[a-z]/.test(pwd);
     const hasNumber = /[0-9]/.test(pwd);
-    const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pwd);
+    const hasSpecial = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(pwd);
 
     const valid = eight && hasUpper && hasLower && hasNumber && hasSpecial;
 
