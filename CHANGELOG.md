@@ -3,6 +3,34 @@
 Format: [vx.y.z] - `YYYY-MM-DD`
 Dates follow ISO 8601 standard.
 
+## [latest] - `yet-to-release`
+
+### Documentation
+
+- Add license information and contribution guidelines in README.md file, also update tech stack and features section
+- Add CONTRIBUTING.md file to provide guidelines for contributing to the project
+
+### Refactored
+
+- Move sample memories constant from Landing page to constants/index.js file
+- Update pages and app coding styles to match the standards defined in the eslint configuration file
+
+### Chores
+
+- Add dev dependencies for eslint, listed below:
+    - `@eslint-react/eslint-plugin`
+    - `@eslint/js`
+    - `eslint`
+    - `eslint-plugin-react-hooks`
+    - `globals`
+- Add eslint configuration file `eslint.config.js` and npm scripts for linting to enforce coding standards and best practices.
+- Add `.editorconfig` file to provide consistent coding styles across different editors and platforms.
+- Add `.gitattributes` file to ensure consistent handling of line endings and text files across different operating systems.
+- Add issue templates for bug reports and feature requests to streamline issue reporting and tracking.
+- Bump `@tailwindcss/vite` from 4.3.1 to 4.3.2 [#9]
+- Bump `react-router` from 8.0.1 to 8.1.0 [#10]
+- Bump `tailwindcss` from 4.3.1 to 4.3.2 [#11]
+
 ## [v0.3.0] - `2026-07-04`
 
 ### Features
@@ -136,11 +164,15 @@ but this method makes sure the screen reader reads only the title
 - Image replacement during editing not supported
 - AI not used yet to generate summaries and mood
 
+[#11]: https://github.com/PuneetGopinath/memory-garden/pull/11
+[#10]: https://github.com/PuneetGopinath/memory-garden/pull/10
+[#9]: https://github.com/PuneetGopinath/memory-garden/pull/9
 [#8]: https://github.com/PuneetGopinath/memory-garden/pull/8
 [#7]: https://github.com/PuneetGopinath/memory-garden/pull/7
 [#6]: https://github.com/PuneetGopinath/memory-garden/pull/6
 [#5]: https://github.com/PuneetGopinath/memory-garden/pull/5
 
+[latest]: https://github.com/PuneetGopinath/memory-garden/compare/v0.3.0...HEAD
 [v0.3.0]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.3.0
 [v0.2.0]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.2.0
 [v0.1.0]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.1.0
