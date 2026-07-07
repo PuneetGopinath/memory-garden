@@ -72,4 +72,4 @@ export const memories = [
         dot: "cyan",
     },
 ]
-    .map(m => ({ ...m, markdown: false }));
+    .map((m, i) => ({ ...m, markdown: false, id: `demo-${i}`  }));

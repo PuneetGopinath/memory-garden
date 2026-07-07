@@ -8,8 +8,8 @@ import MemoryCard from "./MemoryCard";
 
 export default function Timeline({ memories, className = "", links = false }) {
     const memoriesWithColumns = memories.map((m, i) => i % 2 === 0 ? { ...m, column: 2 } : { ...m, column: 1 });
-    const cards = memoriesWithColumns.map((m, i) => (
-        <MemoryCard key={m?.id ?? i} {...m} link={links ? `memory/${m.id}` : undefined} />
+    const cards = memoriesWithColumns.map(m => (
+        <MemoryCard key={m?.id} {...m} link={links ? `memory/${m.id}` : undefined} />
     ));
 
     return (
