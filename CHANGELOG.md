@@ -14,6 +14,12 @@ Dates follow ISO 8601 standard.
 
 - Move sample memories constant from Landing page to constants/index.js file
 - Update pages and app coding styles to match the standards defined in the eslint configuration file
+- Remove unnecessary escape characters in regex patterns in password validation component
+- Remove unused import in Hero component
+- Render `Context` as context provider instead of `Context.Provider` in AuthContext component (only possible in React 19)
+- Move constants from about page to contants/index.js file
+- Move `RenderMarkdown` component from `MemoryCard` component to a separate file
+- Add `id` to each memory object in sample memories constant to avoid using index as key in memory cards
 
 ### Chores
 
@@ -21,7 +27,6 @@ Dates follow ISO 8601 standard.
     - `@eslint-react/eslint-plugin`
     - `@eslint/js`
     - `eslint`
-    - `eslint-plugin-react-hooks`
     - `globals`
 - Add eslint configuration file `eslint.config.js` and npm scripts for linting to enforce coding standards and best practices.
 - Add `.editorconfig` file to provide consistent coding styles across different editors and platforms.
