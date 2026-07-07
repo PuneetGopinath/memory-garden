@@ -9,7 +9,7 @@ import { useParams, Link, useNavigate } from "react-router";
 
 import { toast } from "sonner";
 
-import { RenderMarkdown } from "../../components/MemoryCard";
+import RenderMarkdown from "../../components/RenderMarkdown";
 
 import supabase from "../../utils/supabase";
 

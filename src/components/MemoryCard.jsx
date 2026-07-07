@@ -6,9 +6,7 @@
 
 import { Link } from "react-router";
 
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeSanitize from "rehype-sanitize";
+import RenderMarkdown from "./RenderMarkdown";
 
 import { moodColors, markerColors } from "../constants";
 
@@ -20,31 +18,6 @@ function getMoodColor(mood) {
 
     return moodColors[hash % moodColors.length];
 }
-
-export function RenderMarkdown({ children }) {
-    return (
-        <div className="prose prose-invert prose-sm max-w-full wrap-break-word text-zinc-400 leading-relaxed">
-            <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeSanitize]}
-                components={{
-                    a: ({ href, children }) => (
-                        <a
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors duration-300"
-                        >
-                            {children}
-                        </a>
-                    ),
-                }}
-            >
-                {children}
-            </ReactMarkdown>
-        </div>
-    );
-};
 
 export function Event({ date, title, description = null, img, clockwise, mood, link, markdown = true }) {
     const moodColor = mood ? getMoodColor(mood) : null;
