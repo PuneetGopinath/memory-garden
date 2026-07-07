@@ -6,7 +6,6 @@
 
 import { Link } from "react-router";
 
-import Navbar from "./Navbar";
 import { Event } from "../MemoryCard";
 
 export default function Hero() {
