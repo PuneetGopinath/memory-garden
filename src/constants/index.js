@@ -6,6 +6,11 @@
 
 export const VERSION = "0.3.0";
 
+export const REPO_URL = "https://github.com/PuneetGopinath/memory-garden";
+
+export const MACONDO_HOME = "https://macondo.hackclub.com";
+export const HACKCLUB_HOME = "https://hackclub.com";
+
 export const moodColors = [
     "bg-purple-500/10 text-purple-300 border-purple-500/20",
     "bg-cyan-500/10 text-cyan-300 border-cyan-500/20",
