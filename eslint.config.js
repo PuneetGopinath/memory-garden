@@ -2,7 +2,6 @@ import { defineConfig } from "eslint/config";
 import js from "@eslint/js";
 import globals from "globals";
 import eslintReact from "@eslint-react/eslint-plugin";
-import reactHooks from "eslint-plugin-react-hooks";
 
 export default defineConfig(
     js.configs.recommended,
@@ -28,9 +27,6 @@ export default defineConfig(
                 },
             },
         },
-        plugins: {
-            "react-hooks": reactHooks,
-        },
         rules: {
             "semi": ["error", "always"],
             "quotes": ["error", "double"],
@@ -48,9 +44,8 @@ export default defineConfig(
             "indent": ["error", 4, { "SwitchCase": 1 }],
             "eol-last": ["warn", "always"],
 
-            "react-hooks/rules-of-hooks": "error",
-            "react-hooks/exhaustive-deps": "warn",
-
+            "@eslint-react/rules-of-hooks": "error",
+            "@eslint-react/exhaustive-deps": "warn",
             "@eslint-react/no-nested-component-definitions": "warn",
             "@eslint-react/globals": "error",
             "@eslint-react/no-missing-key": "error",
