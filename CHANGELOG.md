@@ -34,6 +34,7 @@ Dates follow ISO 8601 standard.
 - Bump `vite` from 8.1.0 to 8.1.3 [#13]
 - Bump `@eslint-react/eslint-plugin` from 5.10.3 to 5.11.2 [#14]
 - Bump `supabase` from 2.108.0 to 2.109.0 [#15]
+- Update dependencies using `npm update` to ensure the project uses the latest compatible versions of its dependencies.
 
 ## [v0.3.0] - `2026-07-04`
 
