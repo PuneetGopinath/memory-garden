@@ -10,6 +10,10 @@ Dates follow ISO 8601 standard.
 - Add license information and contribution guidelines in README.md file, also update tech stack and features section
 - Add CONTRIBUTING.md file to provide guidelines for contributing to the project
 
+### UX Enhancements
+
+- Add a "Forgot Password" link in the sign-in page to allow users to reset their password (although feature existed, there was no link)
+
 ### Refactored
 
 - Move sample memories constant from Landing page to constants/index.js file
