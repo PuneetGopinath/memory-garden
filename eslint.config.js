@@ -52,6 +52,14 @@ export default defineConfig(
             "react-hooks/exhaustive-deps": "warn",
 
             "@eslint-react/no-nested-component-definitions": "warn",
+            "@eslint-react/globals": "error",
+            "@eslint-react/no-missing-key": "error",
+            "@eslint-react/no-duplicate-key": "error",
+            "@eslint-react/no-unused-state": "warn",
+            "@eslint-react/jsx-no-children-prop": "error",
+            "@eslint-react/jsx-no-children-prop-with-children": "error",
+            "@eslint-react/dom-no-dangerously-set-innerhtml": "error",
+            "@eslint-react/naming-convention-context-name": "warn",
         },
     },
 );
