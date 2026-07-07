@@ -10,7 +10,7 @@ import supabase from "../utils/supabase";
 
 export const AuthContext = createContext({
     state: "loading",
-    user: null
+    user: null,
 });
 
 export default function AuthProvider({ children }) {

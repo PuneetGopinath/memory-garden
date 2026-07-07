@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 const colors = {
     right: "text-emerald-500",
-    wrong: "text-red-500"
+    wrong: "text-red-500",
 };
 
 const right = "✓";

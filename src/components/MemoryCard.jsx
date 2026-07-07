@@ -37,7 +37,7 @@ export function RenderMarkdown({ children }) {
                         >
                             {children}
                         </a>
-                    )
+                    ),
                 }}
             >
                 {children}
