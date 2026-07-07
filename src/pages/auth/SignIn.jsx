@@ -106,9 +106,10 @@ export default function SignIn() {
                 </button>
             </form>
 
-            <span className="text-sm text-zinc-400">
-                Don't have an account? <Link to="/auth/signup" className="text-purple-400 hover:text-purple-300">Sign Up</Link>
-            </span>
+            <div className="flex flex-col gap-3 text-sm text-zinc-400 mt-4">
+                <p>Forgot your password? <Link to="/auth/reset" className="text-purple-400 hover:text-purple-300">Reset Password</Link></p>
+                <p>Don't have an account? <Link to="/auth/signup" className="text-purple-400 hover:text-purple-300">Sign Up</Link></p>
+            </div>
         </div>
     );
 };
