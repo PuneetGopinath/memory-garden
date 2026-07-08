@@ -13,6 +13,7 @@ export default defineConfig(
             "dist/**",
             "build/**",
             "supabase/functions/**/dist/**",
+            "src/client-dist/**",
         ],
         languageOptions: {
             ecmaVersion: "latest",
