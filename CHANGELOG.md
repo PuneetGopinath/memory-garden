@@ -7,8 +7,9 @@ Dates follow ISO 8601 standard.
 
 ### Documentation
 
-- Add license information and contribution guidelines in README.md file, also update tech stack and features section
+- Add license information, contribution guidelines and roadmap in README.md file, also update tech stack and features section
 - Add CONTRIBUTING.md file to provide guidelines for contributing to the project
+- Add checklist to ensure contributors follow the required steps and make some minor tweaks in pull request template
 
 ### UX Enhancements
 
@@ -24,6 +25,8 @@ Dates follow ISO 8601 standard.
 - Move constants from about page to contants/index.js file
 - Move `RenderMarkdown` component from `MemoryCard` component to a separate file
 - Add `id` to each memory object in sample memories constant to avoid using index as key in memory cards
+- Provide tag as the key instead of item index in memory details page to avoid react warning
+    - Also make sure ai generated tags are unique and lowercase in edge function
 
 ### Chores
 
