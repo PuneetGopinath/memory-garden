@@ -59,8 +59,12 @@ Deno.serve(async (req) => {
     });
 
     const result = JSON.parse(response.text ?? "");
-    console.log(response.text);
-    return Response.json(result, {
+
+    
+    return Response.json({
+        ...result,
+        tags: [...new Set(result.tags.map((tag: string) => tag.toLowerCase().trim()))]
+    }, {
         headers: corsHeaders
     });
 });
