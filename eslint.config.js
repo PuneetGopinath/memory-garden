@@ -4,10 +4,7 @@ import globals from "globals";
 import eslintReact from "@eslint-react/eslint-plugin";
 
 export default defineConfig(
-    js.configs.recommended,
-    eslintReact.configs.recommended,
     {
-        files: ["**/*.{js,jsx}"],
         ignores: [
             "node_modules/**",
             "dist/**",
@@ -15,6 +12,11 @@ export default defineConfig(
             "supabase/functions/**/dist/**",
             "src/client-dist/**",
         ],
+    },
+    js.configs.recommended,
+    eslintReact.configs.recommended,
+    {
+        files: ["**/*.{js,jsx}"],
         languageOptions: {
             ecmaVersion: "latest",
             sourceType: "module",
