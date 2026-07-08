@@ -5,32 +5,48 @@
     Please complete all relevant sections below. Pull requests with incomplete information may be closed until the required information is provided.
 -->
 
+## Checklist
+
+- [ ] I have read the [CONTRIBUTING.md](https://github.com/PuneetGopinath/memory-garden/blob/main/CONTRIBUTING.md) guidelines
+- [ ] I have followed the code style of this project
+- [ ] I have updated documentation if necessary
+- [ ] I have updated the CHANGELOG (if applicable)
+
 ## Description
 
 Describe your changes in detail here
 
-<!-- If this PR closes any issue, mention the number below -->
+<!-- If this PR closes any issue, mention the number below. If not applicable, leave it empty -->
 Closes #
-<!-- Leave blank if no issue exists -->
+<!-- Example:
+Closes #471
+-->
 
 ## Screenshots (if applicable)
 
 Attach screenshots if any changes to UI were made
 
-<!-- Select on the below options by replacing "[ ]" with "[x]" -->
+<!--
+    Select one of the options below by replacing "[ ]" with "[x]"
+    Please DO NOT select multiple options in the "Type of pull request" section.
+-->
 ## Type of pull request
 
-- [ ] **Major Change**
-- [ ] **Minor Change**
-- [ ] **Patch (Bug Fix)**
-- [ ] **Documentation**
-- [ ] **Other:** `_____________` <!-- Replace _____________ with the type of pr you think it is -->
+- [ ] feat
+- [ ] fix
+- [ ] docs
+- [ ] refactor
+- [ ] style
+- [ ] test
+- [ ] chore
+- [ ] Other: describe here
 
 ## Testing
 
 - [ ] I have tested my changes locally
 - [ ] I have verified existing functionality still works
-- [ ] I have not introduced new console errors
+- [ ] I have not introduced new errors or warnings in the browser console
+- [ ] `npm run lint` passes without any errors
 
 ## Code Cognizance and AI Usage
 
