@@ -145,8 +145,8 @@ export default function Memory() {
         tags = (<div className="flex gap-4 text-center flex-wrap justify-center items-center p-4">
             <span className="text-lg font-semibold">Tags:</span>
 
-            {memory.ai_insights.tags.map((tag, index) => (
-                <span key={index} className="text-sm bg-zinc-700 text-zinc-300 px-3 py-1 rounded-full">
+            {memory.ai_insights.tags.map(tag => (
+                <span key={tag} className="text-sm bg-zinc-700 text-zinc-300 px-3 py-1 rounded-full">
                     #{tag}
                 </span>
             ))}
