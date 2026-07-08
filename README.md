@@ -4,15 +4,24 @@ Memory Garden, a digital space that chronologically stores your memories using A
 
 ## Features
 
-- AI Generated Memory Insights
-- Timeline Visualization
-- Smart Tagging
-- Private Capsules (UPCOMING)
+- AI-generated memory insights
+- Interactive timeline visualization
+- Smart AI-generated tags
+- Markdown support for memory descriptions
+- Secure authentication and image uploads with Supabase
+- Organize memories by date
+- Private Capsules *(UPCOMING)*
 
 ## Tech Stack
 
-- ReactJS (with Vite)
-- Supabase (Authentication, Database, Storage and Edge Functions)
+- React (with Vite)
+- Supabase
+    - Authentication
+    - PostgreSQL Database
+    - Storage
+    - Edge Functions
+- Tailwind CSS
+- Google Gemini API
 
 ## License
 
