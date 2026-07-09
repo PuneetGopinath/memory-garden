@@ -14,7 +14,9 @@ import supabase from "../utils/supabase";
 
 export default function DashboardLayout() {
     const handleSignOut = async () => {
-        await supabase.auth.signOut();
+        await supabase.auth.signOut({
+            scope: "local",
+        });
     };
     
     return (
