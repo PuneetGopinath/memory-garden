@@ -54,7 +54,10 @@ export default function SignUp() {
             ({ error } = await supabase.auth.signUp({
                 email,
                 password,
-                options: { data: { username }},
+                options: {
+                    data: { username },
+                    emailRedirectTo: `${window.location.origin}/auth/signin`,
+                },
             }));
         } catch (err) {
             console.error("[SIGN UP] Error signing up:", err);
