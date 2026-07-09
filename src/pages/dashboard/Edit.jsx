@@ -22,7 +22,7 @@ export default function Edit() {
 
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
-    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+    const [date, setDate] = useState(() => new Date().toISOString().split("T")[0]);
     const [img, setImg] = useState(null);
 
     const noChange = memory?.title === title
