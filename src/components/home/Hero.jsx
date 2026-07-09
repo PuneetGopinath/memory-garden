@@ -29,7 +29,7 @@ export default function Hero() {
                     date="July 18, 2025"
                     title="Trip to Kerala"
                     description="A peaceful evening beside the backwaters with family and friends."
-                    img="../assets/kerala.png"
+                    img="/assets/kerala.png"
                     clockwise={true}
                 />
             </div>
