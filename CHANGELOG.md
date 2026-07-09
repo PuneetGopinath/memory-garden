@@ -11,6 +11,7 @@ Dates follow ISO 8601 standard.
 - Access sample memory constant used in hero section from `constants/index.js`
 - Log error response if exists in memory details page where we invoke the generate insights function
 - Pass `memory_date` instead of `date` to the generate insights function in memory details page as the date field was removed previously (this prevented generation of insights in memory details page)
+- Also make `description` optional in generate insights function as it is optional for the user to provide it
 
 ### Refactored
 
