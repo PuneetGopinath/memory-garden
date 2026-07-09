@@ -10,6 +10,10 @@ Dates follow ISO 8601 standard.
 - Move `assets` folder to `public` folder so that vite includes in it in build and the images can be accessed in production build (not an issue for development server)
 - Access sample memory constant used in hero section from `constants/index.js`
 
+### Refactored
+
+- Improve error logging in memory details page to log the error as an object instead of a string
+
 ## [v0.3.1] - `2026-07-08`
 
 ### Documentation
