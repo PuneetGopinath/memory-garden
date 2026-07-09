@@ -33,7 +33,7 @@ export default function Memory() {
                 if (err.code === "PGRST116") {
                     return toast.error("The memory with the given ID does not exist.");
                 }
-                console.error("[MEMORY] Unexpected error fetching memory:", err);
+                console.error("[MEMORY] Unexpected error fetching memory:", err?.toJSON?.() ?? err);
                 return toast.error("An unexpected error occurred while fetching the memory. Please try again later.");
             } finally {
                 setLoading(false);
@@ -71,7 +71,7 @@ export default function Memory() {
 
             if (error) throw error;
         } catch (err) {
-            console.error("[MEMORY] Unexpected error deleting previously exising memory image:", err);
+            console.error("[MEMORY] Unexpected error deleting previously exising memory image:", err?.toJSON?.() ?? err);
             setDeleting(false);
         }
 
@@ -79,7 +79,7 @@ export default function Memory() {
             ({ error } = await supabase.from("memories").delete().eq("id", m_id));
             if (error) throw error;
         } catch (err) {
-            console.error("[MEMORY] Unexpected error deleting memory:", err);
+            console.error("[MEMORY] Unexpected error deleting memory:", err?.toJSON?.() ?? err);
             return toast.error("An unexpected error occurred, please try again later.");
         } finally {
             setDeleting(false);
@@ -107,7 +107,7 @@ export default function Memory() {
             if (error) throw error;
         } catch (err) {
             data = null;
-            console.error("[MEMORY] Error generating insights:", err);
+            console.error("[MEMORY] Error generating insights:", err?.toJSON?.() ?? err);
             return toast.error("Failed to generate insights. Please try again later.", { id: loadingToast });
         }
 
