@@ -30,13 +30,13 @@ Deno.serve(async (req) => {
             headers: corsHeaders
         });
 
-    if (!body.title || !body.description || !body.date)
+    if (!body.title || !body.date)
         return Response.json({ error: "Missing required fields" }, {
             status: 400,
             headers: corsHeaders
         });
 
-    const { title, description, date } = body;
+    const { title, description = null, date } = body; // Description is optional
 
     const response = await genAI.models.generateContent({
         model: "gemini-3.1-flash-lite",
