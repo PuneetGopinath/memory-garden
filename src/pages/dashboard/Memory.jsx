@@ -100,7 +100,7 @@ export default function Memory() {
                 body: JSON.stringify({
                     title: memory.title,
                     description: memory.description,
-                    date: memory.date,
+                    date: memory.memory_date,
                 }),
             }));
 
