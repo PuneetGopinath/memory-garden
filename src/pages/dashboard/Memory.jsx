@@ -104,7 +104,10 @@ export default function Memory() {
                 }),
             }));
 
-            if (error) throw error;
+            if (error) {
+                if (error.context) console.error(await error.context.text());
+                throw error;
+            }
         } catch (err) {
             data = null;
             console.error("[MEMORY] Error generating insights:", err?.toJSON?.() ?? err);
