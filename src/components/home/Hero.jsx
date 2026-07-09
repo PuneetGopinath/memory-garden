@@ -6,6 +6,8 @@
 
 import { Link } from "react-router";
 
+import { memories } from "../../constants";
+
 import { Event } from "../MemoryCard";
 
 export default function Hero() {
@@ -26,10 +28,7 @@ export default function Hero() {
                 <div className="absolute -bottom-12 right-1/4 h-80 w-80 rounded-full bg-cyan-500/30 opacity-30 blur-3xl"></div>
             
                 <Event
-                    date="July 18, 2025"
-                    title="Trip to Kerala"
-                    description="A peaceful evening beside the backwaters with family and friends."
-                    img="/assets/kerala.png"
+                    {...memories[3]}
                     clockwise={true}
                 />
             </div>
