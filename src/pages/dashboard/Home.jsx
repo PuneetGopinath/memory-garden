@@ -99,6 +99,7 @@ export default function Home() {
             memory_date: null,
             ai_insights: null,
         }));
+    const disabled = memories.length === 0;
 
     if (loading)
         return (
@@ -126,17 +127,22 @@ export default function Home() {
                 </Link>
                 <input
                     type="text"
-                    placeholder="Search by title/description..."
-                    className="rounded-full text-sm font-medium border border-white/10 bg-zinc-800 min-w-[40%] p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
+                    disabled={disabled}
+                    placeholder={disabled
+                        ? "Upload your first memory to enable search..."
+                        : "Search by title/description..."}
+                    className="rounded-full text-sm font-medium border border-white/10 bg-zinc-800 min-w-[40%] p-4 inline-block hover:bg-zinc-700 transition-colors duration-300 disabled:cursor-not-allowed disabled:bg-zinc-800/50 disabled:hover:bg-zinc-800/50"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
                 <div className="flex flex-row justify-center items-center gap-4">
                     <span className="text-zinc-400">Sort by:</span>
                     <select
-                        className="rounded-2xl text-sm font-medium border border-white/10 bg-zinc-800 p-4 inline-block hover:bg-zinc-700 transition-colors duration-300"
+                        disabled={disabled}
+                        className="rounded-2xl text-sm font-medium border border-white/10 bg-zinc-800 p-4 inline-block hover:bg-zinc-700 transition-colors duration-300 disabled:cursor-not-allowed disabled:bg-zinc-800/50 disabled:hover:bg-zinc-800/50"
                         value={sort}
                         onChange={(e) => setSort(e.target.value)}
+                        title={disabled ? "Available once you plant your first memory" : "Sort memories by date or title"}
                     >
                         <option value="date_desc">Date (Latest First)</option>
                         <option value="date_asc">Date (Oldest First)</option>
