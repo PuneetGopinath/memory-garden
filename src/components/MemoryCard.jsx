@@ -53,7 +53,7 @@ export function Event({ date, title, description = null, img, clockwise, mood, l
     );
 }
 
-export default function MemoryCard({ column, dot = "purple", ...props }) {
+export default function MemoryCard({ column, markerColor = "purple", ...props }) {
     if ([1, 2].indexOf(column) === -1)
         throw new Error("Invalid column number for MemoryCard. Must be 1 or 2.");
 
@@ -66,7 +66,7 @@ export default function MemoryCard({ column, dot = "purple", ...props }) {
             </div>
 
             <div className="relative flex justify-center w-2/12 pt-32">
-                <div className={`h-5 w-5 rounded-full ${markerColors[dot]} shadow-lg shadow-purple-500/50 z-10`}></div>
+                <div className={`h-5 w-5 rounded-full ${markerColors[markerColor]} shadow-lg shadow-purple-500/50 z-10`}></div>
             </div>
 
             <div className={`w-5/12 ${column === 2 ? "flex justify-start" : ""}`}>

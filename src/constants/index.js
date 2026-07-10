@@ -45,7 +45,7 @@ export const memories = [
         title: "First Hackathon",
         description: "Stayed awake all night building ideas, drinking coffee, and learning more in 24 hours than in months.",
         mood: "⚡ Excited",
-        dot: "purple",
+        markerColor: "purple",
     },
     {
         date: "January 13, 2025",
@@ -53,7 +53,7 @@ export const memories = [
         title: "Temple Festival Night",
         description: "The streets glowed with lamps, music echoed through the air, and the entire evening felt timeless.",
         mood: "🪔 Spiritual",
-        dot: "amber",
+        markerColor: "amber",
     },
     {
         date: "March 28, 2025",
@@ -61,7 +61,7 @@ export const memories = [
         title: "Rainy Evening Drive",
         description: "Driving through empty roads while rain tapped softly against the windows felt strangely peaceful.",
         mood: "🌧 Reflective",
-        dot: "blue",
+        markerColor: "blue",
     },
     {
         date: "July 18, 2025",
@@ -69,7 +69,7 @@ export const memories = [
         title: "Trip to Kerala",
         description: "A peaceful evening beside the backwaters with family and friends.",
         mood: "🌊 Peaceful",
-        dot: "cyan",
+        markerColor: "cyan",
     },
 ]
     .map((m, i) => ({ ...m, markdown: false, id: `demo-${i}`  }));
