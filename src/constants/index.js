@@ -76,18 +76,22 @@ export const memories = [
 
 export const features = [
     {
+        id: 1,
         title: "AI Memory Summaries",
         description: "Get concise summaries of your memories, curated by AI highlighting key moments and emotions.",
     },
     {
+        id: 2,
         title: "Timeline Visualization",
         description: "Organize your memories in a interactive timeline that brings your past to life.",
     },
     {
+        id: 3,
         title: "Smart Tagging",
         description: "Automatically tag your memories by people, places and emotions using AI.",
     },
     {
+        id: 4,
         title: "Private Capsules",
         description: "Create time-locked memory capsules to share with loved ones in the future.",
         metadata: "UPCOMING",

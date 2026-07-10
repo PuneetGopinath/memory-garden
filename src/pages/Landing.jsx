@@ -36,8 +36,8 @@ export default function Landing() {
                     <h5 className="text-zinc-400 max-w-2xl">Memory Garden combines AI, storytelling and timelines to help you relive your memories beautifully.</h5>
                 </div>
                 <div className="w-full py-16 grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
-                    {features.map((f, index) => (
-                        <FeatureCard key={index} {...f} />
+                    {features.map(f => (
+                        <FeatureCard key={f.id} {...f} />
                     ))}
                 </div>
             </section>
