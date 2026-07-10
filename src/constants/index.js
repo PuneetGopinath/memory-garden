@@ -76,24 +76,34 @@ export const memories = [
 
 export const features = [
     {
-        id: 1,
-        title: "AI Memory Summaries",
-        description: "Get concise summaries of your memories, curated by AI highlighting key moments and emotions.",
+        title: "Generate AI Insights",
+        description: "Generate AI-powered moods, emojis and tags for your memories.",
     },
     {
-        id: 2,
-        title: "Timeline Visualization",
-        description: "Organize your memories in a interactive timeline that brings your past to life.",
+        title: "Visualize your Timeline",
+        description: "Organize your memories in an interactive timeline that brings your past to life.",
     },
     {
-        id: 3,
-        title: "Smart Tagging",
-        description: "Automatically tag your memories by people, places and emotions using AI.",
+        title: "Write with Markdown",
+        description: "Write rich memory descriptions with Markdown support, including formatting and links.",
     },
     {
-        id: 4,
-        title: "Private Capsules",
+        title: "Sort Memories",
+        description: "Sort memories by date or title to find what you're looking for faster.",
+    },
+    {
+        title: "Search Memories",
+        description: "Quickly find memories by searching their title or description.",
+    },
+    {
+        title: "Search by Tags & Moods",
+        description: "Quickly find memories by searching for tags or moods.",
+        metadata: "UPCOMING",
+    },
+    {
+        title: "Create Private Capsules",
         description: "Create time-locked memory capsules to share with loved ones in the future.",
         metadata: "UPCOMING",
     },
-];
+]
+    .map((f, i) => ({ ...f, id: `feature-${i}` }));
