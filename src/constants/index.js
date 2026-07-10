@@ -73,3 +73,23 @@ export const memories = [
     },
 ]
     .map((m, i) => ({ ...m, markdown: false, id: `demo-${i}`  }));
+
+export const features = [
+    {
+        title: "AI Memory Summaries",
+        description: "Get concise summaries of your memories, curated by AI highlighting key moments and emotions.",
+    },
+    {
+        title: "Timeline Visualization",
+        description: "Organize your memories in a interactive timeline that brings your past to life.",
+    },
+    {
+        title: "Smart Tagging",
+        description: "Automatically tag your memories by people, places and emotions using AI.",
+    },
+    {
+        title: "Private Capsules",
+        description: "Create time-locked memory capsules to share with loved ones in the future.",
+        metadata: "UPCOMING",
+    },
+];

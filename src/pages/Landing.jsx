@@ -6,7 +6,7 @@
 
 import { Link } from "react-router";
 
-import { memories } from "../constants";
+import { memories, features } from "../constants";
 
 import Hero from "../components/home/Hero";
 
@@ -36,10 +36,9 @@ export default function Landing() {
                     <h5 className="text-zinc-400 max-w-2xl">Memory Garden combines AI, storytelling and timelines to help you relive your memories beautifully.</h5>
                 </div>
                 <div className="w-full py-16 grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
-                    <FeatureCard title="AI Memory Summaries" description="Get concise summaries of your memories, curated by AI highlighting key moments and emotions." />
-                    <FeatureCard title="Timeline Visualization" description="Organize your memories in a interactive timeline that brings your past to life." />
-                    <FeatureCard title="Smart Tagging" description="Automatically tag your memories by people, places and emotions using AI." />
-                    <FeatureCard title="Private Capsules" description="Create time-locked memory capsules to share with loved ones in the future." metadata="UPCOMING" />
+                    {features.map((f, index) => (
+                        <FeatureCard key={index} {...f} />
+                    ))}
                 </div>
             </section>
 
