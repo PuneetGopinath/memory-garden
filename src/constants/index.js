@@ -96,6 +96,11 @@ export const features = [
         description: "Quickly find memories by searching their title or description.",
     },
     {
+        title: "Export Memories",
+        description: "Export your memories as a JSON file to back them up or transfer them to another device.",
+        metadata: "UPCOMING",
+    },
+    {
         title: "Search by Tags & Moods",
         description: "Quickly find memories by searching for tags or moods.",
         metadata: "UPCOMING",
