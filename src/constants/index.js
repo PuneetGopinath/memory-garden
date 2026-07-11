@@ -36,6 +36,9 @@ export const markerColors = {
     amber: "bg-amber-400",
 };
 
+export const MIN_TITLE_LENGTH = 3;
+export const MAX_TITLE_LENGTH = 100;
+export const MAX_DESC_LENGTH = 1000;
 export const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10MB
 
 export const memories = [

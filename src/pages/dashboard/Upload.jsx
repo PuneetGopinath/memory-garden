@@ -9,7 +9,7 @@ import { Link } from "react-router";
 
 import { toast } from "sonner";
 
-import { MAX_IMAGE_SIZE } from "../../constants";
+import { MAX_TITLE_LENGTH, MIN_TITLE_LENGTH, MAX_DESC_LENGTH, MAX_IMAGE_SIZE } from "../../constants";
 
 import { AuthContext } from "../../context/AuthContext";
 
@@ -44,7 +44,15 @@ export default function Upload() {
         const fd = new FormData(e.target);
 
         const title = fd.get("title");
+        if (title.length < MIN_TITLE_LENGTH)
+            return toast.error(`Title must have at least ${MIN_TITLE_LENGTH} characters. Please add more details.`, { duration: 5000 });
+        if (title.length > MAX_TITLE_LENGTH)
+            return toast.error(`Title exceeds ${MAX_TITLE_LENGTH} characters. Please shorten it.`, { duration: 5000 });
+
         const description = fd.get("description");
+        if (description.length > MAX_DESC_LENGTH)
+            return toast.error(`Description exceeds ${MAX_DESC_LENGTH} characters. Please shorten it.`, { duration: 5000 });
+
         const memory_date = fd.get("memory_date");
         const imageFile = fd.get("image");
         let image;
@@ -139,6 +147,8 @@ export default function Upload() {
                         name="title"
                         className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
                         required
+                        minLength={MIN_TITLE_LENGTH}
+                        maxLength={MAX_TITLE_LENGTH}
                     />
                 </label>
 
@@ -148,6 +158,7 @@ export default function Upload() {
                         name="description"
                         className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
                         rows="6"
+                        maxLength={MAX_DESC_LENGTH}
                     />
                 </label>
 
