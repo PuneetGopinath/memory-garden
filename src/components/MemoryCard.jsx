@@ -6,9 +6,9 @@
 
 import { Link } from "react-router";
 
-import RenderMarkdown from "./RenderMarkdown";
-
 import { moodColors, markerColors } from "../constants";
+
+import removeMd from "../utils/removeMd";
 
 function getMoodColor(mood) {
     let hash = 0;
@@ -19,7 +19,7 @@ function getMoodColor(mood) {
     return moodColors[hash % moodColors.length];
 }
 
-export function Event({ date, title, description = null, img, clockwise, mood, link, markdown = true }) {
+export function Event({ date, title, description = null, img, clockwise, mood, link }) {
     const moodColor = mood ? getMoodColor(mood) : null;
 
     return (
@@ -36,16 +36,7 @@ export function Event({ date, title, description = null, img, clockwise, mood, l
                         </Link>
                         : title}
                 </h5>
-                {description &&
-                    (markdown
-                        ? (
-                            <RenderMarkdown>
-                                {description}
-                            </RenderMarkdown>
-                        )
-                        : <p className="text-zinc-400 leading-relaxed">{description}</p>
-                    )
-                }
+                {description && <p className="text-zinc-400 line-clamp-3 leading-relaxed">{removeMd(description)}</p>}
                 {mood && <span className={`${moodColor} border inline-flex items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide`}>{mood}</span>}
             </div>
             {link && <Link to={link} className="block my-2 text-sm w-full text-purple-400 hover:text-purple-300 transition-colors duration-300 font-medium">View Details &rarr;</Link>}

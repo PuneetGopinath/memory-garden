@@ -75,7 +75,7 @@ export const memories = [
         markerColor: "cyan",
     },
 ]
-    .map((m, i) => ({ ...m, markdown: false, id: `demo-${i}`  }));
+    .map((m, i) => ({ ...m, id: `demo-${i}`  }));
 
 export const features = [
     {
@@ -88,7 +88,7 @@ export const features = [
     },
     {
         title: "Write with Markdown",
-        description: "Write rich memory descriptions with Markdown support, including formatting and links.",
+        description: "Write rich memory descriptions with Markdown support in detailed memory pages, including formatting and links.",
     },
     {
         title: "Sort Memories",

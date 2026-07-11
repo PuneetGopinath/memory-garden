@@ -9,7 +9,7 @@ Memory Garden is a digital space that chronologically stores your memories using
 - Interactive timeline visualization
 - AI-generated memory insights
 - Smart AI-generated tags
-- Markdown support for memory descriptions
+- Markdown support for memory descriptions in detailed memory page
 - Organize memories chronologically or by title
 - Private Capsules *(UPCOMING)*
 
