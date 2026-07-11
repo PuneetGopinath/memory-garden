@@ -80,6 +80,14 @@ export default function Edit() {
             i = { image_path: image.data.path };
         }
 
+        if (title.length < MIN_TITLE_LENGTH)
+            return toast.error(`Title must have at least ${MIN_TITLE_LENGTH} characters. Please add more details.`, { duration: 5000 });
+        if (title.length > MAX_TITLE_LENGTH)
+            return toast.error(`Title exceeds ${MAX_TITLE_LENGTH} characters. Please shorten it.`, { duration: 5000 });
+
+        if (desc.length > MAX_DESC_LENGTH)
+            return toast.error(`Description exceeds ${MAX_DESC_LENGTH} characters. Please shorten it.`, { duration: 5000 });
+
         const newValues = {
             title,
             description: desc,
