@@ -115,3 +115,5 @@ export const features = [
     },
 ]
     .map((f, i) => ({ ...f, id: `feature-${i}` }));
+
+export const mdPattern = /[#*_`~[\]()!-]/;

@@ -6,8 +6,10 @@
 
 import removeMarkdown from "remove-markdown";
 
+import { mdPattern } from "../constants";
+
 export default function removeMd(text) {
-    if (!/[#*_`~[\]()!-]/.test(text)) return text;
+    if (!mdPattern.test(text)) return text;
 
     return removeMarkdown(text, {
         stripListLeaders: true,
