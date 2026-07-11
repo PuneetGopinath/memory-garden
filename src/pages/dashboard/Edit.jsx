@@ -9,7 +9,7 @@ import { useParams, Link } from "react-router";
 
 import { toast } from "sonner";
 
-import { MAX_IMAGE_SIZE } from "../../constants";
+import { MIN_TITLE_LENGTH, MAX_TITLE_LENGTH, MAX_DESC_LENGTH, MAX_IMAGE_SIZE } from "../../constants";
 
 import supabase from "../../utils/supabase";
 
@@ -145,6 +145,8 @@ export default function Edit() {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         required
+                        minLength={MIN_TITLE_LENGTH}
+                        maxLength={MAX_TITLE_LENGTH}
                     />
                 </label>
 
@@ -155,6 +157,7 @@ export default function Edit() {
                         name="description"
                         className="rounded-lg bg-zinc-800/50 w-full border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/70"
                         onChange={(e) => setDesc(e.target.value)}
+                        maxLength={MAX_DESC_LENGTH}
                     />
                 </label>
 
