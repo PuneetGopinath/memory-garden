@@ -88,7 +88,7 @@ export const features = [
     },
     {
         title: "Write with Markdown",
-        description: "Write rich memory descriptions with Markdown support in detailed memory pages, including formatting and links.",
+        description: "Write rich memory descriptions with Markdown support. Formatting and links are rendered on the detailed memory page.",
     },
     {
         title: "Sort Memories",
