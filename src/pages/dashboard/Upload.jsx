@@ -35,7 +35,10 @@ async function generateInsights(memory) {
 export default function Upload() {
     const [loading, setLoading] = useState(false);
     const [img, setImg] = useState(null);
+    const [desc, setDesc] = useState("");
     const { user } = useContext(AuthContext);
+
+    const validDesc = desc.length <= MAX_DESC_LENGTH;
 
     const handleUpload = async (e) => {
         e.preventDefault();
@@ -49,8 +52,7 @@ export default function Upload() {
         if (title.length > MAX_TITLE_LENGTH)
             return toast.error(`Title exceeds ${MAX_TITLE_LENGTH} characters. Please shorten it.`, { duration: 5000 });
 
-        const description = fd.get("description");
-        if (description.length > MAX_DESC_LENGTH)
+        if (!validDesc)
             return toast.error(`Description exceeds ${MAX_DESC_LENGTH} characters. Please shorten it.`, { duration: 5000 });
 
         const memory_date = fd.get("memory_date");
@@ -79,7 +81,7 @@ export default function Upload() {
             ({ data, error } = await supabase.from("memories").insert({
                 user_id: user.id,
                 title,
-                description,
+                description: desc,
                 memory_date,
                 image_path: image?.data?.path ?? null,
             }).select().single());
@@ -160,8 +162,11 @@ export default function Upload() {
                         name="description"
                         className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
                         rows="6"
+                        value={desc}
+                        onChange={(e) => setDesc(e.target.value)}
                         maxLength={MAX_DESC_LENGTH}
                     />
+                    <span className={`text-xs font-normal ${validDesc ? "text-green-500" : "text-red-500"}`}>{desc.length}/{MAX_DESC_LENGTH}</span>
                 </label>
 
                 <label className="flex flex-col gap-1">
@@ -194,7 +199,7 @@ export default function Upload() {
                 <button
                     type="submit"
                     className="mt-4 w-full rounded-lg bg-cyan-500 hover:bg-cyan-600 transition-colors duration-300 px-4 py-2 text-white font-medium disabled:cursor-not-allowed disabled:bg-cyan-500/50 disabled:hover:bg-cyan-500/50"
-                    disabled={loading}
+                    disabled={loading || !validDesc}
                 >
                     {loading ? "Uploading..." : "Plant Memory"}
                 </button>

@@ -25,6 +25,8 @@ export default function Edit() {
     const [date, setDate] = useState(() => new Date().toISOString().split("T")[0]);
     const [img, setImg] = useState(null);
 
+    const validDesc = desc.length <= MAX_DESC_LENGTH;
+
     const noChange = memory?.title === title
         && (memory?.description ?? "") === desc
         && memory?.memory_date === date
@@ -85,7 +87,7 @@ export default function Edit() {
         if (title.length > MAX_TITLE_LENGTH)
             return toast.error(`Title exceeds ${MAX_TITLE_LENGTH} characters. Please shorten it.`, { duration: 5000 });
 
-        if (desc.length > MAX_DESC_LENGTH)
+        if (!validDesc)
             return toast.error(`Description exceeds ${MAX_DESC_LENGTH} characters. Please shorten it.`, { duration: 5000 });
 
         const newValues = {
@@ -167,6 +169,7 @@ export default function Edit() {
                         onChange={(e) => setDesc(e.target.value)}
                         maxLength={MAX_DESC_LENGTH}
                     />
+                    <span className={`text-xs font-normal ${validDesc ? "text-green-500" : "text-red-500"}`}>{desc.length}/{MAX_DESC_LENGTH}</span>
                 </label>
 
                 <label className="flex flex-col gap-1">
@@ -202,7 +205,7 @@ export default function Edit() {
                 <button
                     type="submit"
                     className="rounded-lg w-full mt-4 p-2 font-bold bg-cyan-500 hover:bg-cyan-400 disabled:bg-cyan-900 disabled:hover:bg-cyan-900 disabled:text-zinc-400 disabled:cursor-not-allowed"
-                    disabled={saving || noChange}
+                    disabled={saving || noChange || !validDesc}
                     title={noChange ? "No changes made to save" : "Update this memory"}
                 >
                     {saving
