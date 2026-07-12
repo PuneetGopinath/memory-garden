@@ -11,12 +11,19 @@ Dates follow ISO 8601 standard.
 - Restrict sign outs to sessions in other devices during sign out by setting scope to `local` in supabase sign out call
 - Add email redirect to in sign up supabase call so that email sent redirects to the same site after confirmation of email address
 
+### Documentation
+
+- Add CODE_OF_CONDUCT based on contributor covenant v3 to ensure a welcoming and inclusive environment without any form of harassment or discrimination
+
 ### UX Enhancements
 
 - Disable search and sort when no memories has been uploaded (also show placeholder and tooltip accordingly)
 - Update feature list in landing page to better reflect the current capabilities and roadmap
 - Add constraints to title and description in edit and upload memory page
 - Display plain-text previews instead of markdown in memory cards due to space constraints, and preserve full markdown rendering in memory details page
+- Set autocomplete to `off` in upload and edit memory pages
+- Set autocomplete for auth forms in sign in, sign up, reset password, new password pages as per requirements
+- Add word limit counter for description in upload and edit memory pages to provide display the number of characters used and the maximum allocated characters.
 
 ### Refactored
 
@@ -26,6 +33,7 @@ Dates follow ISO 8601 standard.
 ### Chores
 
 - Add `remove-markdown` package to remove markdown before rendering on memory card component
+- Run `npm update` to update grandchild dependencies
 
 ## [v0.3.2] - `2026-07-09`
 
