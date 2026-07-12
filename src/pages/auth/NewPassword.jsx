@@ -115,7 +115,7 @@ export default function NewPassword() {
                 </p> {/* Implement such that they cannot use last 2-3 recently used passwords */}
             </div>
 
-            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit} autoComplete="on">
                 <label className="flex flex-col gap-1">
                     <span>New Password: <span className="text-red-500">*</span></span>
                     <input
@@ -126,6 +126,7 @@ export default function NewPassword() {
                         onFocus={() => setTouched(true)}
                         required
                         disabled={loading}
+                        autoComplete="new-password"
                     />
                 </label>
 
@@ -138,6 +139,7 @@ export default function NewPassword() {
                         onChange={(e) => setConfirmPwd(e.target.value)}
                         required
                         disabled={loading}
+                        autoComplete="new-password"
                     />
                 </label>
 

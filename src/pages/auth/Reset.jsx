@@ -58,7 +58,7 @@ export default function Reset() {
                         </p>
                     </div>
                     
-                    <form className="flex flex-col gap-4" onSubmit={handleReset}>
+                    <form className="flex flex-col gap-4" onSubmit={handleReset} autoComplete="on">
                         <label>
                             <span className="text-sm text-zinc-400">Email Address <span className="text-red-500">*</span></span>
                             <input
@@ -67,6 +67,7 @@ export default function Reset() {
                                 className="mt-1 w-full rounded-lg bg-zinc-800/50 border border-white/20 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
                                 disabled={loading}
                                 required
+                                autoComplete="email"
                             />
                         </label>
 

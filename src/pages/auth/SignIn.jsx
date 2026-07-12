@@ -65,7 +65,7 @@ export default function SignIn() {
                 <p className="text-zinc-400">Continue preserving your memories</p>
             </div>
 
-            <form className="flex flex-col gap-4 py-4" onSubmit={handleSubmit}>
+            <form className="flex flex-col gap-4 py-4" onSubmit={handleSubmit} autoComplete="on">
                 <label className="flex flex-col gap-1">
                     <span className="text-sm text-zinc-400">Email <span className="text-red-500">*</span></span>
                     <input
