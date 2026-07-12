@@ -169,7 +169,7 @@ export default function Edit() {
                         onChange={(e) => setDesc(e.target.value)}
                         maxLength={MAX_DESC_LENGTH}
                     />
-                    <span className={`text-xs font-normal ${validDesc ? "text-green-500" : "text-red-500"}`}>{desc.length}/{MAX_DESC_LENGTH}</span>
+                    <span className={`text-xs font-normal ${validDesc ? "" : "text-red-500"}`}>{desc.length}/{MAX_DESC_LENGTH}</span>
                 </label>
 
                 <label className="flex flex-col gap-1">
