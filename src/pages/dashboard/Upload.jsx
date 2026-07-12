@@ -99,6 +99,8 @@ export default function Upload() {
             setLoading(false);
         }
 
+        e.target.clear();
+
         const toastId = toast.success("Memory planted successfully!", {
             description: "AI insights are optional and can be done later in the memory details page.",
             action: {
@@ -139,7 +141,7 @@ export default function Upload() {
                 <p className="text-zinc-400">Add memories to your memory garden</p>
             </div>
 
-            <form onSubmit={handleUpload} className="space-y-4">
+            <form onSubmit={handleUpload} className="space-y-4" autoComplete="off">
                 <label className="flex flex-col gap-1">
                     <span className="text-sm font-medium">Title <span className="text-red-500">*</span></span>
                     <input

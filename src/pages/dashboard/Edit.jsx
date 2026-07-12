@@ -143,7 +143,7 @@ export default function Edit() {
                 <span className="text-zinc-400">Make your memory plants error free</span>
             </div>
 
-            <form onSubmit={handleEdit} className="space-y-4">
+            <form onSubmit={handleEdit} className="space-y-4" autoComplete="off">
                 <label className="flex flex-col gap-1">
                     <span className="text-sm font-medium">Title <span className="text-red-500">*</span></span>
                     <input
