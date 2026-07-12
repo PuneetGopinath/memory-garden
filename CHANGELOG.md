@@ -17,23 +17,24 @@ Dates follow ISO 8601 standard.
 
 ### UX Enhancements
 
-- Disable search and sort when no memories has been uploaded (also show placeholder and tooltip accordingly)
+- Disable search and sort controls when no memories has been uploaded and display appropriate placeholders and tooltips
 - Update feature list in landing page to better reflect the current capabilities and roadmap
 - Add constraints to title and description in edit and upload memory page
-- Display plain-text previews instead of markdown in memory cards due to space constraints, and preserve full markdown rendering in memory details page
+- Display plain-text previews instead of rendered Markdown in memory cards due to space constraints, and preserve full markdown rendering in memory details page
 - Set autocomplete to `off` in upload and edit memory pages
 - Set autocomplete for auth forms in sign in, sign up, reset password, new password pages as per requirements
-- Add word limit counter for description in upload and edit memory pages to provide display the number of characters used and the maximum allocated characters.
+- Add character limit counter for description in upload and edit memory pages to provide display the number of characters used and the maximum allocated characters.
 
 ### Refactored
 
 - Rename `dot` to `markerColor` in memory card component for better readability
-- Move features constant from landing page to constants/index.js and also changed wording of title and description
+- Move features constant from landing page to constants/index.js
+- Update wording of landing page feature title and description
 
 ### Chores
 
 - Add `remove-markdown` package to remove markdown before rendering on memory card component
-- Run `npm update` to update grandchild dependencies
+- Run `npm update` to update project dependencies
 
 ## [v0.3.2] - `2026-07-09`
 
