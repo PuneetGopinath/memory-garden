@@ -38,11 +38,22 @@ export default function Profile() {
         fetchProfileData();
     }, [user?.id]);
 
+    const username = user?.user_metadata?.username || "Anonymous User";
+
     return loading
         ? <div className="text-center text-2xl font-bold">Loading...</div>
         : (
             <div className="bg-zinc-900/60 border border-white/10 rounded-3xl backdrop-blur shadow-2xl p-8">
-                <h1 className="text-2xl font-bold">Hi there, {user?.user_metadata?.username || "Anonymous User"}</h1>
+                <div className="flex items-center gap-4">
+                    <div className="flex rounded-2xl w-20 h-20 bg-purple-950/20 border border-white/10 p-2 text-center items-center justify-center">
+                        <span className="font-semibold text-2xl">{username.charAt(0).toUpperCase()}</span>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <h1 className="text-2xl font-bold">{username}</h1>
+                        <span className="text-sm text-zinc-400">{user?.email}</span>
+                        <span className="text-sm text-zinc-400">Member since {new Date(user?.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long" })}</span>
+                    </div>
+                </div>
 
                 <section className="mt-6 flex flex-col gap-2 text-sm text-zinc-400">
                     <h2 className="text-lg font-semibold text-zinc-300">Account Details</h2>
