@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-import { useContext, useState, useEffect } from "react";
+import { use, useState, useEffect } from "react";
 import { Link } from "react-router";
 
 import { AuthContext } from "../../context/AuthContext";
@@ -14,7 +14,7 @@ import Timeline from "../../components/Timeline";
 import supabase from "../../utils/supabase";
 
 export default function Home() {
-    const { user } = useContext(AuthContext);
+    const { user } = use(AuthContext);
 
     const [memories, setMemories] = useState([]);
     const [loading, setLoading] = useState(true);

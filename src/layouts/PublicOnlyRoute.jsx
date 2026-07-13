@@ -4,13 +4,13 @@
  * License: MIT (see LICENSE)
  */
 
-import { useContext } from "react";
+import { use } from "react";
 import { Outlet, Navigate } from "react-router";
 
 import { AuthContext } from "../context/AuthContext";
 
 export default function PublicOnlyRoute() {
-    const { state } = useContext(AuthContext);
+    const { state } = use(AuthContext);
 
     if (state === "loading")
         return (

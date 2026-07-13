@@ -4,13 +4,13 @@
  * License: MIT (see LICENSE)
  */
 
-import { useContext } from "react";
+import { use } from "react";
 import { Outlet, Navigate, useLocation } from "react-router";
 
 import { AuthContext } from "../context/AuthContext";
 
 export default function ProtectedRoute() {
-    const { state } = useContext(AuthContext);
+    const { state } = use(AuthContext);
     const location = useLocation();
 
     if (state === "loading")

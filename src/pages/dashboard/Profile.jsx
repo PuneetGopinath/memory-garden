@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, use } from "react";
 
 import { toast } from "sonner";
 
@@ -13,7 +13,7 @@ import { AuthContext } from "../../context/AuthContext";
 import supabase from "../../utils/supabase";
 
 export default function Profile() {
-    const { user } = useContext(AuthContext);
+    const { user } = use(AuthContext);
     const [loading, setLoading] = useState(true);
     const [totalMemories, setTotalMemories] = useState(0);
 

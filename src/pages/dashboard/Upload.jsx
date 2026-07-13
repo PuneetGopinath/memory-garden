@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-import { useState, useContext } from "react";
+import { useState, use } from "react";
 import { Link } from "react-router";
 
 import { toast } from "sonner";
@@ -36,7 +36,7 @@ export default function Upload() {
     const [loading, setLoading] = useState(false);
     const [img, setImg] = useState(null);
     const [desc, setDesc] = useState("");
-    const { user } = useContext(AuthContext);
+    const { user } = use(AuthContext);
 
     const validDesc = desc.length <= MAX_DESC_LENGTH;
 
