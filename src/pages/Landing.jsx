@@ -23,7 +23,9 @@ export default function Landing() {
                     <h3 className="text-4xl font-bold tracking-tight">Built for preserving moments that matter.</h3>
                     <h5 className="text-zinc-400 max-w-2xl">Memory Garden combines AI, storytelling and timelines to help you relive your memories beautifully.</h5>
                 </div>
-                <div className="w-full py-16 grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div className="relative w-full py-16 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    <div className="absolute -top-20 md:-left-20 md:top-auto h-90 w-90 rounded-full bg-green-500/50 opacity-30 blur-3xl"></div>
+                    <div className="absolute -bottom-20 md:-right-20 md:bottom-auto h-90 w-90 rounded-full bg-cyan-500/50 opacity-30 blur-3xl"></div>
                     {features.map(f => (
                         <FeatureCard key={f.id} {...f} />
                     ))}
@@ -52,7 +54,7 @@ export default function Landing() {
                         <h5 className="text-zinc-400 max-w-2xl mx-auto">Build a living timeline of your favorite moments and preserve them beautifully with Memory Garden.</h5>
                     </div>
                     <div className="flex items-center justify-center gap-6 mt-10">
-                        <Link to="/auth/signup" className="font-medium bg-white text-black px-6 py-3 rounded-xl hover:scale-105 transition-all">Create Your Garden</Link>
+                        <Link to="/auth/signup" className="font-medium bg-white text-black px-6 py-3 rounded-xl hover:scale-102 transition-all">Create Your Garden</Link>
                         <a href="#timeline" className="font-medium border border-zinc-700 px-6 py-3 rounded-xl hover:bg-white/5 transition-all duration-300">View Demo Timeline</a>
                     </div>
                 </div>
