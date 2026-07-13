@@ -36,7 +36,7 @@ export default function Profile() {
         }
 
         fetchProfileData();
-    }, []);
+    }, [user?.id]);
 
     return loading
         ? <div className="text-center text-2xl font-bold">Loading...</div>
