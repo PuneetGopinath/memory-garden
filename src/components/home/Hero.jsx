@@ -24,8 +24,8 @@ export default function Hero() {
             </div>
 
             <div className="flex items-center justify-center relative">
-                <div className="absolute -top-12 left-1/4 h-72 w-72 animate-pulse rounded-full bg-purple-500/40 opacity-30 blur-3xl"></div>
-                <div className="absolute -bottom-12 right-1/4 h-80 w-80 rounded-full bg-cyan-500/30 opacity-30 blur-3xl"></div>
+                <div className="pointer-events-none absolute -top-12 left-1/4 h-72 w-72 animate-pulse rounded-full bg-purple-500/40 opacity-30 blur-3xl"></div>
+                <div className="pointer-events-none absolute -bottom-12 right-1/4 h-80 w-80 rounded-full bg-cyan-500/30 opacity-30 blur-3xl"></div>
             
                 <Event
                     {...memories[3]}
