@@ -24,12 +24,15 @@ Dates follow ISO 8601 standard.
 - Set autocomplete to `off` in upload and edit memory pages
 - Set autocomplete for auth forms in sign in, sign up, reset password, new password pages as per requirements
 - Add character limit counter for description in upload and edit memory pages to provide display the number of characters used and the maximum allocated characters.
+- Added atmospheric glows for features section and removed animate pulse for metadata badge in features section, also made some minor style tweaks in the landing page
 
 ### Refactored
 
 - Rename `dot` to `markerColor` in memory card component for better readability
 - Move features constant from landing page to constants/index.js
 - Update wording of landing page feature title and description
+- Move `FeatureCard` component from landing page to a separate file
+- Replace `useContext` with `use` for better flexibility
 
 ### Chores
 
