@@ -58,12 +58,12 @@ export default function Profile() {
                 <hr className="w-full my-6 border-white/10" />
 
                 <section className="mt-6 grid grid-cols-1 md:grind-cols-2 gap-4 text-sm text-zinc-400">
-                    <div className="bg-zinc-900 flex flex-col gap-2 rounded-lg p-4">
+                    <div className="bg-zinc-900 flex flex-col gap-3 rounded-lg p-4">
                         <span className="text-lg font-semibold">Total Memories</span>
                         <span className="text-2xl font-bold text-white">{totalMemories}</span>
                         <span className="text-sm">Memories preserved</span>
                     </div>
-                    <div className="bg-zinc-900 flex flex-col gap-2 rounded-lg p-4">
+                    <div className="bg-zinc-900 flex flex-col gap-3 rounded-lg p-4">
                         <span className="text-lg font-semibold">Account Status</span>
                         <span className="text-2xl font-bold text-white">{user?.confirmed_at ? "Active" : "Inactive"}</span>
                         <span className="text-sm">{user?.email_confirmed_at ? "Email confirmed" : "Email not confirmed"}</span>
