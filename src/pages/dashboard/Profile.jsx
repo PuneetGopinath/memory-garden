@@ -76,6 +76,7 @@ export default function Profile() {
                     <h2 className="text-lg font-semibold text-zinc-300">Account Details</h2>
 
                     <span>Email Address: {user?.email}</span>
+                    <span>Last SignedIn At: {user?.last_sign_in_at ? new Date(user.last_sign_in_at).toLocaleString("en-US", { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "Info not available"}</span>
                     <span>Account Created: {new Date(user?.created_at).toLocaleString()}</span>
                 </section>
             </div>
