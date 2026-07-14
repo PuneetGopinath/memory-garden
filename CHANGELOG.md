@@ -26,9 +26,9 @@ Dates follow ISO 8601 standard.
 - Set autocomplete for auth forms in sign in, sign up, reset password, new password pages as per requirements
 - Add character limit counter for description in upload and edit memory pages to provide display the number of characters used and the maximum allocated characters.
 - Added atmospheric glows for features section and removed animate pulse for metadata badge in features section, also made some minor style tweaks in the landing page
-- Add `pointer-events-none` to atmospheric glows in landing page to prevent them from blocking pointer events on the underlying elements
-- Polish the profile page by adding a dummy profile picture, stating "member since " below the username and email, displaying memory stats as a card, displaying last sign in and some minor style tweaks
-- Increase opacities for background color for atmospheric glows in hero and CTA sections of landing page to make them more visible
+- Prevent decorative atmospheric glows in landing page from blocking pointer events
+- Redesign the profile page with a profile avatar, membership information, memory stats as a card, last sign in and some minor style tweaks
+- Improve visibility by increasing opacities for background color for atmospheric glows in hero and CTA sections of landing page
 
 ### Refactored
 
