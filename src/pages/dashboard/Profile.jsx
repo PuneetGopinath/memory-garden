@@ -75,9 +75,9 @@ export default function Profile() {
                 <section className="mt-6 flex flex-col gap-2 text-sm text-zinc-400">
                     <h2 className="text-lg font-semibold text-zinc-300">Account Details</h2>
 
-                    <span>Email Address: {user?.email}</span>
-                    <span>Last SignedIn At: {user?.last_sign_in_at ? new Date(user.last_sign_in_at).toLocaleString("en-US", { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "Info not available"}</span>
-                    <span>Account Created: {new Date(user?.created_at).toLocaleString()}</span>
+                    <div><span className="font-medium text-zinc-300">Email:</span> {user?.email}</div>
+                    <div><span className="font-medium text-zinc-300">Last Sign In:</span> {user?.last_sign_in_at ? new Date(user.last_sign_in_at).toLocaleString("en-US", { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "Info not available"}</div>
+                    <div><span className="font-medium text-zinc-300">Account Created:</span> {new Date(user?.created_at).toLocaleString()}</div>
                 </section>
             </div>
         );
