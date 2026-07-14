@@ -45,8 +45,8 @@ export default function Landing() {
             </section>
 
             <section className="cta flex flex-col relative overflow-hidden items-center text-center bg-zinc-950 py-24 px-8" id="cta">
-                <div className="pointer-events-none absolute -top-12 left-1/4 h-72 w-72 animate-pulse rounded-full bg-purple-500/20 opacity-30 blur-3xl"></div>
-                <div className="pointer-events-none absolute -bottom-12 right-1/4 h-80 w-80 rounded-full bg-cyan-500/30 opacity-30 blur-3xl"></div>
+                <div className="pointer-events-none absolute -top-12 left-1/4 h-72 w-72 animate-pulse rounded-full bg-purple-500/50 opacity-30 blur-3xl"></div>
+                <div className="pointer-events-none absolute -bottom-12 right-1/4 h-80 w-80 rounded-full bg-cyan-500/60 opacity-30 blur-3xl"></div>
                 <div className="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-zinc-900/70 backdrop-blur shadow-2xl p-10 lg:p-16">
                     <div className="space-y-4">
                         <span className="text-purple-400 uppercase tracking-widest text-sm font-medium">START YOUR GARDEN</span>
