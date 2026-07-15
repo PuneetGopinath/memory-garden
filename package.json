@@ -15,6 +15,7 @@
   "author": "PuneetGopinath",
   "scripts": {
     "build": "vite build",
+    "preview": "vite preview",
     "dev": "vite",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix"
