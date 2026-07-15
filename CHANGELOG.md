@@ -3,6 +3,19 @@
 Format: [vx.y.z] - `YYYY-MM-DD`
 Dates follow ISO 8601 standard.
 
+## [v0.3.4] - `yet-to-release`
+
+### Documentation
+
+- Add screenshots in README.md to provide a overview of the user interface
+- Add self hosting guide in README.md to help users setup on their own
+- Improve wording in README.md
+
+### Chores
+
+- Bump `@supabase/supabase-js` from 2.110.2 to 2.110.4 [#16]
+- Bump `@eslint-react/eslint-plugin` from 5.14.5 to 5.14.8 [#17]
+
 ## [v0.3.3] - `2026-07-14`
 
 ### Bug Fixes
@@ -235,6 +248,8 @@ but this method makes sure the screen reader reads only the title
 - Image replacement during editing not supported
 - AI not used yet to generate summaries and mood
 
+[#17]: https://github.com/PuneetGopinath/memory-garden/pull/17
+[#16]: https://github.com/PuneetGopinath/memory-garden/pull/16
 [#15]: https://github.com/PuneetGopinath/memory-garden/pull/15
 [#14]: https://github.com/PuneetGopinath/memory-garden/pull/14
 [#13]: https://github.com/PuneetGopinath/memory-garden/pull/13
