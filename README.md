@@ -13,6 +13,28 @@ Memory Garden is a digital space that chronologically stores your memories using
 - Organize memories chronologically or by title
 - Private Capsules *(UPCOMING)*
 
+## Screenshots
+
+### Landing Page
+
+![Landing Page](.github/assets/landing.png)
+
+### Dashboard
+
+![Dashboard](.github/assets/dashboard.png)
+
+### Upload Memory
+
+![Upload Memory](.github/assets/upload_memory.png)
+
+### Memory Details
+
+![Memory Details](.github/assets/memory_details.png)
+
+### Profile
+
+![Profile](.github/assets/profile.png)
+
 ## Tech Stack
 
 - React (with Vite)
