@@ -1,5 +1,7 @@
 # Memory Garden
 
+![Landing Page](.github/assets/landing.png)
+
 Memory Garden is an web application where you can store your memories and make them feel real inside of they sitting dormant inside a folder. Memory Garden also uses AI to generate insights. Check the live running application at [https://memory.puneetg.me](https://memory.puneetg.me).
 
 ## Features
@@ -13,10 +15,6 @@ Memory Garden is an web application where you can store your memories and make t
 - Store memories in private capsules *(UPCOMING)*
 
 ## Screenshots
-
-### Landing Page
-
-![Landing Page](.github/assets/landing.png)
 
 ### Dashboard
 
