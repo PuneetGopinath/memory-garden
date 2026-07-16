@@ -20,8 +20,8 @@ export default function Landing() {
             <section className="features bg-linear-to-b from-zinc-950 via-zinc-900 to-zinc-950 max-w-7xl mx-auto py-24 px-8" id="features">
                 <div className="space-y-4">
                     <span className="text-purple-400 uppercase tracking-widest text-sm font-medium">FEATURES</span>
-                    <h3 className="text-4xl font-bold tracking-tight">Built for preserving moments that matter.</h3>
-                    <h5 className="text-zinc-400 max-w-2xl">Memory Garden combines AI, storytelling and timelines to help you relive your memories beautifully.</h5>
+                    <h3 className="text-4xl font-bold tracking-tight">Features that make your memories alive.</h3>
+                    <h5 className="text-zinc-400 max-w-2xl">We combine Artificial Intelligence and timelines to make you nostalgic of your favorite moments.</h5>
                 </div>
                 <div className="relative w-full py-16 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
                     <div className="pointer-events-none absolute -top-20 md:-left-20 md:top-auto h-90 w-90 rounded-full bg-green-500/50 opacity-30 blur-3xl"></div>
@@ -36,8 +36,8 @@ export default function Landing() {
                 <div className="max-w-7xl mx-auto py-24 px-8">
                     <div className="text-center space-y-4 mb-20">
                         <span className="text-purple-400 uppercase tracking-widest text-sm font-medium">TIMELINE</span>
-                        <h3 className="text-4xl lg:text-5xl font-bold tracking-tight">Your journey, beautifully organized.</h3>
-                        <h5 className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">See your life unfold through a visually stunning timeline that connects your most cherished moments.</h5>
+                        <h3 className="text-4xl lg:text-5xl font-bold tracking-tight">Gorgeous visualization of memories.</h3>
+                        <h5 className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">See your voyage to remember the moments that you cherish.</h5>
                     </div>
 
                     <Timeline memories={memories} />
@@ -50,8 +50,8 @@ export default function Landing() {
                 <div className="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-zinc-900/70 backdrop-blur shadow-2xl p-10 lg:p-16">
                     <div className="space-y-4">
                         <span className="text-purple-400 uppercase tracking-widest text-sm font-medium">START YOUR GARDEN</span>
-                        <h3 className="text-4xl font-bold max-w-2xl mx-auto tracking-tight">Your story deserves to be remembered.</h3>
-                        <h5 className="text-zinc-400 max-w-2xl mx-auto">Build a living timeline of your favorite moments and preserve them beautifully with Memory Garden.</h5>
+                        <h3 className="text-4xl font-bold max-w-2xl mx-auto tracking-tight">Your story deserves to be alive in your brains.</h3>
+                        <h5 className="text-zinc-400 max-w-2xl mx-auto">Build a timeline of your nostalgic moments and store them wonderfully using Memory Garden.</h5>
                     </div>
                     <div className="flex items-center justify-center gap-6 mt-10">
                         <Link to="/auth/signup" className="font-medium bg-white text-black px-6 py-3 rounded-xl hover:scale-102 transition-all">Create Your Garden</Link>
