@@ -15,6 +15,7 @@ Dates follow ISO 8601 standard.
 ### UX Enhancements
 
 - Write sentences by myself instead of AI-generated text in landing page and about page
+- Hide the overflowed part of the atmospheric glows in features section
 
 ### Chores
 
