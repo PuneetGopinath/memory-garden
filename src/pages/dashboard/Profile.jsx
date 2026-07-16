@@ -8,7 +8,7 @@ import { useState, useEffect, use } from "react";
 
 import { toast } from "sonner";
 
-import { AuthContext } from "../../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 
 import supabase from "../../utils/supabase";
 

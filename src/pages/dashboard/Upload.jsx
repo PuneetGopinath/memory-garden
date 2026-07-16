@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 import { MAX_TITLE_LENGTH, MIN_TITLE_LENGTH, MAX_DESC_LENGTH, MAX_IMAGE_SIZE } from "../../constants";
 
-import { AuthContext } from "../../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 
 import supabase from "../../utils/supabase";
 

@@ -7,7 +7,7 @@
 import { use, useState, useEffect } from "react";
 import { Link } from "react-router";
 
-import { AuthContext } from "../../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 
 import Timeline from "../../components/Timeline";
 

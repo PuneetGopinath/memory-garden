@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 
 import { VERSION } from "./constants";
 
-import AuthProvider from "./context/AuthContext";
+import AuthProvider from "./context/AuthProvider";
 
 import HomeLayout from "./layouts/HomeLayout";
 import AuthLayout from "./layouts/AuthLayout";

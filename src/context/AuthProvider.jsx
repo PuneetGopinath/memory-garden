@@ -4,14 +4,11 @@
  * License: MIT (see LICENSE)
  */
 
-import { createContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+
+import AuthContext from "./AuthContext";
 
 import supabase from "../utils/supabase";
-
-export const AuthContext = createContext({
-    state: "loading",
-    user: null,
-});
 
 export default function AuthProvider({ children }) {
     const [state, setState] = useState("loading");

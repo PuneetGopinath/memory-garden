@@ -7,7 +7,7 @@
 import { use } from "react";
 import { Outlet, Navigate, useLocation } from "react-router";
 
-import { AuthContext } from "../context/AuthContext";
+import AuthContext from "../context/AuthContext";
 
 export default function ProtectedRoute() {
     const { state } = use(AuthContext);
