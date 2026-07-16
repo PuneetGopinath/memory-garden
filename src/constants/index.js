@@ -4,7 +4,7 @@
  * License: MIT (see LICENSE)
  */
 
-export const VERSION = "0.3.3";
+export const VERSION = "0.3.4";
 
 export const REPO_URL = "https://github.com/PuneetGopinath/memory-garden";
 
