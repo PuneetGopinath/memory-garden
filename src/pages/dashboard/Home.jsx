@@ -156,7 +156,18 @@ export default function Home() {
                 {
                     finalMemories.length > 0
                         ? (<Timeline memories={finalMemories} className="mb-8" links={true} />)
-                        : (<span className="text-zinc-400 mt-4 block mb-8 text-center">Your memory garden awaits for your first memory.<br />Plant your memories and watch your timeline grow.</span>)
+                        : (disabled
+                            ? (<span className="text-zinc-400 mt-4 block mb-8 text-center">
+                                Your memory garden awaits for your first memory.
+                                <br />
+                                Plant your memories and watch your timeline grow.
+                            </span>)
+                            : (<span className="text-zinc-400 mt-4 block mb-8 text-center">
+                                Please try searching for a different title or description.
+                                <br />
+                                No memories match your search criteria.
+                            </span>)
+                        )
                 }
             </div>
         </div>
