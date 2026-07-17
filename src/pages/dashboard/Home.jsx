@@ -122,9 +122,9 @@ export default function Home() {
             </div>
 
             <div className="flex flex-row justify-center items-center gap-8 p-4 mb-8">
-                <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 hover:bg-cyan-500 transition-colors duration-300 inline-block">
+                {!disabled && <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 hover:bg-cyan-500 transition-colors duration-300 inline-block">
                     Upload Memories
-                </Link>
+                </Link>}
                 <input
                     type="text"
                     disabled={disabled}
@@ -157,16 +157,19 @@ export default function Home() {
                     finalMemories.length > 0
                         ? (<Timeline memories={finalMemories} className="mb-8" links={true} />)
                         : (disabled
-                            ? (<span className="text-zinc-400 mt-4 block mb-8 text-center">
-                                Your memory garden awaits for your first memory.
-                                <br />
-                                Plant your memories and watch your timeline grow.
-                            </span>)
-                            : (<span className="text-zinc-400 mt-4 block mb-8 text-center">
+                            ? (<div className="flex flex-col gap-4 text-center justify-center items-center mx-auto">
+                                <p className="text-zinc-400 mt-4 block mb-8 text-center">
+                                    Your memory garden awaits for your first memory.
+                                    <br />
+                                    Plant your memories and watch your timeline grow.
+                                </p>
+                                <Link to="upload" className="p-4 bg-cyan-400 hover:bg-cyan-500 rounded-2xl transition-colors duration-300">Upload your first memory</Link>
+                            </div>)
+                            : (<p className="text-zinc-400 mt-4 block mb-8 text-center">
                                 Please try searching for a different title or description.
                                 <br />
                                 No memories match your search criteria.
-                            </span>)
+                            </p>)
                         )
                 }
             </div>
