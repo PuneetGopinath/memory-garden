@@ -12,13 +12,13 @@ import Footer from "../components/Footer";
 
 import supabase from "../utils/supabase";
 
+const handleSignOut = async () => {
+    await supabase.auth.signOut({
+        scope: "local",
+    });
+};
+
 export default function DashboardLayout() {
-    const handleSignOut = async () => {
-        await supabase.auth.signOut({
-            scope: "local",
-        });
-    };
-    
     return (
         <>
             <Toaster position="top-right" richColors theme="dark" offset={{ top: "5rem", right: "1rem" }} />
