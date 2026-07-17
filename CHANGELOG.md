@@ -11,7 +11,6 @@ Dates follow ISO 8601 standard.
 - Add self hosting guide in README.md to help users setup on their own
 - Improve wording in README.md
 
-
 ### UX Enhancements
 
 - Write sentences by myself instead of AI-generated text in landing page and about page
