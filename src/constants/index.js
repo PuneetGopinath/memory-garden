@@ -36,6 +36,8 @@ export const markerColors = {
     amber: "bg-amber-400",
 };
 
+export const MIN_PASSWORD_LENGTH = 8;
+
 export const MIN_TITLE_LENGTH = 3;
 export const MAX_TITLE_LENGTH = 100;
 export const MAX_DESC_LENGTH = 1000;
