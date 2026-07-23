@@ -3,6 +3,23 @@
 Format: [vx.y.z] - `YYYY-MM-DD`
 Dates follow ISO 8601 standard.
 
+## [unreleased]
+
+### Bug Fixes
+
+- Render correct message when no memories match search criteria
+
+### UX Enhancements
+
+- Add a CTA button to upload memories when no memories have been uploaded so far and hide the default upload button in dashboard home
+- Add upper bound to password length and validate it in authentication pages
+
+### Refactored
+
+- Move AuthProvider to a separate file and change extension of AuthContext to a js file (this fixes a warning)
+- Move function definition outside react component for better performance
+- Move constant password length to constants folder
+
 ## [v0.3.4] - `2026-07-16`
 
 ### Documentation
@@ -267,6 +284,7 @@ but this method makes sure the screen reader reads only the title
 [#6]: https://github.com/PuneetGopinath/memory-garden/pull/6
 [#5]: https://github.com/PuneetGopinath/memory-garden/pull/5
 
+[unreleased]: https://github.com/PuneetGopinath/memory-garden/compare/v0.3.4...HEAD
 [v0.3.4]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.3.4
 [v0.3.3]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.3.3
 [v0.3.2]: https://github.com/PuneetGopinath/memory-garden/releases/tag/v0.3.2
