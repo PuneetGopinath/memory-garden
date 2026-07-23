@@ -121,7 +121,7 @@ export default function Home() {
                 <span className="text-zinc-400 font-light text-lg mx-auto p-4">Welcome to your Memory Garden! Plant your memories and let the timeline grow.</span>
             </div>
 
-            <div className="flex flex-row justify-center items-center gap-8 p-4 mb-8">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-8 p-4 mb-8">
                 {!disabled && <Link to="upload" className="rounded-full text-sm font-medium border border-white/10 bg-cyan-400 p-4 hover:bg-cyan-500 transition-colors duration-300 inline-block">
                     Upload Memories
                 </Link>}
