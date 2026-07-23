@@ -9,6 +9,8 @@ import { Link } from "react-router";
 
 import { toast } from "sonner";
 
+import { MAX_PASSWORD_LENGTH } from "../../constants";
+
 import PasswordValidation from "../../components/auth/PasswordValidation";
 
 import supabase from "../../utils/supabase";
@@ -45,6 +47,10 @@ export default function NewPassword() {
         if (!same || !pwdValid) return;
 
         setLoading(true);
+
+        if (pwd.length > MAX_PASSWORD_LENGTH) {
+            return toast.error(`Password exceeds the length of ${MAX_PASSWORD_LENGTH}. Please reduce the characters used.`);
+        }
 
         try {
             const { error } = await supabase.auth.updateUser({ password: pwd });
@@ -126,6 +132,7 @@ export default function NewPassword() {
                         onFocus={() => setTouched(true)}
                         required
                         disabled={loading}
+                        maxLength={MAX_PASSWORD_LENGTH}
                         autoComplete="new-password"
                     />
                 </label>
@@ -139,6 +146,7 @@ export default function NewPassword() {
                         onChange={(e) => setConfirmPwd(e.target.value)}
                         required
                         disabled={loading}
+                        maxLength={MAX_PASSWORD_LENGTH}
                         autoComplete="new-password"
                     />
                 </label>

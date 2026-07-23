@@ -9,6 +9,8 @@ import { Link, useNavigate } from "react-router";
 
 import { toast } from "sonner";
 
+import { MAX_PASSWORD_LENGTH } from "../../constants";
+
 import PasswordValidation from "../../components/auth/PasswordValidation";
 
 import supabase from "../../utils/supabase";
@@ -33,6 +35,9 @@ export default function SignUp() {
             return toast.error("You must agree to the Terms of Service and Privacy Policy to create an account.");
 
         const password = fd.get("password");
+        if (password.length > MAX_PASSWORD_LENGTH)
+            return toast.error(`Password exceeds the length of ${MAX_PASSWORD_LENGTH}. Please reduce the characters used.`);
+
         const username = sanitize(fd.get("username"), "username");
         const email = sanitize(fd.get("email"), "email");
 
@@ -122,6 +127,7 @@ export default function SignUp() {
                         onChange={(e) => setPwd(e.target.value)}
                         onFocus={() => setTouched(true)}
                         required
+                        maxLength={MAX_PASSWORD_LENGTH}
                         autoComplete="new-password"
                     />
                 </label>
