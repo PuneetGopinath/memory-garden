@@ -9,6 +9,8 @@ import { Link } from "react-router";
 
 import { toast } from "sonner";
 
+import { Event } from "../../components/MemoryCard";
+
 import { MAX_TITLE_LENGTH, MIN_TITLE_LENGTH, MAX_DESC_LENGTH, MAX_IMAGE_SIZE } from "../../constants";
 
 import AuthContext from "../../context/AuthContext";
@@ -34,8 +36,10 @@ async function generateInsights(memory) {
 
 export default function Upload() {
     const [loading, setLoading] = useState(false);
-    const [img, setImg] = useState(null);
+    const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
+    const [date, setDate] = useState("");
+    const [img, setImg] = useState(null);
     const { user } = use(AuthContext);
 
     const validDesc = desc.length <= MAX_DESC_LENGTH;
@@ -135,75 +139,89 @@ export default function Upload() {
         });
     };
 
+    const d = date === "" ? new Date() : new Date(date);
+    const change = title !== "" || desc !== "" || date !== "" || img !== null;
+
     return (
-        <div className="text-white bg-zinc-900/60 rounded-3xl border border-white/10 backdrop-blur max-w-lg mx-auto p-8 mb-12">
-            <Link to="/dashboard" className="text-xs text-gray-400 p-2 hover:text-gray-300 transition-colors duration-200">&larr; Back to Dashboard</Link>
-            <div className="text-center my-2">
-                <h1 className="text-4xl font-semibold mb-4">Upload Memories</h1>
-                <p className="text-zinc-400">Add memories to your memory garden</p>
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_420px] text-white backdrop-blur max-w-6xl mx-auto p-4 mb-12 gap-4">
+            <div className="bg-zinc-900/60 rounded-3xl border border-white/10 max-w-xl p-8">
+                <Link to="/dashboard" className="text-xs text-gray-400 p-2 hover:text-gray-300 transition-colors duration-200">&larr; Back to Dashboard</Link>
+                <div className="text-center my-2">
+                    <h1 className="text-4xl font-semibold mb-4">Upload Memories</h1>
+                    <p className="text-zinc-400">Add memories to your memory garden</p>
+                </div>
+
+                <form onSubmit={handleUpload} className="space-y-4" autoComplete="off">
+                    <label className="flex flex-col gap-1">
+                        <span className="text-sm font-medium">Title <span className="text-red-500">*</span></span>
+                        <input
+                            type="text"
+                            name="title"
+                            className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                            required
+                            minLength={MIN_TITLE_LENGTH}
+                            maxLength={MAX_TITLE_LENGTH}
+                        />
+                    </label>
+
+                    <label className="flex flex-col gap-1">
+                        <span className="text-sm font-medium">Description</span>
+                        <textarea
+                            name="description"
+                            className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
+                            rows="6"
+                            value={desc}
+                            onChange={e => setDesc(e.target.value)}
+                            maxLength={MAX_DESC_LENGTH}
+                        />
+                        <span className={`text-xs font-normal ${validDesc ? "" : "text-red-500"}`}>{desc.length}/{MAX_DESC_LENGTH}</span>
+                    </label>
+
+                    <label className="flex flex-col gap-1">
+                        <span className="text-sm font-medium">Date <span className="text-red-500">*</span></span>
+                        <input
+                            type="date"
+                            name="memory_date"
+                            className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
+                            value={date}
+                            onChange={e => setDate(e.target.value)}
+                            required
+                        />
+                    </label>
+
+                    <label className="flex flex-col gap-1">
+                        <span className="text-sm font-medium">Image <span className="text-xs text-zinc-500 font-normal">(MAX 10MB)</span></span>
+                        <input
+                            type="file"
+                            name="image"
+                            className="w-full rounded-lg bg-zinc-800/50 border border-white/10 text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/70 file:text-white hover:file:bg-cyan-500/80 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:ring-offset-2 p-2"
+                            accept="image/*"
+                            onChange={(e) => setImg(e.target.files[0])}
+                        />
+                    </label>
+
+                    <button
+                        type="submit"
+                        className="mt-4 w-full rounded-lg bg-cyan-500 hover:bg-cyan-600 transition-colors duration-300 px-4 py-2 text-white font-medium disabled:cursor-not-allowed disabled:bg-cyan-500/50 disabled:hover:bg-cyan-500/50"
+                        disabled={loading || !validDesc}
+                    >
+                        {loading ? "Uploading..." : "Plant Memory"}
+                    </button>
+                </form>
             </div>
 
-            <form onSubmit={handleUpload} className="space-y-4" autoComplete="off">
-                <label className="flex flex-col gap-1">
-                    <span className="text-sm font-medium">Title <span className="text-red-500">*</span></span>
-                    <input
-                        type="text"
-                        name="title"
-                        className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
-                        required
-                        minLength={MIN_TITLE_LENGTH}
-                        maxLength={MAX_TITLE_LENGTH}
-                    />
-                </label>
+            <aside className={`sticky top-24 self-start rounded-2xl bg-zinc-900 p-6 border border-white/10 max-w-xl mx-auto mt-1 ${change ? "opacity-100 -translate-y-1" : "opacity-50"} transition-all duration-300`}>
+                <h2 className="text-lg font-semibold mb-4">Memory Card Preview</h2>
 
-                <label className="flex flex-col gap-1">
-                    <span className="text-sm font-medium">Description</span>
-                    <textarea
-                        name="description"
-                        className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
-                        rows="6"
-                        value={desc}
-                        onChange={(e) => setDesc(e.target.value)}
-                        maxLength={MAX_DESC_LENGTH}
-                    />
-                    <span className={`text-xs font-normal ${validDesc ? "" : "text-red-500"}`}>{desc.length}/{MAX_DESC_LENGTH}</span>
-                </label>
-
-                <label className="flex flex-col gap-1">
-                    <span className="text-sm font-medium">Date <span className="text-red-500">*</span></span>
-                    <input
-                        type="date"
-                        name="memory_date"
-                        className="w-full rounded-lg bg-zinc-800/50 border border-white/10 px-4 py-2 focus:outline-none focus:border-cyan-500/40"
-                        required
-                    />
-                </label>
-
-                <label className="flex flex-col gap-1">
-                    <span className="text-sm font-medium">Image <span className="text-xs text-zinc-500 font-normal">(MAX 10MB)</span></span>
-                    <input
-                        type="file"
-                        name="image"
-                        className="w-full rounded-lg bg-zinc-800/50 border border-white/10 text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500/70 file:text-white hover:file:bg-cyan-500/80 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:ring-offset-2 p-2"
-                        accept="image/*"
-                        onChange={(e) => setImg(e.target.files[0])}
-                    />
-                    
-                    {img && 
-                        (<>
-                            <span className="text-sm text-zinc-400 mt-1">Preview Image</span>
-                            <img src={URL.createObjectURL(img)} alt={img.name} className="mt-2 max-h-60 rounded-lg border border-white/10" />
-                        </>)}
-                </label>
-
-                <button
-                    type="submit"
-                    className="mt-4 w-full rounded-lg bg-cyan-500 hover:bg-cyan-600 transition-colors duration-300 px-4 py-2 text-white font-medium disabled:cursor-not-allowed disabled:bg-cyan-500/50 disabled:hover:bg-cyan-500/50"
-                    disabled={loading || !validDesc}
-                >
-                    {loading ? "Uploading..." : "Plant Memory"}
-                </button>
-            </form>
+                <Event
+                    date={d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                    title={title === "" ? "Untitled Memory" : title}
+                    description={desc === "" ? "No description." : desc}
+                    img={img ? URL.createObjectURL(img) : img}
+                />
+            </aside>
         </div>
     );
 };
