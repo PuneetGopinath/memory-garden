@@ -30,13 +30,13 @@ export default function ImageViewer({ open = false, src = "", alt = "", onClose 
 
     return (
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-xs"
             onClick={onClose}
         >
             <img
                 src={src}
                 alt={alt}
-                className="max-w-[90vw] max-h-[90vh] rounded-lg object-contain"
+                className="max-w-[80vw] max-h-[80vh] rounded-lg object-contain border border-white/20"
                 onClick={(e) => e.stopPropagation()}
             />
             <button
