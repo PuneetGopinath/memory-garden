@@ -4,7 +4,28 @@
  * License: MIT (see LICENSE)
  */
 
+import { useEffect } from "react";
+
 export default function ImageViewer({ open = false, src = "", alt = "", onClose }) {
+    useEffect(() => {
+        if (!open) return;
+
+        document.body.style.overflow = "hidden";
+
+        const handleKeyDown = (e) => {
+            if (e.key === "Escape") {
+                onClose();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = "";
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [open, onClose]);
+
     if (!open) return null;
 
     return (
