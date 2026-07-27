@@ -5,6 +5,10 @@ Dates follow ISO 8601 standard.
 
 ## [unreleased]
 
+### Features
+
+- Add a preview of memory card in the memory upload page that updates as the user types
+
 ### Bug Fixes
 
 - Render correct message when no memories match search criteria
@@ -13,6 +17,8 @@ Dates follow ISO 8601 standard.
 
 - Add a CTA button to upload memories when no memories have been uploaded so far and hide the default upload button in dashboard home
 - Add upper bound to password length and validate it in authentication pages
+- Make the timeline view of memories in dashboard home responsive to device width by changing the flex as a row or a column
+- Add alternative text for memory image in memory details page
 
 ### Refactored
 
