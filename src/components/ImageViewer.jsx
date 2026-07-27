@@ -44,7 +44,7 @@ export default function ImageViewer({ open = false, src = "", alt = "", onClose 
             />
             <button
                 onClick={onClose}
-                className="absolute top-6 right-6 text-3xl text-white p-2 bg-zinc-800 rounded-lg border border-gray-200 hover:text-gray-300 transition-colors duration-200"
+                className="absolute top-10 right-10 cursor-pointer text-2xl flex justify-center items-center w-12 h-12 text-white bg-zinc-900/80 rounded-xl border border-white/15 hover:border-white/25 hover:bg-zinc-800 hover:text-zinc-200 transition-all duration-200"
             >
                 &times;
             </button>
