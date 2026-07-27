@@ -19,13 +19,18 @@ function getMoodColor(mood) {
     return moodColors[hash % moodColors.length];
 }
 
-export function Event({ date, title, description = null, img, clockwise, mood, link }) {
+export function Event({ date, title, description = null, img, clockwise, mood, link, onImageClick = () => {} }) {
     const moodColor = mood ? getMoodColor(mood) : null;
 
     return (
         <div className={`relative overflow-hidden ${clockwise ? "rotate-1" : "-rotate-1"} hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 min-h-96 min-w-[20rem] w-full max-w-sm p-6 rounded-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl`}>
             {img
-                ? <img src={img} alt={title} className="h-44 w-full object-cover rounded-2xl hover:scale-103 transition-transform duration-300 bg-linear-to-br from-purple-500 to-cyan-500" />
+                ? <img
+                    src={img}
+                    alt={title}
+                    className="h-44 w-full object-cover rounded-2xl hover:scale-103 transition-transform duration-300 bg-linear-to-br from-purple-500 to-cyan-500"
+                    onClick={() => onImageClick(img, title)}
+                />
                 : <div className="w-full h-44 rounded-2xl bg-linear-to-br from-purple-500 to-cyan-500 hover:scale-103 transition-transform duration-300"></div>}
             <div className="relative space-y-3 mt-4">
                 <p className="text-sm text-zinc-400">{date}</p>
