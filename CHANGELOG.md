@@ -8,6 +8,9 @@ Dates follow ISO 8601 standard.
 ### Features
 
 - Add a preview of memory card in the memory upload page that updates as the user types
+- Full-screen image display of memory image in timeline view by clicking the image in the card
+    - Closes when user clicks outside the image, presses ESC or clicks the close button
+    - Prevent scrolling in the background when image is open
 
 ### Bug Fixes
 
@@ -25,6 +28,8 @@ Dates follow ISO 8601 standard.
 - Move AuthProvider to a separate file and change extension of AuthContext to a js file (this fixes a warning)
 - Move function definition outside react component for better performance
 - Move constant password length to constants folder
+- Rename `MemoryCard` component to `MemoryRow` and also rename the file
+- Rename `Event` component to `MemoryCard`
 
 ## [v0.3.4] - `2026-07-16`
 
