@@ -28,10 +28,10 @@ export function Event({ date, title, description = null, img, clockwise, mood, l
                 ? <img
                     src={img}
                     alt={title}
-                    className="h-44 w-full object-cover rounded-2xl hover:scale-103 transition-transform duration-300 bg-linear-to-br from-purple-500 to-cyan-500"
+                    className="h-44 w-full cursor-zoom-in object-cover rounded-2xl hover:scale-103 transition-transform duration-300 bg-linear-to-br from-purple-500 to-cyan-500"
                     onClick={() => onImageClick(img, title)}
                 />
-                : <div className="w-full h-44 rounded-2xl bg-linear-to-br from-purple-500 to-cyan-500 hover:scale-103 transition-transform duration-300"></div>}
+                : <div className="w-full h-44 rounded-2xl bg-linear-to-br from-purple-500 to-cyan-500 transition-transform duration-300"></div>}
             <div className="relative space-y-3 mt-4">
                 <p className="text-sm text-zinc-400">{date}</p>
                 <h5 className="text-xl font-semibold">
