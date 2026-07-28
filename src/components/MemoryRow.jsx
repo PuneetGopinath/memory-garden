@@ -19,7 +19,7 @@ function getMoodColor(mood) {
     return moodColors[hash % moodColors.length];
 }
 
-export function Event({ date, title, description = null, img, clockwise, mood, link, onImageClick = () => {} }) {
+export function MemoryCard({ date, title, description = null, img, clockwise, mood, link, onImageClick = () => {} }) {
     const moodColor = mood ? getMoodColor(mood) : null;
 
     return (
@@ -58,7 +58,7 @@ export default function MemoryRow({ column, markerColor = "purple", ...props }) 
     return (
         <div className="relative z-10 flex items-start justify-between">
             <div className={`w-5/12 ${column === 1 ? "flex justify-end" : ""}`}>
-                {column === 1 && <Event {...props} clockwise={clockwise} /> /* Column 1 */}
+                {column === 1 && <MemoryCard {...props} clockwise={clockwise} /> /* Column 1 */}
             </div>
 
             <div className="relative flex justify-center w-2/12 pt-32">
@@ -66,7 +66,7 @@ export default function MemoryRow({ column, markerColor = "purple", ...props }) 
             </div>
 
             <div className={`w-5/12 ${column === 2 ? "flex justify-start" : ""}`}>
-                {column === 2 && <Event {...props} clockwise={clockwise} /> /* Column 2 */}
+                {column === 2 && <MemoryCard {...props} clockwise={clockwise} /> /* Column 2 */}
             </div>
         </div>
     );

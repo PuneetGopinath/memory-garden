@@ -8,7 +8,7 @@ import { Link } from "react-router";
 
 import { memories } from "../../constants";
 
-import { Event } from "../MemoryRow";
+import { MemoryCard } from "../MemoryRow";
 
 export default function Hero() {
     return (
@@ -27,7 +27,7 @@ export default function Hero() {
                 <div className="pointer-events-none absolute -top-12 left-1/4 h-72 w-72 animate-pulse rounded-full bg-purple-500/50 opacity-30 blur-3xl"></div>
                 <div className="pointer-events-none absolute -bottom-12 right-1/4 h-80 w-80 rounded-full bg-cyan-500/60 opacity-30 blur-3xl"></div>
             
-                <Event
+                <MemoryCard
                     {...memories[3]}
                     clockwise={true}
                 />

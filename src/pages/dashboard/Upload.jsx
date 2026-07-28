@@ -9,7 +9,7 @@ import { Link } from "react-router";
 
 import { toast } from "sonner";
 
-import { Event } from "../../components/MemoryRow";
+import { MemoryCard } from "../../components/MemoryRow";
 
 import { MAX_TITLE_LENGTH, MIN_TITLE_LENGTH, MAX_DESC_LENGTH, MAX_IMAGE_SIZE } from "../../constants";
 
@@ -215,7 +215,7 @@ export default function Upload() {
             <aside className={`sticky top-24 self-start rounded-2xl bg-zinc-900 p-6 border border-white/10 max-w-xl mx-auto mt-1 ${change ? "opacity-100 -translate-y-1" : "opacity-50"} transition-all duration-300`}>
                 <h2 className="text-lg font-semibold mb-4">Memory Card Preview</h2>
 
-                <Event
+                <MemoryCard
                     date={d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
                     title={title === "" ? "Untitled Memory" : title}
                     description={desc === "" ? "No description." : desc}
