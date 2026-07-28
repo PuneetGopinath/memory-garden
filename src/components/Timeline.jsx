@@ -12,19 +12,21 @@ import ImageViewer from "./ImageViewer";
 export default function Timeline({ memories, className = "", links = false }) {
     const [viewer, setViewer] = useState({ open: false, src: "", alt: "" });
 
+    const handleImageClick = (src, alt) => 
+        setViewer({
+            open: true,
+            src,
+            alt,
+        });
+    ;
+
     const memoriesWithColumns = memories.map((m, i) => i % 2 === 0 ? { ...m, column: 2 } : { ...m, column: 1 });
     const cards = memoriesWithColumns.map(m => (
         <MemoryCard
             key={m?.id}
             {...m}
             link={links ? `memory/${m.id}` : undefined}
-            onImageClick={(src, alt) =>
-                setViewer({
-                    open: true,
-                    src,
-                    alt,
-                })
-            }
+            onImageClick={handleImageClick}
         />
     ));
 
