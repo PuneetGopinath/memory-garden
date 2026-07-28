@@ -6,7 +6,7 @@
 
 import { useState } from "react";
 
-import MemoryCard from "./MemoryCard";
+import MemoryRow from "./MemoryRow";
 import ImageViewer from "./ImageViewer";
 
 export default function Timeline({ memories, className = "", links = false }) {
@@ -22,7 +22,7 @@ export default function Timeline({ memories, className = "", links = false }) {
 
     const memoriesWithColumns = memories.map((m, i) => i % 2 === 0 ? { ...m, column: 2 } : { ...m, column: 1 });
     const cards = memoriesWithColumns.map(m => (
-        <MemoryCard
+        <MemoryRow
             key={m?.id}
             {...m}
             link={links ? `memory/${m.id}` : undefined}

@@ -49,9 +49,9 @@ export function Event({ date, title, description = null, img, clockwise, mood, l
     );
 }
 
-export default function MemoryCard({ column, markerColor = "purple", ...props }) {
+export default function MemoryRow({ column, markerColor = "purple", ...props }) {
     if ([1, 2].indexOf(column) === -1)
-        throw new Error("Invalid column number for MemoryCard. Must be 1 or 2.");
+        throw new Error("Invalid column number for MemoryRow. Must be 1 or 2.");
 
     const clockwise = column === 2;
 
