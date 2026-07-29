@@ -16,3 +16,32 @@ html {
         0 0 10px rgba(34, 211, 238, 0.6),
         0 0 20px rgba(34, 211, 238, 0.5);
 }
+
+.noscript {
+    font-family: inherit;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background-color: #09090b;
+    color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.noscript h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.noscript p {
+    font-size: 1.2rem;
+    max-width: 40rem;
+    margin: 0;
+    line-height: 1.6;
+}
