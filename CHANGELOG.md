@@ -31,6 +31,16 @@ Dates follow ISO 8601 standard.
 - Rename `MemoryCard` component to `MemoryRow` and also rename the file
 - Rename `Event` component to `MemoryCard`
 
+### Chores
+
+- Bump `vite` from 8.1.4 to 8.1.5 [#19]
+- Bump `@supabase/supabase-js` from 2.110.4 to 2.111.0 [#20]
+- Bump `@eslint-react/eslint-plugin` from 5.14.8 to 5.18.0 [#21]
+- Bump `tailwindcss` from 4.3.2 to 4.3.3 [#22]
+- Bump `@tailwindcss/vite` from 4.3.2 to 4.3.3 [#23]
+- Bump `react-router` from 8.2.0 to 8.3.0 [#24]
+- Bump `postcss` from 8.5.17 to 8.5.24 [#25]
+
 ## [v0.3.4] - `2026-07-16`
 
 ### Documentation
@@ -281,6 +291,13 @@ but this method makes sure the screen reader reads only the title
 - Image replacement during editing not supported
 - AI not used yet to generate summaries and mood
 
+[#25]: https://github.com/PuneetGopinath/memory-garden/pull/25
+[#24]: https://github.com/PuneetGopinath/memory-garden/pull/24
+[#23]: https://github.com/PuneetGopinath/memory-garden/pull/23
+[#22]: https://github.com/PuneetGopinath/memory-garden/pull/22
+[#21]: https://github.com/PuneetGopinath/memory-garden/pull/21
+[#20]: https://github.com/PuneetGopinath/memory-garden/pull/20
+[#19]: https://github.com/PuneetGopinath/memory-garden/pull/19
 [#17]: https://github.com/PuneetGopinath/memory-garden/pull/17
 [#16]: https://github.com/PuneetGopinath/memory-garden/pull/16
 [#15]: https://github.com/PuneetGopinath/memory-garden/pull/15
