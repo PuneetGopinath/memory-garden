@@ -23,7 +23,7 @@ export function MemoryCard({ date, title, description = null, img, clockwise, mo
     const moodColor = mood ? getMoodColor(mood) : null;
 
     return (
-        <div className={`relative overflow-hidden ${clockwise ? "rotate-1" : "-rotate-1"} hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 min-h-96 min-w-[20rem] w-full max-w-sm p-6 rounded-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl`}>
+        <div className={`relative overflow-hidden ${clockwise ? "rotate-1" : "-rotate-1"} hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 min-h-96 max-w-80 md:max-w-sm p-6 rounded-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl`}>
             {img
                 ? <img
                     src={img}
