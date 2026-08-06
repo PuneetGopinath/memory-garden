@@ -42,9 +42,11 @@ export default function ImageViewer({ open = false, src = "", alt = "", onClose 
                 className="max-w-[80vw] max-h-[80vh] rounded-lg object-contain border border-white/20"
                 onClick={(e) => e.stopPropagation()}
             />
+            
             <button
                 onClick={onClose}
                 className="absolute top-10 right-10 cursor-pointer text-2xl flex justify-center items-center w-12 h-12 text-white bg-zinc-900/80 rounded-xl border border-white/15 hover:border-white/25 hover:bg-zinc-800 hover:text-zinc-200 transition-all duration-200"
+                aria-label="Close Image Viewer"
             >
                 &times;
             </button>
