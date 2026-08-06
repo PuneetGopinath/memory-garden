@@ -45,6 +45,11 @@ Dates follow ISO 8601 standard.
 - Bump `@tailwindcss/vite` from 4.3.2 to 4.3.3 [#23]
 - Bump `react-router` from 8.2.0 to 8.3.0 [#24]
 - Bump `postcss` from 8.5.17 to 8.5.24 [#25]
+- Bump `@eslint-react/eslint-plugin` from 5.18.0 to 5.18.1 [#26]
+- Bump `react-dom` from 19.2.7 to 19.2.8 [#27]
+- Bump `globals` from 17.7.0 to 17.8.0 [#28]
+- Bump `eslint` from 10.7.0 to 10.8.0 [#29]
+- Bump `react` from 19.2.7 to 19.2.8 [#30]
 
 ## [v0.3.4] - `2026-07-16`
 
@@ -296,6 +301,11 @@ but this method makes sure the screen reader reads only the title
 - Image replacement during editing not supported
 - AI not used yet to generate summaries and mood
 
+[#30]: https://github.com/PuneetGopinath/memory-garden/pull/30
+[#29]: https://github.com/PuneetGopinath/memory-garden/pull/29
+[#28]: https://github.com/PuneetGopinath/memory-garden/pull/28
+[#27]: https://github.com/PuneetGopinath/memory-garden/pull/27
+[#26]: https://github.com/PuneetGopinath/memory-garden/pull/26
 [#25]: https://github.com/PuneetGopinath/memory-garden/pull/25
 [#24]: https://github.com/PuneetGopinath/memory-garden/pull/24
 [#23]: https://github.com/PuneetGopinath/memory-garden/pull/23
