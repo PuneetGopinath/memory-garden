@@ -1,0 +1,53 @@
+/**
+ * MemoryGarden
+ * Copyright (c) 2026 Puneet Gopinath
+ * License: MIT (see LICENSE)
+ */
+
+import { Link } from "react-router";
+
+import { moodColors } from "../constants";
+
+import removeMd from "../utils/removeMd";
+
+function getMoodColor(mood) {
+    let hash = 0;
+
+    for (const char of mood)
+        hash += char.charCodeAt(0);
+
+    return moodColors[hash % moodColors.length];
+}
+
+export default function MemoryCard({ date, title, description = null, img, clockwise, mood, link, onImageClick = () => {} }) {
+    const moodColor = mood ? getMoodColor(mood) : null;
+
+    return (
+        <div className={`relative overflow-hidden ${clockwise ? "rotate-1" : "-rotate-1"} hover:rotate-0 hover:scale-[1.02] transition-transform duration-300 min-h-96 max-w-80 md:max-w-sm p-6 roundex-3xl bg-zinc-900/70 border border-white/10 backdrop-blur-xl shadow-2xl`}>
+            {img
+                ? <img
+                    src={img}
+                    alt={title}
+                    className="h-44 w-full cursor-zoom-in object-cover rounded-2xl hover:scale-103 transition-transform duration-300 bg-linear-to-br from-purple-500 to-cyan-500"
+                    onClick={() => onImageClick(img, title)}
+                />
+                : <div className="w-full h-44 rounded-2xl bg-linear-to-br from-purple-500 to-cyan-500 transition-transform duration-300"></div>
+            }
+
+            <div className="relative space-y-3 mt-4">
+                <p className="text-sm text-zinc-400">{date}</p>
+                <h5 className="text-xl font-semibold">
+                    {
+                        link
+                            ? <Link to={link}>{title}</Link>
+                            : title
+                    }
+                </h5>
+                {description && <p className="text-zinc-400 line-clamp-3 leading-relaxed">{removeMd(description)}</p>}
+                {mood && <span className={`${moodColor} border inline-flex items-center rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wide`}>{mood}</span>}
+            </div>
+
+            {link && <Link to={link} className="block my-2 text-sm w-full text-purple-400 hover:text-purple-300 transition-colors duration-300 font-medium">View Details &rarr;</Link>}
+        </div>
+    );
+};

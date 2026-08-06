@@ -8,7 +8,7 @@ import { Link } from "react-router";
 
 import { memories } from "../../constants";
 
-import { MemoryCard } from "../MemoryRow";
+import MemoryCard from "../MemoryCard";
 
 export default function Hero() {
     return (

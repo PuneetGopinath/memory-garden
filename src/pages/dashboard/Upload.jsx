@@ -9,7 +9,7 @@ import { Link } from "react-router";
 
 import { toast } from "sonner";
 
-import { MemoryCard } from "../../components/MemoryRow";
+import MemoryCard from "../../components/MemoryCard";
 
 import { MAX_TITLE_LENGTH, MIN_TITLE_LENGTH, MAX_DESC_LENGTH, MAX_IMAGE_SIZE } from "../../constants";
 
