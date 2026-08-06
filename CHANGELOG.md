@@ -22,6 +22,10 @@ Dates follow ISO 8601 standard.
 - Add upper bound to password length and validate it in authentication pages
 - Make the timeline view of memories in dashboard home responsive to device width by changing the flex as a row or a column
 - Add alternative text for memory image in memory details page
+- Improve accessibility and SEO in index.html
+- Use router navigation instead of anchor in dashboard layout for on-site navigation
+- Add noscript tag for better accessibility
+- Make memory card responsive for smaller media devices
 
 ### Refactored
 
@@ -30,6 +34,7 @@ Dates follow ISO 8601 standard.
 - Move constant password length to constants folder
 - Rename `MemoryCard` component to `MemoryRow` and also rename the file
 - Rename `Event` component to `MemoryCard`
+- Move `MemoryCard` (previously `Event`) component from MemoryRow file to a separate file
 
 ### Chores
 
