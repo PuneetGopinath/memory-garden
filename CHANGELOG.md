@@ -15,6 +15,7 @@ Dates follow ISO 8601 standard.
 ### Bug Fixes
 
 - Render correct message when no memories match search criteria
+- Fix use of incorrect function in upload memory page that prevented memory from being uploaded and replace with the right code
 
 ### UX Enhancements
 
