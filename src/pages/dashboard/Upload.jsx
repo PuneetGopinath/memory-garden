@@ -216,7 +216,7 @@ export default function Upload() {
                 </form>
             </div>
 
-            <aside className={`sticky top-24 self-start rounded-2xl bg-zinc-900 p-6 border border-white/10 max-w-xl mx-auto mt-1 ${change ? "opacity-100 -translate-y-1" : "opacity-50"} transition-all duration-300`}>
+            <aside className={`sticky top-24 self-start rounded-2xl bg-zinc-900 p-6 border border-white/10 w-90 max-w-xl mx-auto mt-1 ${change ? "opacity-100 -translate-y-1" : "opacity-50"} transition-all duration-300`}>
                 <h2 className="text-lg font-semibold mb-4">Memory Card Preview</h2>
 
                 <MemoryCard
