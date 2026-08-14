@@ -105,7 +105,11 @@ export default function Upload() {
             setLoading(false);
         }
 
-        e.target.clear();
+        setTitle("");
+        setDesc("");
+        setDate("");
+        setImg(null);
+        e.target.reset();
 
         const toastId = toast.success("Memory planted successfully!", {
             description: "AI insights are optional and can be done later in the memory details page.",
