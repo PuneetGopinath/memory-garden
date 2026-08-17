@@ -27,6 +27,8 @@ Dates follow ISO 8601 standard.
 - Use router navigation instead of anchor in dashboard layout for on-site navigation
 - Add noscript tag for better accessibility
 - Make memory card responsive for smaller media devices
+- Set a width for memory card container in upload page, this prevents the card from contracting into a small rectangle
+- Fix typo that caused border radius to be 0 in memory card component
 
 ### Refactored
 
