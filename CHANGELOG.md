@@ -3,7 +3,7 @@
 Format: [vx.y.z] - `YYYY-MM-DD`
 Dates follow ISO 8601 standard.
 
-## [unreleased]
+## [v0.4.0] - `2026-08-20`
 
 ### Features
 
